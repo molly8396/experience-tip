@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>经验之书 · 经验投资说明书</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='12' fill='%231A2B4A'/%3E%3Cpath d='M18 18h28v6H18zm0 13h28v6H18zm0 13h17v6H18z' fill='%23F5F7FA'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@600;700;900&display=swap">
+<style>
+:root{
+  --navy:#1A2B4A; --navy2:#2A4470; --steel:#758092; --line:#E3E7EE;
+  --bg:#F5F7FA; --ink:#1F2733; --green:#1C7C54; --red:#C0392B; --amber:#B9770E;
+  --d-zc:#1A2B4A; --d-kg:#3E6B4E; --d-kx:#4A5E8C; --d-bh:#A4535B; --d-my:#B5752F; --d-ly:#35717B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--navy);text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
+.sub{font-size:14.5px;color:var(--steel)}
+/* ===== 顶栏（小程序导航条风格） ===== */
+.topbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;color:var(--navy);letter-spacing:1px}
+.logo .mark{width:32px;height:32px;border-radius:9px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex:none}
+.logo .mark svg{width:19px;height:19px}
+.nav{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:500}
+.nav a{color:var(--ink);opacity:.85}
+.nav a:hover{opacity:1;color:var(--navy)}
+.nav .btn{background:var(--navy);color:#fff;padding:9px 18px;border-radius:999px;font-weight:600;opacity:1;border:none;cursor:pointer;font-size:14px;font-family:inherit}
+.nav .btn:hover{background:var(--navy2)}
+.nav .btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy);opacity:1}
+/* ===== Hero（藏青渐变，对齐小程序 onboard 头图） ===== */
+.hero{background:linear-gradient(180deg,#16233C 0%,#1A2B4A 45%,#2A4470 78%,#F5F7FA 100%);padding:76px 0 88px;color:#fff;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none;z-index:0}
+.hero::before{width:340px;height:340px;background:radial-gradient(circle,rgba(62,107,78,.5),transparent 70%);top:-50px;right:-40px}
+.hero::after{width:300px;height:300px;background:radial-gradient(circle,rgba(180,117,47,.25),transparent 70%);bottom:-60px;left:-40px}
+.hero .wrap{position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#8FBC8F;letter-spacing:2px;margin-bottom:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:6px 14px;border-radius:999px}
+.hero h1{font-size:clamp(38px,5.4vw,64px);line-height:1.16;font-weight:900;letter-spacing:1px;margin-bottom:18px}
+.hero-title{font-family:"Noto Serif SC","Songti SC","STSong",serif}
+.hero h1 .hl{color:#fff;position:relative;white-space:nowrap}
+.hero h1 .hl::after{content:"";position:absolute;left:2%;right:2%;bottom:3px;height:11px;background:linear-gradient(90deg,#B9770E,#E0B464);opacity:.62;z-index:-1;border-radius:3px}
+.hero-sub{font-size:16.5px;color:rgba(255,255,255,.8);max-width:640px;margin-bottom:28px}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:30px}
+.hero-meta .m{text-align:center}
+.hero-meta b{display:block;font-size:24px;font-weight:800;color:#fff}
+.hero-meta span{font-size:12.5px;color:rgba(255,255,255,.66)}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:15.5px;border:none;cursor:pointer;transition:transform .12s,box-shadow .12s;font-family:inherit}
+.btn:active{transform:scale(.97)}
+.btn-navy{background:#fff;color:var(--navy);box-shadow:0 6px 18px rgba(10,20,40,.24)}
+.btn-navy:hover{background:#F0F4FA}
+.btn-line-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.65)}
+.btn-line-w:hover{background:rgba(255,255,255,.1)}
+/* ===== 问卷（onboard 移植） ===== */
+.quiz{padding:64px 0 72px}
+.quiz-card{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px 40px 32px;box-shadow:0 8px 28px rgba(15,27,48,.05)}
+.quiz-brand{font-size:22px;font-weight:900;color:var(--navy);letter-spacing:.04em}
+.quiz-sub{font-size:14px;color:var(--steel);margin:6px 0 22px}
+.quiz-progress{height:8px;background:#E7ECF4;border-radius:999px;overflow:hidden;margin-bottom:18px}
+.quiz-bar{height:100%;background:#8FBC8F;border-radius:999px;transition:width .3s ease}
+.quiz-step{font-size:13px;color:var(--steel);margin-bottom:16px;font-weight:500}
+.quiz-options{display:flex;flex-direction:column;gap:12px}
+.quiz-option{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:16px 20px;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left;font-family:inherit;transition:border-color .12s,background .12s}
+.quiz-option:hover{border-color:var(--navy)}
+.quiz-option:active{border-color:var(--navy);background:#F0F4FA}
+.quiz-skip{display:block;margin:22px auto 0;text-align:center;color:var(--navy);font-size:14px;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit}
+.quiz-note{text-align:center;color:#A9B2C0;font-size:12.5px;margin-top:12px}
+/* ===== 领域速览 ===== */
+.domains{padding:56px 0 60px;background:#fff;border-top:1px solid var(--line)}
+.sec-head{margin-bottom:28px;text-align:center}
+.sec-head h2{margin-bottom:8px}
+.dom-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.domain-chip{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 8px;background:var(--bg);border:1px solid var(--line);border-radius:14px;cursor:pointer;transition:transform .12s,border-color .12s;text-align:center;font-family:inherit}
+.domain-chip:hover{transform:translateY(-3px);border-color:var(--navy)}
+.domain-chip .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff}
+.domain-chip .ic svg{width:21px;height:21px}
+.domain-chip b{font-size:15px;color:var(--ink)}
+.domain-chip span{font-size:11.5px;color:var(--steel)}
+/* ===== 经验库 ===== */
+.lib{padding:64px 0 72px}
+.lib-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px;justify-content:center}
+.lib-tab{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13.5px;font-weight:500;color:var(--ink);cursor:pointer;font-family:inherit}
+.lib-tab.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:600}
+.lib-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.exp-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:border-color .12s,box-shadow .12s}
+.exp-card:hover{border-color:var(--navy);box-shadow:0 6px 18px rgba(23,51,79,.06)}
+.exp-card .head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.star-btn{background:none;border:none;font-size:19px;line-height:1;color:#C6CEDC;cursor:pointer;padding:0 2px;flex:none;font-family:inherit;transition:color .12s}
+.star-btn:hover{color:#E8A33D}
+.star-btn.on{color:#E8A33D}
+.exp-card h4{font-size:15.5px;font-weight:700;line-height:1.45}
+.exp-card .scene{font-size:12.5px;color:var(--steel)}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px}
+.badge.a{background:#E3EFE6;color:var(--green)}
+.badge.b{background:#E7ECF4;color:var(--navy)}
+.badge.c{background:#F0E9DC;color:var(--amber)}
+.badge.src{background:#F3F4F7;color:var(--steel)}
+.badge.ai{background:#FFF4E0;color:var(--amber)}
+.draft-preview{border-color:#D9DEE8;background:#FCFDFF}
+.draft-tip{margin-top:10px;font-size:12px;color:var(--steel);line-height:1.6}
+.exp-actions{display:none;margin-top:2px;padding-top:12px;border-top:1px dashed var(--line)}
+.exp-card.open .exp-actions{display:block}
+.exp-actions ol{margin-left:20px;font-size:14px}
+.exp-actions li{margin-bottom:6px}
+.exp-actions .srcnote{margin-top:9px;font-size:12px;color:var(--steel)}
+.exp-more{margin-top:22px;text-align:center}
+.exp-more .btn{background:transparent;color:var(--navy);border:1.5px solid var(--navy);font-size:14px;padding:10px 22px}
+/* ===== 可信度机制 ===== */
+.trust{padding:64px 0;background:#fff;border-top:1px solid var(--line)}
+.trust-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.trust-card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:22px}
+.trust-card .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:var(--navy);color:#fff}
+.trust-card .ic svg{width:21px;height:21px}
+.trust-card h3{font-size:16px;font-weight:700;margin-bottom:7px}
+.trust-card p{font-size:13.5px;color:var(--steel)}
+.trust-note{margin-top:22px;font-size:13px;color:var(--steel);display:flex;gap:8px;align-items:flex-start}
+/* ===== 小E区 ===== */
+.ai-zone{padding:72px 0;background:linear-gradient(180deg,#1A2B4A,#2A4470);color:#fff;position:relative;overflow:hidden}
+.ai-zone .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.ai-zone h2{color:#fff;margin-bottom:14px}
+.ai-zone p{color:rgba(255,255,255,.8);font-size:15px}
+.ai-list{margin:18px 0 24px;display:grid;gap:10px}
+.ai-list li{list-style:none;display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.88)}
+.ai-list li::before{content:"";width:8px;height:8px;background:#8FBC8F;border-radius:2px;margin-top:8px;flex:none}
+.ai-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-paper{background:#fff;color:var(--navy)}
+.btn-paper:hover{background:#F0F4FA}
+.ai-console{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.ai-console .msg{font-size:13.5px;line-height:1.6;border-radius:12px;padding:10px 14px;max-width:92%}
+.ai-console .msg.bot{background:rgba(255,255,255,.12);align-self:flex-start;color:rgba(255,255,255,.92)}
+.ai-console .msg.user{background:#8FBC8F;color:#1A2B4A;align-self:flex-end;font-weight:600}
+/* ===== FAQ ===== */
+.faq{padding:64px 0}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;background:none;border:none;width:100%;text-align:left;color:var(--ink)}
+.faq-q .arrow{flex:none;transition:transform .2s}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 20px 16px;font-size:14px;color:var(--steel)}
+.faq-item.open .faq-a{display:block}
+/* ===== 底部 ===== */
+.footer{padding:52px 0;background:#fff;border-top:1px solid var(--line);text-align:center}
+.footer .wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+.footer-logo{font-size:18px;font-weight:900;color:var(--navy)}
+.footer-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.footer-note{font-size:12.5px;color:#A9B2C0}
+/* ===== Toast ===== */
+#toast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;z-index:99;box-shadow:0 8px 24px rgba(15,27,48,.2)}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* ===== 响应式 ===== */
+@media(max-width:860px){
+  .hero h1{font-size:32px}
+  .dom-grid{grid-template-columns:repeat(3,1fr)}
+  .lib-grid{grid-template-columns:1fr}
+  .trust-cards{grid-template-columns:1fr}
+  .ai-zone .wrap{grid-template-columns:1fr}
+  .nav{display:none}
+  .quiz-card{padding:28px 22px}
+}
+@media(max-width:480px){
+  .dom-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:56px 0 64px}
+}
+/* ===== 视觉升级：故事线 / 搜索 / 问答 ===== */
+.story{background:linear-gradient(180deg,#F5F7FA 0%,#EDF1F6 100%);padding:76px 0 70px}
+.dom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.dom-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 18px;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;box-shadow:0 2px 10px rgba(15,27,48,.04)}
+.dom-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(26,43,74,.12)}
+.dom-name{font-size:18px;font-weight:800;margin-bottom:6px}
+.dom-sub{font-size:12.5px;color:var(--steel);line-height:1.7;margin-bottom:8px}
+.dom-desc{font-size:13px;color:#57627a;line-height:1.55}
+@media(max-width:900px){.dom-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.dom-grid{grid-template-columns:1fr}}
+.story-track::before{content:"";position:absolute;top:33px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--d-kx),var(--d-zc),var(--d-kg),var(--d-bh),var(--d-ly));opacity:.55}
+.story-node{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 16px 16px;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;box-shadow:0 2px 10px rgba(15,27,48,.04)}
+.story-node:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(26,43,74,.12)}
+.story-dot{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;margin-bottom:12px}
+.story-name{font-size:18px;font-weight:800;color:var(--navy)}
+.story-tag{font-size:12.5px;color:var(--steel);margin:2px 0 7px}
+.story-desc{font-size:13px;color:#57627a;line-height:1.55;min-height:42px}
+.story-exp{margin-top:10px;font-size:12.5px;color:var(--navy);background:#F0F4FA;border-radius:8px;padding:6px 9px;font-weight:500;line-height:1.5}
+.story-exp::before{content:"代表经验 · "}
+.lib-tools{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+#libSearch{flex:1;min-width:220px;height:40px;border:1px solid var(--line);border-radius:20px;padding:0 16px;font-size:14px;background:#fff;color:var(--ink);outline:none}
+#libSearch:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(26,43,74,.08)}
+#libSearch::placeholder{color:#9aa5b5}
+.ai-qas{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.ai-q{text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:14px;color:var(--navy);font-weight:600;cursor:pointer;transition:border-color .15s ease,background .15s ease;font-family:inherit}
+.ai-q:hover{border-color:var(--navy);background:#F4F7FB}
+.ai-q.active{border-color:var(--navy);background:#EAF0F9}
+.ai-q small{display:block;font-weight:400;color:var(--steel);margin-top:2px;font-size:12.5px}
+.qa-src{display:block;font-size:12px;color:var(--steel);margin-top:4px}
+/* ===== 功能迁移：领域筛选 / 分享 / 反馈 ===== */
+.act-chips{display:flex;gap:8px;flex-wrap:wrap;width:100%}
+.act-chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;font-family:inherit;transition:all .15s}
+.act-chip:hover{border-color:var(--navy);color:var(--navy)}
+.act-chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.act-chip small{font-weight:400;opacity:.7}
+.domain-chip i{position:absolute;top:8px;right:10px;font-style:normal;font-size:11px;color:#fff;background:rgba(0,0,0,.35);border-radius:999px;padding:2px 8px;font-weight:500}
+.share{padding:70px 0;background:linear-gradient(180deg,#EDF1F6,#F5F7FA)}
+.share-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:28px;margin-top:34px}
+.share-left h3{font-size:17px;color:var(--navy);margin-bottom:12px}
+.share-intro ol{margin:0 0 0 18px;padding:0}
+.share-intro li{margin-bottom:9px;font-size:14.5px;color:#45506a}
+.share-intro b{color:var(--navy)}
+.share-note{margin-top:12px;font-size:12.5px;color:var(--steel);background:#fff;border:1px dashed var(--line);border-radius:10px;padding:9px 12px}
+.share-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 28px rgba(15,27,48,.05)}
+.sc-voice{display:flex;align-items:center;gap:10px;background:#EAF0F9;border:1.5px dashed var(--navy2);border-radius:14px;padding:14px 16px;color:var(--navy);cursor:pointer;user-select:none;margin-bottom:12px;justify-content:center;font-weight:600;font-size:14.5px}
+.sc-voice.rec{background:var(--red);border-color:var(--red);color:#fff}
+.sc-voice svg{flex:none}
+#scText{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;font-family:inherit;color:var(--ink);resize:vertical;outline:none;box-sizing:border-box}
+#scText:focus{border-color:var(--navy)}
+#scOrganize{margin-top:12px;width:100%;justify-content:center}
+.btn-line{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;font-weight:600;font-size:14.5px;border:1.5px solid var(--line);cursor:pointer;background:#fff;color:var(--navy);font-family:inherit;transition:all .15s}
+.btn-line:hover{border-color:var(--navy)}
+.sc-q-prog{font-size:13px;color:var(--steel);margin-bottom:12px}
+.sc-q-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:14px}
+.sc-q-opts{display:flex;flex-direction:column;gap:9px}
+.sc-q-opts button{text-align:left;background:#F7F9FC;border:1px solid var(--line);border-radius:11px;padding:11px 14px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--ink);transition:all .15s}
+.sc-q-opts button:hover{border-color:var(--navy);background:#EAF0F9}
+#scSkip{margin-top:14px;width:100%;justify-content:center}
+.sc-draft{background:#F7F9FC;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:13.5px;line-height:1.8;color:#45506a}
+.sc-draft b{color:var(--navy)}
+#scSubmit{width:100%;justify-content:center;margin-bottom:9px}
+#scRedo{width:100%;justify-content:center}
+.sc-done{background:#EAF6F0;border:1px solid #BFE3D2;border-radius:12px;padding:16px;font-size:14px;color:var(--green);margin-bottom:14px}
+#scAgain{width:100%;justify-content:center}
+.mine{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.mine-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:4px 0 14px}
+.mine-stats .ms{background:#F7F9FC;border-radius:11px;padding:10px 6px;text-align:center}
+.mine-stats b{display:block;font-size:17px;color:var(--navy)}
+.mine-stats span{font-size:11.5px;color:var(--steel)}
+.mine-list{display:flex;flex-direction:column;gap:8px}
+.mine-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#F7F9FC;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:13px}
+.mine-item b{color:var(--navy);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mine-item span{flex:none;font-size:11.5px;color:var(--steel)}
+.mine-note{font-size:12.5px;color:#45506a;background:#FFF8EA;border:1px dashed #F0D9A8;border-radius:8px;padding:7px 10px;margin:-2px 0 2px}
+.mine-note span{color:#A46A12}
+.mine-empty{font-size:13px;color:var(--steel);text-align:center;padding:8px 0}
+.mine-user{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mu-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--navy),#4A6FA5);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex:none}
+.mu-info b{display:block;font-size:15px;color:var(--ink)}
+.mu-info span{display:block;font-size:12px;color:var(--steel);line-height:1.6;margin-top:2px}
+.mine-actions{display:flex;gap:8px;margin:2px 0 14px}
+.mine-actions .btn{flex:1;font-size:12.5px;padding:9px 0;margin:0}
+.mine-tabs{display:flex;gap:8px;margin:2px 0 12px}
+.mt{flex:1;padding:8px 0;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--steel);font-size:13px;font-family:inherit;cursor:pointer}
+.mt.active{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:600}
+.fb-row{display:flex;align-items:center;gap:12px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.smart-qa{display:flex;gap:8px;margin-bottom:10px}
+.smart-qa input{flex:1;border:1px solid var(--line);border-radius:14px;padding:11px 14px;font-size:14px;font-family:inherit;color:var(--ink);outline:none;background:#fff}
+.smart-qa input:focus{border-color:var(--navy)}
+.smart-qa .btn{padding:11px 18px;flex:none}
+.smart-out{display:none;background:#F7F9FC;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;font-size:13.5px;line-height:1.75}
+.smart-out .so-head{font-size:13px;color:var(--steel);margin-bottom:6px}
+.smart-out .so-item{border-top:1px dashed var(--line);padding-top:8px;margin-top:8px}
+.smart-out .so-item b{color:var(--navy);display:block;font-size:14px}
+.smart-out .so-item .so-src{font-size:12px;color:var(--steel)}
+.smart-out .so-item .so-steps{color:#45506a;margin-top:3px}
+.smart-out .so-none{font-size:13px;color:var(--steel)}
+.exp-card h5{margin:4px 0 8px;font-size:13.5px;color:var(--navy)}
+.exp-card .six{display:flex;gap:10px;font-size:13px;margin-top:8px}
+.exp-card .six.tb{display:block}
+.exp-card .six.tb b{display:inline-block;margin-bottom:4px}
+.exp-card .six.fail b{color:#A43D2F}
+.exp-card .tb-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:2px}
+.exp-card .tb-table th,.exp-card .tb-table td{border:1px solid #E3E8F2;padding:5px 8px;text-align:left;line-height:1.45}
+.exp-card .tb-table th{background:#F2F5FB;color:var(--navy);font-weight:600}
+.exp-card .tb-table td{color:#45506A}
+.lib-premium{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,#FFF8EA,#FFFDF7);border:1px dashed #F0D9A8;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#8A5B10}
+.lib-premium b{color:#A46A12}
+.lib-premium .tag{flex:none;background:#A46A12;color:#fff;font-size:11px;padding:2px 8px;border-radius:999px}
+.lib-cat-desc{font-size:12px;color:#68718A;margin:8px 0 0 2px}
+.lib-cat-desc b{color:var(--navy)}
+.exp-card .six b{flex:none;min-width:64px;color:var(--navy)}
+.exp-card .six span{color:#45506a}
+.badge.ver{background:#FFF4E0;color:#A46A12;border:1px solid #F0D9A8}
+.fb-note{color:var(--navy)!important}
+.fb-note-box{display:none;margin-top:9px;background:#F7F9FC;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.comment-list{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.comment{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12.5px}
+.comment b{color:var(--navy);font-size:11.5px;display:block;margin-bottom:2px}
+.comment span{float:right;color:var(--steel);font-weight:400}
+.comment p{margin:0;color:#45506a;line-height:1.6}
+.comment-empty{font-size:12px;color:var(--steel);padding:6px 0}
+.sc-ctrl{display:flex;align-items:center;justify-content:center;gap:10px;margin:-4px 0 10px}
+.sc-timer{font-size:12.5px;color:var(--red);font-weight:700;font-variant-numeric:tabular-nums}
+.sc-stop{background:var(--red);color:#fff;border:none;border-radius:999px;padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.sc-stop:hover{opacity:.9}
+.voice-tip{font-size:12px;color:var(--steel);text-align:center;margin:-4px 0 10px;line-height:1.6}
+.fb-note-box textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:13px;font-family:inherit;color:var(--ink);resize:vertical;outline:none;box-sizing:border-box;min-height:52px}
+.fb-note-box .btn{margin-top:8px;padding:7px 16px;font-size:13px}
+.iter-path{font-size:12px;color:#A46A12;background:#FFF8EA;border:1px dashed #F0D9A8;border-radius:8px;padding:7px 10px;margin-top:10px}
+.fb-btn{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--steel);background:none;border:none;cursor:pointer;padding:3px 0;font-family:inherit}
+.fb-btn b{font-weight:700;color:var(--navy)}
+.fb-btn:hover{color:var(--navy)}
+@media(max-width:860px){
+  .share-grid{grid-template-columns:1fr}
+  .mine-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:860px){
+  .story-track{grid-template-columns:1fr;gap:12px}
+  .story-track::before{display:none}
+  .story-node{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .story-dot{margin-bottom:0}
+  .story-desc{min-height:0;flex:1 1 100%}
+  .story-exp{margin-top:4px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 顶栏 ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M6 5h12v3H6zm0 6h12v3H6zm0 6h8v3H6z" fill="#F5F7FA"/></svg></span>
+      经验之书
+    </div>
+    <nav class="nav">
+      <a href="#quiz">开始问卷</a>
+      <a href="#lib">经验库</a>
+      <a href="#ai">小E顾问</a>
+      <a href="#mine">我的</a>
+      <a href="#faq">说明</a>
+      <button class="btn ghost" data-go="ai">问 小E</button>
+      <button class="btn" data-go="quiz">测测主线</button>
+    </nav>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">经验之书 · 经验投资说明书 · 试运营</div>
+    <h1 class="hero-title">走过的路，都<span class="hl">算数</span></h1>
+    <p class="hero-sub">每个人都是生活的行家，你的经验也可以变现。</p>
+    <div class="hero-meta">
+      <div class="m"><b>58</b><span>真人真事经验</span></div>
+      <div class="m"><b>4</b><span>人生领域</span></div>
+      <div class="m"><b>A/B/C</b><span>可信度分级</span></div>
+      <div class="m"><b>小E</b><span>AI 经验顾问</span></div>
+    </div>
+    <div class="hero-cta">
+      <button class="btn btn-navy" data-go="quiz">测测你的人生主线</button>
+      <button class="btn btn-line-w" data-go="ai">问 小E</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 四大领域 ===== -->
+<section class="story">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>四大领域，处处有过来人</h2>
+      <div class="sub">收录真人真事的亲历分享，不是 AI 可查的资料 · 点击任一领域，经验库为你聚合</div>
+    </div>
+    <div class="dom-grid">
+      <div class="dom-card" onclick="switchDomain('zljj')">
+        <div class="dom-name" style="color:#1A2B4A">择路进阶</div>
+        <div class="dom-sub">高考志愿 · 专升本 · 考研 · 就业跳槽 · 考公考编选岗</div>
+        <div class="dom-desc">人生方向的岔路口，怎么选、怎么站稳</div>
+      </div>
+      <div class="dom-card" onclick="switchDomain('shjk')">
+        <div class="dom-name" style="color:#3E6B4E">生活健康</div>
+        <div class="dom-sub">母婴育儿 · 生病就医 · 健康安全 · 养老照护</div>
+        <div class="dom-desc">家人的事、身体的事，过来人的真实记录</div>
+      </div>
+      <div class="dom-card" onclick="switchDomain('aipe')">
+        <div class="dom-name" style="color:#4A5E8C">智能培训</div>
+        <div class="dom-sub">AI 办公 · 个人助理 · AI 创业</div>
+        <div class="dom-desc">把 AI 变成你干活的手</div>
+      </div>
+      <div class="dom-card" onclick="switchDomain('tzxf')">
+        <div class="dom-name" style="color:#B5752F">投资理财</div>
+        <div class="dom-sub">旅游出行 · 日常消费 · 投资分析</div>
+        <div class="dom-desc">花钱的智慧，攒钱的路径</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 问卷 ===== -->
+<section class="quiz" id="quiz">
+  <div class="wrap">
+    <div class="quiz-card">
+      <div class="quiz-brand">经验之书</div>
+      <div class="quiz-sub">先认识你，再给你适配的经验</div>
+      <div class="quiz-progress"><div class="quiz-bar" id="qbar" style="width:33.3%"></div></div>
+      <div class="quiz-step" id="qstep">第 1 / 3 题 · 你的人生主线</div>
+      <div class="quiz-options" id="qopts"></div>
+      <button class="quiz-skip" id="qskip">跳过问卷，直接看精选</button>
+      <div class="quiz-note">问卷只用于经验适配，不评估你的能力，也不改变经验的可信度。</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 经验库 ===== -->
+<section class="lib" id="lib">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>经验库</h2>
+      <div class="sub">只收录「AI 查不到、真人走出来的」经验：步骤 + 刻度表 + 失败排查</div>
+    </div>
+    <div class="lib-premium"><span class="tag">真人真事</span><b>58 条亲历经验</b><span>来自真实过来人的原帖、访谈与公开记录，有步骤、有刻度表、有失败排查 · 非精品经验保留在小E知识库</span></div>
+    <div class="lib-tools">
+      <div class="lib-tabs" id="tabs"></div>
+      <input id="libSearch" placeholder="搜索经验，如：考公选岗 / 辅食 / Claude / 旅游避坑">
+    </div>
+    <div class="lib-grid" id="grid"></div>
+    <div class="exp-more"><button class="btn" id="expMore">查看全部</button></div>
+  </div>
+</section>
+
+<!-- ===== 可信度机制 ===== -->
+<section class="trust">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>为什么可以信</h2>
+      <div class="sub">我们不做「通用答案」，只做「可追溯的经验」</div>
+    </div>
+    <div class="trust-cards">
+      <div class="trust-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/></svg></div>
+        <h3>来源可溯</h3>
+        <p>每条经验都来自真人真事：个人亲历的原帖与访谈、医院和学校的公开记录、经典书章节或官方媒体，可点开核对。</p>
+      </div>
+      <div class="trust-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0z"/><path d="M9 12h6M12 9v6"/></svg></div>
+        <h3>可信度分级</h3>
+        <p>A＝真人亲历＋多源验证；B＝多人共识或高相关真实案例；C＝单点经历，仅供参考，不当作普遍结论。</p>
+      </div>
+      <div class="trust-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5M8 13h8M8 17h5"/></svg></div>
+        <h3>反馈验证中</h3>
+        <p>试运营期通过问卷与使用数据验证「哪条经验真的管用」，正式版将以真实采纳数据回填可信度。</p>
+      </div>
+    </div>
+    <div class="trust-note">经验之书不替代专业建议。涉及医疗、法律、财务等重大决策，请以专业人士意见为准。</div>
+  </div>
+</section>
+
+<!-- ===== 小E区 ===== -->
+<section class="ai-zone" id="ai">
+  <div class="wrap">
+    <div>
+      <h2>问 小E<br>拿带出处的答案</h2>
+      <p>不用自己翻几百条经验。输入你的问题，小E会从经验库检索最相关内容，给出「核心结论 + 可执行步骤 + 参考经验 + 可信度等级」的完整回答。</p>
+      <ul class="ai-list">
+        <li>覆盖择路进阶、生活健康、智能培训、投资理财四大类</li>
+        <li>每条回答带来源，没覆盖的话题会明确说「还没有」</li>
+        <li>试运营期免费，数据将用于验证与优化</li>
+      </ul>
+      <div class="ai-btns">
+        <button class="btn btn-paper" id="ai-open">打开 小E对话</button>
+      </div>
+    </div>
+    <div class="ai-console">
+      <div class="smart-qa">
+        <input id="smartIn" placeholder="说人话提问：跨专业考研怎么选？第一次去月子中心要注意什么？">
+        <button class="btn btn-navy" id="smartGo">智能检索</button>
+      </div>
+      <div class="smart-out" id="smartOut"></div>
+      <div class="msg bot" id="ai-bot-1">你好，我是小E，你的经验搭子。职场、考公、考学、备婚、母婴、旅游这些事，我都帮你攒好了过来人的真经验，直接问就行。</div>
+      <div class="msg user" id="ai-user">试用期怎么争取核心任务？</div>
+      <div class="msg bot" id="ai-bot-2">建议 3 步：先把当前杂活做出稳定交付 → 第 3 周主动找 leader 表达意愿，带上 1 个具体切入点 → 用杂活中发现的流程问题证明观察力（A 级 · 4 位职场人验证）。</div>
+    </div>
+    <div class="ai-qas">
+      <button class="ai-q active" data-qa="0">入职第一周怎么破冰？<small>职场 · 3 步可执行 · A 级</small></button>
+      <button class="ai-q" data-qa="1">考公选岗怎么降低竞争？<small>考公 · 条件叠加过滤法 · A 级</small></button>
+      <button class="ai-q" data-qa="2">生娃前要和伴侣对齐什么？<small>母婴 · 备孕清单 · A 级</small></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="share" id="share">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>你也有一条真实走过的路</h2>
+      <div class="sub">说一段你的经历，AI 帮你整理成结构化经验，提交后进入验证队列。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
+    </div>
+    <div class="share-grid">
+      <div class="share-left">
+        <div class="share-intro">
+          <h3>怎么贡献一条经验</h3>
+          <ol>
+            <li><b>说或写</b>——点击录音说一段经历，或直接打字</li>
+            <li><b>AI 帮你整理</b>——回答 3 个问题，生成结构化经验卡</li>
+            <li><b>提交进验证队列</b>——多人反馈后升级可信度等级</li>
+          </ol>
+          <p class="share-note">试运营期贡献免费。你的经验被引用、被提问，后续按付费方案获得分成。</p>
+        </div>
+        <div class="mine" id="mineBox">
+          <div class="mine-user">
+            <div class="mu-avatar">E</div>
+            <div class="mu-info"><b>试运营访客</b><span id="muDev" style="font-size:11.5px;color:var(--navy);word-break:break-all"></span><span>本地档案 · 发布后接入账号系统，试运营记录可一键合并</span></div>
+          </div>
+          <h3 id="mine">我的中心</h3>
+          <div class="mine-stats">
+            <div class="ms"><b id="mCount">0</b><span>贡献经验</span></div>
+            <div class="ms"><b id="mCite">0</b><span>被引用</span></div>
+            <div class="ms"><b id="mEarn">¥0.00</b><span>累计收益</span></div>
+            <div class="ms"><b id="mFree">3</b><span>免费提问剩余</span></div>
+          </div>
+          <div class="mine-tabs">
+            <button class="mt active" data-tab="exp">我的经验</button>
+            <button class="mt" data-tab="fb">我的反馈</button>
+            <button class="mt" data-tab="star">我的收藏</button>
+          </div>
+          <div class="mine-list" id="mineList"></div>
+          <div class="mine-list" id="fbList" style="display:none"></div>
+          <div class="mine-list" id="starList" style="display:none"></div>
+        </div>
+      </div>
+      <div class="share-card" id="shareCard">
+        <div class="sc-phase" id="scPhase">
+          <div class="sc-step-1" id="scStep1">
+            <div class="sc-voice" id="scVoice" title="点击开始录音，再点结束">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"/></svg>
+              <span id="scVoiceHint">点击说话 · 边说边转成文字 · 最长 60 秒</span>
+            </div>
+            <div class="sc-ctrl">
+              <span class="sc-timer" id="scTimer" style="display:none">0 / 60 秒</span>
+              <button class="sc-stop" id="scStop" style="display:none">结束录音</button>
+            </div>
+            <p class="voice-tip">说话时文字会实时进输入框。若 4 秒内无文字，说明当前浏览器/网络不支持实时识别，请直接打字（正式版接入国内识别服务后语音将全面可用）。</p>
+            <textarea id="scText" rows="4" placeholder="或直接输入：场景 + 你做了什么 + 结果如何"></textarea>
+            <button class="btn btn-navy" id="scOrganize">让 AI 帮我整理</button>
+          </div>
+          <div class="sc-step-q" id="scStepQ" style="display:none">
+            <div class="sc-q-prog">第 <b id="scQIdx">1</b>/3 题 · 选一个最接近的，可跳过</div>
+            <div class="sc-q-title" id="scQTitle"></div>
+            <div class="sc-q-opts" id="scQOpts"></div>
+            <button class="btn btn-line" id="scSkip">跳过此题</button>
+          </div>
+          <div class="sc-step-draft" id="scStepDraft" style="display:none">
+            <div class="sc-draft" id="scDraft"></div>
+            <button class="btn btn-navy" id="scSubmit">提交经验</button>
+            <button class="btn btn-line" id="scRedo">重新整理</button>
+          </div>
+          <div class="sc-step-done" id="scStepDone" style="display:none">
+            <div class="sc-done">已提交，进入验证队列 · 标题：<b id="scDoneTitle"></b></div>
+            <button class="btn btn-line" id="scAgain">再贡献一条</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>常见问题</h2>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">小E的回答可靠吗？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="faq-a">小E严格基于经验库回答，每条答案都列出参考经验卡与可信度等级；经验库没有覆盖的话题会明确说明，不会硬编。正式版上线「结果回执」后，可信度将来自真实用户的采纳数据。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">怎么收费？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="faq-a">试运营期：问卷、经验浏览、小E问答全部免费。正式版计划：经验摘要免费；深度解锁 / 追问原作者 / 主题经验包按条付费（约 1–9.9 元档）；AI 方案为会员权益。最终以正式版公告为准。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">一条经验怎么迭代成精品？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="faq-a">每条经验卡下方都有「有帮助 / 不准确 / 纠错补充」三个入口：点「有帮助」计入验证数；点「不准确」进入复核；纠错补充的细节会沉淀为该经验的「反面声音」，与其他人的反馈一起驱动它升级。达到阈值后可信度自动升级，被引用越多，作者分成越高——这就是一条经验持续迭代、沉淀成精品的过程。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">我能贡献经验吗？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="faq-a">可以。网页版已开放「说一条你的经验」：点击录音或打字，AI 自动整理成结构化经验卡并进入验证队列；正式版开放发布与作者分成。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">这个试运营要验证什么？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="faq-a">验证三件事：① 问卷画像能否帮用户更快找到合适的经验；② 结构化经验卡是否真的比刷帖子省时间；③ 用户愿不愿意为「带来源的高可信经验」付费。你的每次使用都在帮我们打磨。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">「经验投资说明书」是什么意思？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="faq-a">不卖课、不刷帖。我们把过来人经验整理成「可检索、带来源、分等级、能照着做」的说明书：你花 3 分钟读一条经验，换回的是别人几年踩坑才换来的结论——这就是经验投资。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">和直接问豆包、ChatGPT 有什么区别？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="faq-a">通用 AI 给你「标准答案」；经验之书给你「过来人真经验 + 出处 + 可信度」。同一个问题有多个答案时，用等级与验证人数帮你判断哪条更可靠；每条经验都能点开核对来源，不硬编。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 底部 ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-logo">经验之书 · Experience Book</div>
+    <div class="footer-cta">
+      <button class="btn btn-navy" data-go="quiz">测测你的人生主线</button>
+      <button class="btn btn-line-w" id="gitHubCta" style="border-color:var(--navy);color:var(--navy)">GitHub 开源验证</button>
+    </div>
+    <div class="footer-note">经验之书 · 试运营 · 数据仅用于经验适配，不评估个人能力 · 交流群与闲鱼验证渠道陆续开放</div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+/* ===== 问卷数据（对齐小程序 onboard V5.4） ===== */
+var MISSION_OPTIONS = ['职场进阶', '考学考公', '备婚筹备', '母婴育儿', '旅游出行'];
+var DOMAIN_QUESTIONS = {
+  '职场进阶': { steps: ['工作年限', '组织类型'], options: [['0–1 年','1–3 年','3–8 年','8 年+'],['大厂','外企','国企 / 事业单位','中小企业','个体']] },
+  '考学考公': { steps: ['你的备考状态', '目标层级'], options: [['刚了解','首战备考中','二战或多次','在职备考'],['国考为主','省考为主','事业单位 / 国企','专升本 / 考研','还没定']] },
+  '备婚筹备': { steps: ['你的婚期', '预算档位'], options: [['还没定','6 个月内','6–12 个月','1 年以上'],['10 万内','10–20 万','20–30 万','30 万+']] },
+  '母婴育儿': { steps: ['你的阶段', '主要场景'], options: [['备孕','孕期','新生儿 0–6 月','6 月–3 岁'],['喂养护理','新生儿护理','早教','产后恢复']] },
+  '旅游出行': { steps: ['出行习惯', '关注重点'], options: [['自由行','跟团游','自驾','节假日出游'],['避坑省钱','行程规划','亲子游','小众体验']] }
+};
+var DOMAIN_KEY = { '职场进阶':'zljj','考学考公':'zljj','备婚筹备':'shjk','母婴育儿':'shjk','旅游出行':'tzxf' };
+var q = { step:0, mission:'', profile:{} };
+
+function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},2600); }
+
+function renderQuiz(){
+  var opts, label;
+  if(q.step===0){ opts=MISSION_OPTIONS; label='你的人生主线'; }
+  else { var dq=DOMAIN_QUESTIONS[q.mission]; opts=dq.options[q.step-1]; label=dq.steps[q.step-1]; }
+  document.getElementById('qstep').textContent='第 '+(q.step+1)+' / 3 题 · '+label;
+  document.getElementById('qbar').style.width=((q.step+1)/3*100)+'%';
+  var box=document.getElementById('qopts'); box.innerHTML='';
+  opts.forEach(function(v){
+    var b=document.createElement('button'); b.className='quiz-option'; b.textContent=v;
+    b.onclick=function(){ choose(v); };
+    box.appendChild(b);
+  });
+}
+function choose(v){
+  if(q.step===0){
+    q.mission=v; q.profile={mission:v,life_stage:v};
+    q.step=1;
+  } else {
+    q.profile['q'+(q.step+1)]=v;
+    q.step++;
+  }
+  if(q.step<3){ renderQuiz(); }
+  else {
+    try{ localStorage.setItem(QUIZ_KEY,JSON.stringify({deviceId:getDeviceId(),mission:q.mission,profile:q.profile,ts:Date.now()})); }catch(e){}
+    trackEvent('quiz_done','问卷完成：'+q.mission);
+    toast('已生成画像：'+q.mission+' · 为你切换到对应经验');
+    var key=DOMAIN_KEY[q.mission];
+    if(key){ switchDomain(key); }
+    document.getElementById('lib').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+document.getElementById('qskip').onclick=function(){
+  toast('已跳过问卷，为你展示精选经验');
+  document.getElementById('lib').scrollIntoView({behavior:'smooth'});
+};
+document.getElementById('qopts').addEventListener('click',function(e){ if(e.target.classList.contains('quiz-option')){ /* 已在按钮绑定 */ } });
+renderQuiz();
+
+/* ===== 领域（四大类） ===== */
+var DOMAINS = { zljj:'择路进阶', shjk:'生活健康', aipe:'智能培训', tzxf:'投资理财' };
+var DOM_COLORS = { zljj:'#1A2B4A', shjk:'#3E6B4E', aipe:'#4A5E8C', tzxf:'#B5752F' };
+var DOM_ICONS = {
+  zljj:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 5-9 5-9-5z"/><path d="M5 10v5c0 1.5 3 3.5 7 3.5s7-2 7-3.5v-5"/><path d="M21 8v4"/></svg>',
+  shjk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-5.5 7-11a4.5 4.5 0 0 0-9-.5A4.5 4.5 0 0 0 5 10c0 5.5 7 11 7 11z"/><path d="M12 8.5v5M9.5 11h5"/></svg>',
+  aipe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg>',
+  tzxf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.2c0-1.3 1.1-2 2.5-2s2.5.7 2.5 2c0 2.8-5 1.6-5 4.4 0 1.3 1.1 2 2.5 2s2.5-.7 2.5-2"/></svg>'
+};
+var ACTS={
+  kaoxue:{name:'择路',color:'#1A2B4A',acts:['择路']},
+  zhichang:{name:'立业',color:'#4A5E8C',acts:['立业']},
+  kaogong:{name:'跃升',color:'#2E7D5B',acts:['跃升']},
+  beihun:{name:'成家',color:'#A4535B',acts:['成家']},
+  lvyou:{name:'远行',color:'#B5752F',acts:['远行']}
+};
+var ACT_OF={ zhichang:'立业', kaogong:'跃升', kaoxue:'择路', beihun:'成家', muying:'成家', lvyou:'远行', jiankang:'远行', caifu:'远行', jiating:'远行' };
+/* ===== 经验库 ===== */
+var EXPS = [
+{"id":"exp_301","t":"高考志愿：位次法 + 冲稳保梯度，不盯裸分","cat":"zljj","act":"择路","g":"A","u":0,"a":["出分当天查本省一分一段表，锁定全省位次（裸分每年浮动，位次才是硬标尺）","核对选科限制，剔除不满足的专业组","拉目标院校近 3 年最低录取位次，按位次差建三层池：冲=优于自己 3000–8000 名；稳=上下浮动 3000 名内；保=落后自己 10000 名以上","比例建议：冲 20–30%、稳 40–50%、保 20–30%，保底必须拉开差距","按意愿从高到低排序提交，勾选服从专业调剂（新高考批次合并，不服从调剂可能被退档）"],"tb":"| 层次 | 位次关系 | 作用 |\n| 冲 | 往年录取位次优于自己 3000–8000 名 | 跳一跳够得着 |\n| 稳 | 位次与自身上下浮动 3000 名内 | 录取把握极大 |\n| 保 | 位次落后自身 10000 名以上 | 防滑档","fail":"只拿分数对比分数线＝每年试卷难易不同，毫无意义；全部志愿挤在同一分段＝滑档/高分低录；不服从调剂＝可能退档到下一批","s":"新高考选科省份先核对首选/再选科目限制；仅有一年录取数据的省份，位次数据也可参考","c":"中国教育在线志愿填报完整流程、光明网七条避坑提示、新华网河南冲稳保配比、人民日报招生办支招","cost":"报志愿前需要整理 3–5 年录取数据，约 2–3 小时","benefit":"滑档与高分低录风险大幅下降，位次法可比性强","contra":"部分省份专业组规则不同，以省考试院官方发布为准"},
+{"id":"exp_302","t":"专升本/考研：网课只看 1 遍，时间给刷题和复盘","cat":"zljj","act":"择路","g":"B","u":0,"a":["第 1 周只建知识框架（思维导图），不囤课","网课每种只看 1 遍、1.25 倍速，边看边记问题","刷题必须限时，模拟考场节奏，不做「无时间刷题」","错题本每周重做 1 遍，连续做对 3 次才移出"],"tb":"| 阶段 | 时间 | 预期 |\n| 建框架 | 第 1 周 | 知识地图成型 |\n| 刷题提分 | 第 1–2 月 | 分数提升不明显（正常） |\n| 复利期 | 第 3 月起 | 正确率可量化提升","fail":"最后 3 天只重看课＝白费；错题本不重做＝白刷","s":"零基础第一周先建框架；冲刺期优先套卷","c":"小红书《专升本大忌：光看网课和刷题是考不上的》","cost":"前两周会怀疑「课都没看完」，需要忍住囤课冲动","benefit":"避免「看了很多课还是考不上」的常见死局","contra":"纯自学容易卡顿的科目（数学等）可适度多刷 1 遍"},{"id":"exp_303","t":"转行试水：3 个月迷你项目验证，不裸辞","cat":"zljj","act":"立业","g":"B","u":0,"a":["选目标岗位的迷你项目（作品集/兼职/副业）","第 1 个月市场摸底：翻 20 个目标岗位 JD，统计高频要求","设 3 个可衡量里程碑：第 1 月 2 个作品、第 2 月 1 个付费/真实订单、第 3 月完整复盘","每周固定 6 小时，记录体感（愿意做 vs 抗拒做）","第 3 个月末对照「是否愿意长期做」决策"],"fail":"业余做项目比想象慢，别第 1 个月就放弃；验证失败不是白费——作品集仍是敲门砖","s":"积蓄紧张、需快速转行收入的人先解决现金流；医生/律师等门槛极高职业的转行，试水无效","c":"2 位职场人验证（转行 2 次 · 已验证身份）","cost":"3 个月每周额外约 6 小时","benefit":"最小成本验证意愿；作品集直接成为敲门砖","contra":"已 100% 确定方向的人不需要这 3 个月"},{"id":"exp_304","t":"入职第一周：3 个 1v1 破冰，把隐性信息拿到手","cat":"zljj","act":"立业","g":"A","u":0,"a":["第 1–3 天约 leader + 2 位同事，每人 20 分钟（话术：「刚入职想快速对齐，方便约 20 分钟聊聊吗」）","每人提前准备 3 个问题：团队目标、协作方式、期望反馈","会后当天把共识写成 1 页文档，同步给本人并 @ 确认"],"fail":"对方交付高压期约不上→改第 2 周先观察再约；小团队天天见面不必刻意约","s":"对方反感「新人约聊」的团队，改为参与 1 次团队共创","c":"3 位职场人验证（某互联网大厂运营 · 已验证身份）","cost":"约 3 人共 1 小时","benefit":"快速拿到文档里没有的隐性信息；第一周就让 leader 记住你","contra":"本就高频协作的团队，刻意约聊反而尴尬"},{"id":"exp_305","t":"每周同步进展：周五 15 分钟 3 段式","cat":"zljj","act":"立业","g":"A","u":0,"a":["每周五固定 15–20 分钟写：完成 / 进行中 / 风险","风险只列 1 个最重要的，附 1 个建议方案（不要只抛问题）","有进展变化随时补 1 句话同步，不攒到周五"],"fail":"leader 明确说「别每周发」→改里程碑同步；团队有形式主义标签→压缩成 5 行","s":"1:1 频率低的场景最划算；高频 1:1 团队可合入周会","c":"4 位职场人验证（某大厂资深产品 · 已验证身份）","cost":"每周 15–20 分钟","benefit":"leader 有掌控感、风险早暴露、晋升材料自动积累","contra":"过度同步会变成「汇报机器」，关键节点同步即可"},{"id":"exp_306","t":"面试反问：每轮只问 2–3 个，用反问当照妖镜","cat":"zljj","act":"立业","g":"B","u":0,"a":["初面/HR 面挑 2 个「底盘问题」：部门组织架构+岗位人数；试用期考核按什么维度判定、能否说清标准","直属领导面挑 2 个「岗位问题」：这个岗位最棘手的坎是什么？入职 3 个月希望看到什么结果？","终面/高管面挑 1 个「发展问题」：团队未来 1–3 年核心目标？"],"tb":"| 反问 | 公司答不上来的含义 |\n| 试用期考核标准 | 含糊「看整体表现」＝卡转正套路预警 |\n| 岗位为何有空缺 | 频繁离职说不清＝谨慎 |\n| 三个月工作结果 | 能清晰回答＝管理正规","fail":"问 JD 已写的内容＝暴露没准备；连问 5 个以上＝像查户口；反问环节说「没有问题」最吃亏","s":"社招更看重反问质量；应届生优先问带教机制、成长路径","c":"抖音多位面试官/职场博主、前程无忧《10 个可以反问面试官的问题》、微博职场博主","cost":"每轮 2–3 个问题，问完记住答案判断","benefit":"筛掉烂公司、避开试用期被卡转正","contra":"部分面试官时间紧，反问环节很短，只问 1 个也够"},{"id":"exp_307","t":"述职/汇报用 STAR：Action 占 50%，结果带数字","cat":"zljj","act":"立业","g":"A","u":0,"a":["S 情境：1–2 句话交代背景和难度（如「部门 3 天要完成 300 个客户回访，团队只剩 3 人」）","T 任务：1 句说你负责什么、目标是什么","A 行动：占整个回答 40–50%，讲「你做的决策」而非「你参加的会」——「我按使用行为把流失客户分 4 类，发现 72% 在 30 天内弃用某功能」","R 结果：数据收尾；没有直接数据用间接数据（「开发周期从 2 周缩短到 1 周」）"],"fail":"流水账＝白讲；只吹团队贡献＝没有你；没数据硬编数字会被追问穿帮","s":"晋升答辩/季度述职/面试讲项目最适用；日常口头汇报用「结论先行」即可","c":"抖音职场博主 STAR 系列、CVCC 职业能力认证 STAR 定义、ImpactLogr STAR 指南","cost":"每条核心项目提前写 200–300 字底稿","benefit":"区分个人贡献与团队贡献，量化价值","contra":"强执行弱表达的人第一次用会生硬，先练 2 次"},{"id":"exp_308","t":"多项目排期：四象限，每天只处理第一象限","cat":"zljj","act":"立业","g":"B","u":0,"a":["每周一早 10 分钟，把所有任务按「重要×紧急」分四象限列出来","每天只处理第一象限（重要且紧急），第二象限排进日程表占坑","每周五复盘象限分布：长期困在第一象限＝你忽略了第二象限（重要不紧急正在变成紧急）"],"fail":"任务少于 5 个用不上；全是「紧急」的救火型岗位，先解决系统问题再用","s":"适合多项目并行；单线程岗位不需要","c":"5 位职场人验证（5 年项目管理 · 已验证身份）","cost":"每周固定 10 分钟盘点","benefit":"减少被琐事绑架，重要不紧急的事有稳定投入","contra":"每个人对「重要」的判定不同，先统一标准"},{"id":"exp_309","t":"Leader 前两周在观察你的 5 个瞬间","cat":"zljj","act":"立业","g":"B","u":0,"a":["前两周准时（早到 10 分钟），迟到一次就会被记住","第一周结束前主动交一份「入职观察 + 计划」（哪怕 3 行）","遇到问题先自查一遍再问，带「我查了 A/B 都不行，您看 C 行不行」","每周五的同步不要断","前两周不急着表现，先摸清谁在真正做事"],"fail":"前两周抢话、指点老人比沉默更减分；加班到很晚但产出为零，不如准时交付","s":"远程/混合办公团队，观察点变成响应速度 + 文档质量","c":"小红书《入职第一天，领导悄悄观察你的 5 个瞬间》","cost":"前两周多花约 2 小时做观察和计划","benefit":"第 3 周起正常派活、给反馈","contra":"扁平小团队 leader 天天见，不需要「前两周窗口期」"},{"id":"exp_310","t":"和领导说话不卑不亢：把「怕」换成「确认」","cat":"zljj","act":"立业","g":"B","u":0,"a":["把「好的好的」换成「收到，我确认一下理解对不对」","交办任务先复述目标+交付时间（「我理解是 X 周五前给 Y，对吗」）","有不同意见先认可目标再给方案，不直接顶","被批评先记下来，说「我复述一下问题，明天给改进方案」，不当场辩解"],"fail":"一味「对对对」会让领导失去信任；一味抬杠会被贴上难协作标签","s":"极端打压型领导这套不适用，先考虑换环境","c":"小红书《职场说话，不要有「奴才之相」》","cost":"每次沟通多花 10 秒复述确认","benefit":"领导开始和你讨论方案而非只下指令","contra":"长期 PUA 环境里，正常沟通技巧救不了你"},{"id":"exp_311","t":"沟通话术 SOP：把常用场景写成模板反复复用","cat":"zljj","act":"立业","g":"B","u":0,"a":["花 1 小时列出最高频 5 个沟通场景（拒绝/催办/要资源/解释延期/同步坏消息）","每个场景写 2 个模板：正式版（邮件）+ 口语版（即时沟通）","拒绝模板公式：事实 + 影响 + 替代方案","模板存进笔记软件，遇到场景直接改 2 个词就用"],"fail":"当面沟通时别背稿，保留表情和语气；模板只用于高频场景","s":"低频复杂场景（谈判）需要单独准备","c":"小红书《职场沟通强的人都会建立 SOP》","cost":"一次性 1 小时搭建","benefit":"同类场景第 2 次起不再卡壳","contra":"过度依赖模板会显得机械，灵活场景少用"},{"id":"exp_312","t":"汇报先说结论：30 秒电梯法则","cat":"zljj","act":"立业","g":"B","u":0,"a":["第一句先给结论（「这个项目本周能上线，但有 1 个风险」）","第二句给 1 个关键依据","第三句给需要的决策/资源（「需要您拍板 A 还是 B」）","细节留到对方追问再展开"],"fail":"从背景讲起的「铺垫式汇报」是职场第一杀手；被追问答不上＝准备不足，提前想好 3 个可能追问","s":"正式述职/论文式汇报不适用","c":"小红书《沟通能力强的人，说话顺序都是这样的》","cost":"汇报前花 2 分钟想结论句","benefit":"对方 30 秒内知道你要他做什么","contra":"对需要完整背景的复杂议题，直接下结论会显得武断"},{"id":"exp_313","t":"给领导掌控感而不是惊喜","cat":"zljj","act":"立业","g":"B","u":0,"a":["关键节点主动同步（开始/一半/完成前），不等领导问","有变数第一时间说，坏消息早报 24 小时＝给领导留处理时间","完成时附复盘 3 行：做了什么/结果如何/下次怎么更好"],"fail":"事无巨细同步会烦人；只报喜不报忧＝透支信任，坏消息最后爆＝双倍减分","s":"高信任低监控的领导，把「关键节点」定义放宽","c":"小红书《向上管理：停止无效努力，学会给领导掌控感》","cost":"关键节点各 1 分钟","benefit":"领导从频繁问进度转为放心交给你","contra":"你负责的事很独立、结果导向明确时，同步可以更少"},{"id":"exp_314","t":"拒绝无效会议：把会议变成「带结论走」","cat":"zljj","act":"立业","g":"B","u":0,"a":["会前 5 分钟发议程：目标 + 3 个要决策的问题","会上带时间盒：每个议题 10 分钟，超时拉回","结束前 2 分钟口头确认：「结论是 X，张三负责 Y，周四前给，对吗？」","会后 1 小时把结论写进共享文档 @ 责任人"],"fail":"你无权主持的会，先争取「最后 2 分钟总结」环节；没结论的会别再重复开","s":"决策会适用；头脑风暴/同步会不要强行要结论","c":"综合多位职场人经验整理","cost":"每次会前会后约 10 分钟","benefit":"会议结束时有明确的结论+owner+时间","contra":"跨团队大会议程不由你定，只能争取总结环节"},{"id":"exp_315","t":"考公全职备考作息：8–10 小时有效学习","cat":"zljj","act":"跃升","g":"B","u":0,"a":["7:00–7:30 起床+晨读（学习强国要闻+申论金句）","7:30–8:00 早餐+听时政音频","8:00–10:00 行测第一模块（资料/数量，上午黄金记忆时段）","10:00–12:00 行测网课+跟练","14:00–17:30 下午模块（言语/判断）+错题复盘","19:30–21:30 套卷模拟，严格计时","22:00–22:30 总结+规划次日，不熬夜"],"fail":"晚上刷手机到 12 点→次日晨读崩，恶性循环；手机放客厅","s":"冲刺期把套卷提前到上午 9:00 对齐真实考试时间；在职党用碎片版","c":"慧公政考作息表、绿皮计划每日执行清单、粉笔零基础计划","cost":"每天 8–10 小时整块时间","benefit":"结构清晰、执行可量化，模考分数稳定向上","contra":"执行率低于 60% 说明强度过大，先减量再谈时长"},{"id":"exp_316","t":"考公在职备考作息：早 35 分钟 + 晚 90 分钟","cat":"zljj","act":"跃升","g":"B","u":0,"a":["6:40 起床；6:50–7:25（35 分钟）常识+公式复盘（资料分析公式/判断规律/高频成语）","7:25–8:10 早餐+通勤，路上听时政","8:10–8:50（上班前空档）1 组行测小题（资料 2 题+判断 2 题）","通勤路上刷 20 道言语/判断单选","19:30–21:00（90 分钟整块）刷题+复盘，21:00–21:30 套卷/专项","周末复刻全职高强度日程"],"fail":"加班打乱晚间→保住任意 60 分钟+次日早起补 30 分钟，别全天放弃；睡眠不足 7 小时先调作息","s":"适合备考周期 3–6 个月；只剩 1 个月需更高强度","c":"抖音在职考公作息表、山东中公教育在职党每天挤 2 小时、慧公政考在职版","cost":"每天 3–4 小时碎片+整块","benefit":"在职也能保持每周 15 小时有效学习","contra":"碎片学习对需要整块思考的申论作文效果有限，周末补整块"},{"id":"exp_317","t":"考公选岗：报名截止前 2–3 天蹲数据，避开千人岗","cat":"zljj","act":"跃升","g":"A","u":0,"a":["报名第 1 天先填好心仪岗但不点提交，记录岗位代码","截止前 2–3 天看官方实时报名人数（国考逐日数据、省考多数有）","按刻度表选岗，同时查目标岗近 3 年进面分数线","评估模考分与进面分差距，超过 15 分不硬冲"],"tb":"| 报名人数 | 判定 | 策略 |\n| <10 人 | 可能是坑（条件差/隐藏限制） | 不选 |\n| 10–30 人 | 竞争最均衡 | 优先 |\n| 20–50 人 | 合理竞争比区间 | 可考虑 |\n| >100 人 | 万人坑 | 避开","fail":"别被 100:1 吓退——进面比通常 3:1，100 人里 90 个是打酱油的，关键看对手质量而非纯人数","s":"报名期短（3 天以内）的考试无法蹲数据，改为只看近 3 年进面分","c":"南昌大学吴毅笔面双第一经验、华图教育省考报考选择、中国教育在线国考选岗指南","cost":"报名期最后 2 天各花 10 分钟看数据","benefit":"用数据避开千人坑，竞争比降到 1/5","contra":"部分岗位数据不实时公开，蹲不到就按往年进面分判断"},{"id":"exp_318","t":"申论大作文：五段三分式，考场填空式输出","cat":"zljj","act":"跃升","g":"A","u":0,"a":["结构定「五段三分式」：开头 1 段+分论点 3 段+结尾 1 段","字数分配（1000–1200 字）：开头 120–150、分论点每段 250–300、结尾 150","开头公式：引述背景/材料（1 句）→点明主题→亮总论点，3 句话内完成","分论点段：段首句亮分论点→结合材料分析→举例（可改写材料原例）→回扣论点","结尾公式：回扣总论点+1 句对策+升华（青年/国家/高质量发展类主旨）"],"fail":"分论点必须从材料提炼，凭空瞎编＝跑题；模板是骨架素材才是肉——每周精读 2–3 篇评论员文章抄好句","s":"议论文/策论文通吃；应用文/公文不套这个结构","c":"中国教育在线、中公教育、华图教育、环球网校（多方一致五段三分式）","cost":"考前每周 2–3 篇精读+1 篇完整写作","benefit":"考场 60 分钟内写完 1000–1200 字","contra":"模板化太明显会被扣「套路分」，分论点必须扣材料"},{"id":"exp_319","t":"申论日常训练：30 分钟时政 + 隔天 1 篇大作文","cat":"zljj","act":"跃升","g":"B","u":0,"a":["每天 30 分钟读时政、积累规范表达（不背诵，理解+抄金句）","每天 60–90 分钟做 1–2 道申论小题或 1 篇公文","隔天 1 篇大作文：列提纲与完整写作交替，减轻负担","睡前 20 分钟复盘错题、回顾格式模板"],"fail":"只背金句不练题＝考场用不出来；大作文每次都只列提纲＝考场写不完","s":"适合备考周期≥2 个月；冲刺期加大套卷比例","c":"搜狐国考申论高效学习攻略","cost":"每天约 2 小时","benefit":"小题踩点命中率提升，大作文不再卡开头","contra":"只练不背也不行，规范表达是踩点的基础"},{"id":"exp_320","t":"结构化面试：每题思考≤30 秒，答题 2–3 分钟","cat":"zljj","act":"跃升","g":"A","u":0,"a":["备考三步：背六大题型答题框架→每类专项练 5–10 道→全真模拟（计时+录像）","考场节奏：每题思考不超过 30 秒，答题 2–3 分钟；草稿纸列提纲","答题结构：总-分-总（结论先行→分条展开→总结），考官 30 秒内听到观点","题型框架速查：综合分析=背景引入→表态→多角度分析→对策→升华；组织管理=前期筹备→中期实施→后期总结；应急应变=先控场→再处理→后复盘"],"fail":"背模板背到「全是套路没内容」是第二阶段坑——模板只是骨架，亮点靠结合题目的具体分析；思考超 30 秒挤压答题时间","s":"无领导小组讨论（部分岗位）另练；税务/海关/铁路公安等系统普遍用结构化","c":"华图教育、环球网校、人民日报客户端结构化面试流程","cost":"考前 3 天冲刺可行（框架→专项→模拟各 1 天）","benefit":"卡壳率下降，答题结构清晰","contra":"只背模板不结合题目＝中等分封顶"},{"id":"exp_321","t":"面试报班 vs 自学：先自测再花钱","cat":"zljj","act":"跃升","g":"B","u":0,"a":["自测：拿 1 道综合分析题，30 秒内有没有框架？","完全没思路、不敢开口→报班价值高（选模拟次数多、小班的，别选模板厚的）","有框架只差熟练→自学+找人对练+录像复盘足够","报班踩坑实录：有上岸者花 1 万多只学到用烂的套路，自己总结模板照样翻盘"],"fail":"报班≠上岸，先确认自己缺的是框架还是练习环境；对练找不到人→用录像+计时自测替代","s":"面试周期短（1 周内）报班救急性价比高；周期长自学+组队更划算","c":"抖音面试第一逆袭者经验（报班踩坑+自学翻盘）、华图/环球网校面试体系","cost":"报班 1 万–2 万 vs 自学 0 元","benefit":"避免盲目花钱，把钱花在真正缺的环节","contra":"极度内向、完全没有表达能力的人，模拟环境几乎是必需品"},{"id":"exp_322","t":"在职低精力备考：早晚各 90 分钟整块时间","cat":"zljj","act":"跃升","g":"B","u":0,"a":["早晚各固定 90 分钟不受打扰时段（早 6:30–8:00，晚 20:00–21:30）","通勤只用来听时政与常识（不碰需要专注的题）","周末只做 1 次全真模拟，不搞疲劳战","连续 3 个月执行+模考分数曲线向上＝结构适合你"],"fail":"加班打乱时段→当天保 1 个时段次日补；睡眠严重不足先调整工作","s":"备考只剩 1 个月需更高强度；常年加班到深夜先解决工作时间","c":"小红书《31 岁低精力在职牛马的考公经验分享》","cost":"早晚各 90 分钟","benefit":"低精力人群也能持续 3 个月不退","contra":"「保睡眠不透支」与冲刺期高强度冲突时，以身体为底线"},{"id":"exp_323","t":"全职备考崩盘期：不是加时长，是调结构","cat":"zljj","act":"跃升","g":"B","u":0,"a":["把「学不进去」拆成具体卡点（走神/畏难/环境嘈杂——先定位是哪一种）","每天固定 2 小时复盘替代自我责备（复盘「今天哪里卡住、明天怎么调」，不骂自己）","每周留 1 个半天彻底不学习（恢复期）"],"fail":"偶尔懒惰就过度自我诊断＝反效果；临近考试必须冲刺的人先跑完再说","s":"适合备考中期（3 个月以上周期）；冲刺期直接加大强度","c":"小红书《全职备考痛苦？上岸学姐心法，教你走出崩盘期》","cost":"每周 1 个半天+每天 2 小时复盘","benefit":"从自我责备循环中出来，卡点被定位","contra":"纯「休息疗法」不解决卡点，必须先拆解原因"},{"id":"exp_324","t":"真题限时复盘：每天 1 套，只盯 3 类错因","cat":"zljj","act":"跃升","g":"B","u":0,"a":["每天 1 套真题限时做（约 2 小时），做完立刻对照答案复盘","复盘只盯 3 类错因：读题错误/方法错误/时间不够","错题按题型归类，每周重做 1 次同类题"],"fail":"基础阶段没学完知识点就刷真题＝浪费；每天挤不出 2 小时整块时间的人改「模块限时」","s":"考前冲刺期最适用；基础期先学框架","c":"小红书《9 月考公进步最快的方式，没有之一》","cost":"每天 2 小时+复盘 30 分钟","benefit":"同一题型错误率两周内下降","contra":"短期正确率波动是正常，别弃；只看分数不看错因＝白做"},{"id":"exp_325","t":"备考时长「6 小时 vs 10 小时」冲突甄别","cat":"zljj","act":"跃升","g":"C","u":0,"a":["以「有效学习时长」而非「坐在桌前时长」为刻度：全职目标 8 小时有效，在职 3–4 小时有效","连续 2 周模考分数下降＝强度过头，主动减量","别信「4 点开始猛学」：作息应适合自己，保睡眠不透支","在职核心：工作日抓碎片+晚间深度学习+周末复刻全职日程"],"fail":"照搬别人作息表但执行不了＝负罪感循环；硬撑到 12 点次日全崩","s":"网络作息表从 4 点到 11 小时都有，按自己状态取中间值再微调","c":"慧公政考作息表、抖音 27 考公无痛作息表、在职考公作息表","cost":"无","benefit":"用有效时长校准，不自我感动","contra":"「有效时长」难以客观测量，用模考分数做校准更可靠"}
+,
+{"id":"exp_401","t":"辅食添加：6 月龄起，每次只引入 1 种新食物","cat":"shjk","act":"成家","g":"A","u":0,"a":["从满 6 月龄开始添加，首选富含铁的泥糊状食物（高铁米粉，先大米制品更少过敏）","初喂 1 汤匙（约 10ml），渐增至 3–4 汤匙，每日 2 次，约 20–25g 米粉","每次只引入 1 种新食物，观察 3–4 天，无呕吐/腹泻/皮疹再加下一种","6–8 月龄：稠粥或面条每餐 30–50g，从泥状到碎末状，开始逐步加蛋黄、猪肉、牛肉","9–12 月龄：稠粥过渡到软饭每天约 100g；碎菜 50–100g、水果 50g；蛋黄每天 1 个，动物性食物 25–50g","1–2 岁：与成人同质地饭面 100–150g/天，蔬菜 200–250g、水果 100–150g、动物性 50–80g+鸡蛋 1 个"],"tb":"| 月龄 | 奶 | 辅食 | 关键量 |\n| 6–8 月 | 每天 4–6 次 | 泥糊→末状 | 稠粥/面条 30–50g/餐 |\n| 9–12 月 | 每天 4 次 | 末状→指状 | 软饭 100g、肉 25–50g |\n| 1–2 岁 | 每天 2–3 次 | 家庭膳食 3 餐+2 加餐 | 蔬菜 200–250g、肉 50–80g","fail":"出现不适/严重不良反应立即停该食物并就医；一次引入多种＝出了问题不知道是谁的锅","s":"早产/低体重儿以医生方案为准；有明确家族过敏史的高风险食物先咨询","c":"国家卫健委《婴幼儿辅食添加营养指南 WS/T 678—2020》、婴幼儿喂养健康教育核心信息、北京儿研所儿医说","cost":"每引入 1 种新食物需观察 3–4 天","benefit":"按国家行业标准喂养，过敏/腹泻风险可控","contra":"个体差异大，食量以宝宝意愿为准，刻度只是安全范围"},
+{"id":"exp_402","t":"辅食时间「4 个月 vs 6 个月」冲突甄别","cat":"shjk","act":"成家","g":"B","u":0,"a":["官方标准（国家卫健委 WS/T 678—2020）：从满 6 月龄开始添加辅食","部分科普：最早不早于 4 个月、最晚 7 个月，以尝试进食为主要目的","建议决策：以「满 6 月龄+宝宝信号」为准——能坐稳、对食物感兴趣、挺舌反射消失","不满 6 个月按需哺乳为主，个别医生指导下提前的除外"],"fail":"被老人「我们 4 个月就喂了」裹挟＝按官方标准坚持；宝宝没发出信号硬加＝呛咳风险","s":"早产儿按矫正月龄计算","c":"国家卫健委《婴幼儿辅食添加营养指南》、抖音百科辅食词条","cost":"无","benefit":"规避过早添加带来的肠胃/过敏风险","contra":"个别地区儿保医生建议提前，听医生具体评估"},
+{"id":"exp_403","t":"疫苗接种：对照国家免疫规划时间表，每月核对","cat":"shjk","act":"成家","g":"A","u":0,"a":["出生时：乙肝第 1 剂（24 小时内）+卡介苗","1 月龄乙肝第 2 剂；2 月龄脊灰灭活第 1 剂+百白破第 1 剂；3 月龄脊灰灭活第 2 剂；4 月龄脊灰第 3 剂+百白破第 2 剂","6 月龄乙肝第 3 剂+A 群流脑第 1 剂；8 月龄麻腮风第 1 剂+乙脑第 1 剂；9 月龄 A 群流脑第 2 剂","18 月龄百白破第 4 剂+麻腮风第 2 剂+甲肝；2/3/4/6 周岁：乙脑第 2 剂、A+C 流脑、脊灰第 4 剂、白破","每次打完在《预防接种证》上核对下针时间，登记手机日历提前 1 周提醒"],"fail":"感冒发烧等急性期暂缓接种（以接种点医生判断为准）；不同地区程序有差异，以本省最新通知为准","s":"本表只列国家免疫规划疫苗；自费疫苗按需咨询医生","c":"国家疾控局《国家免疫规划疫苗儿童免疫程序及说明（2026 年版）》、东莞市卫生健康局接种时间表、中国疾控中心乙肝 0-1-6 程序","cost":"每月核对 1 次，每次 5 分钟","benefit":"不漏打不迟打，接种证记录清晰","contra":"2026 年版与 2021 年版程序有差异，别用旧表对照"},
+{"id":"exp_404","t":"3 月龄宝宝作息：睡前饱腹奶，夜觉更长","cat":"shjk","act":"成家","g":"B","u":0,"a":["白天每顿奶约 140ml，间隔 3 小时左右（按需但不 1 小时一次）","夜觉前最后一餐（约 22:00）加到 150–160ml（比白天每顿多 10–20ml）","全天总奶量约 850ml，结合生长曲线监测","白天「吃→玩→睡」循环，清醒间隔 1.5–2 小时","3 月龄起培养自主入睡（按时睡、不奶睡、不抱睡、不摇睡）"],"fail":"夜醒频繁先排查奶量不足 vs 睡眠环境；抱睡摇睡形成依赖越带越累","s":"每个宝宝不同，先观察信号再套作息；生长/健康问题以医生为准","c":"抖音 3 月龄一日作息（850ml 奶量）、国家卫健委 3 岁以下婴幼儿健康养育照护指南","cost":"调整期约 3–7 天","benefit":"夜觉连续睡眠明显延长","contra":"奶量刻度是参考，猛长期宝宝需求会短期上升"},
+{"id":"exp_405","t":"宝宝睡眠量刻度表：不同月龄睡多少","cat":"shjk","act":"成家","g":"A","u":0,"a":["对照月龄刻度表核对每日总睡眠（看 1 周均值，不看单日）","优先保证夜间连续睡眠，白天小睡别过量","白天精神好、吃奶正常＝睡眠充足，不必死磕刻度"],"tb":"| 月龄 | 每日总睡眠 | 夜觉 | 备注 |\n| 0–3 月 | 13–18 小时 | 按需，逐渐规律 | 8 月龄内夜间喂奶逐渐减少 |\n| 4–12 月 | 12–16 小时 | 8 小时以上 | 醒睡间隔 2–3 小时 |\n| 1–2 岁 | 11–14 小时 | 固定就寝 | 白天 1–2 次小睡 |\n| 3 岁 | 10–13 小时 | 固定就寝 | 开始减午睡","fail":"「夜觉不足白天狂补」会导致昼夜颠倒；单日波动正常看 1 周均值","s":"个体差异大，区间只是参考；早产儿按矫正月龄计算","c":"国家卫健委 3 岁以下婴幼儿健康养育照护指南、AAP 睡眠建议","cost":"无","benefit":"判断睡眠是否充足有标尺","contra":"睡眠需求个体差异很大，精神好优先于刻度"},
+{"id":"exp_406","t":"新生儿喂养节奏：间隔 2–2.5 小时起步，调到 3 小时","cat":"shjk","act":"成家","g":"B","u":0,"a":["按需哺乳但逐步拉开间隔：至少间隔 2–2.5 小时一次，正常可调到 3 小时","观察信号：上一次是否吃饱（尿量、体重增长），别一哭就喂","记录喂养日记 3 天：时间/奶量/尿量，找规律"],"fail":"一哭就喂会养成「零食奶」习惯；间隔太长（>4 小时）且体重不增要就医","s":"新生儿期先顺其自然再调整；母乳喂养以宝宝需求为主，不必掐表","c":"新浪育儿睡眠引导系列、国家卫健委婴幼儿喂养核心信息","cost":"3 天日记，每天 5 分钟","benefit":"避免零食奶，夜奶逐渐规律","contra":"猛长期宝宝 1–2 天需求激增属正常，别强行拉长"},
+{"id":"exp_407","t":"带娃夜醒排查：先查奶量，再查环境，最后查习惯","cat":"shjk","act":"成家","g":"B","u":0,"a":["第 1 步查奶量：白天/睡前是否吃饱，奶不够→加量","第 2 步查环境：房间是否安静、空气是否新鲜、温度（过热最常见）","第 3 步查习惯：是否已抱睡/奶睡依赖；3 月龄起培养自主入睡","第 4 步查身体：出牙期、猛长期、生病前兆——短期夜醒增多先观察 3 天"],"fail":"直接套「睡眠训练」而不排查原因＝治标不治本；「哭了不抱」可能延误身体问题","s":"月龄<3 个月按需为主不强行训练；有发热/呕吐等症状第一时间就医","c":"综合国家卫健委照护指南与多位儿科/育儿博主经验整理","cost":"逐项排查约 30 分钟/晚","benefit":"找到真因而非盲目训练","contra":"排查完仍无改善且体重异常，必须就医而非继续扛"},
+{"id":"exp_408","t":"备婚倒计时：提前 6 个月，五类分列","cat":"shjk","act":"成家","g":"B","u":0,"a":["提前 6 个月：订酒店+四大金刚（司仪/摄影/摄像/化妆），列服饰/仪式/宴席/回礼/证件五类清单","提前 3 个月：拍婚纱照、订回礼，每类下单前比价 3 家","提前 1 个月：确认宾客名单+试菜","提前 2 周：证件、礼服改尺寸、请柬全部发出","提前 3 天：流程彩排+分工表发到伴郎伴娘群"],"tb":"| 倒计时 | 必办 |\n| 6 个月 | 酒店+四大金刚+五类清单 |\n| 3 个月 | 婚纱照+回礼比价 |\n| 1 个月 | 名单+试菜 |\n| 2 周 | 证件+请柬 |\n| 3 天 | 彩排+分工","fail":"旺季/吉日档期抢不到→提前 8 个月或错峰","s":"极简/旅行结婚清单大幅缩减；只剩 1 个月紧急备婚优先证件+宴席","c":"小红书《备婚清单|女生要准备的东西，超全不踩坑版！》","cost":"提前半年开始，每周约 1 小时推进","benefit":"临近婚礼不抓瞎","contra":"家里长辈主导的婚礼，先对齐长辈清单再列自己的"},
+{"id":"exp_409","t":"省钱备婚：非旺季+租赁+量贩，省 20–40%","cat":"shjk","act":"成家","g":"B","u":0,"a":["选非旺季周末（避开 5 月/10 月黄金档），省档期费","婚纱礼服：租赁/二手（闲鱼）代替买新，提前 1 个月试穿改尺寸，留 2 次试穿","喜糖喜帖：量贩渠道按件比价，单件成本可降 30%+"],"fail":"非旺季日期选择少→提前 3 个月抢档；租赁改尺寸拖到临期＝风险","s":"对婚期有硬性要求（必须旺季吉日）不适合；对全新婚纱有执念不适合","c":"小红书《省钱的风还是刮到了备婚上》","cost":"前期比价花 2–3 小时","benefit":"省 20–40% 且仪式感不降级","contra":"二手礼服状态不一，试穿后不满意要留备选"},
+{"id":"exp_410","t":"水煮蛋刻度表：想要哪种熟度，照着分钟抄","cat":"shjk","act":"成家","g":"A","u":0,"a":["鸡蛋放冷水，水量没过鸡蛋 2–3 厘米，加 1 小勺盐（防裂）","大火煮到水沸腾（锅底冒大泡），转小火，开始计时","按目标熟度卡点捞出，立即放冰水/冷水泡 1 分钟（好剥壳+停止继续熟化）","剥壳：两头各敲一下，桌上滚一圈，从大头撕开"],"tb":"| 时间 | 蛋白 | 蛋黄 | 判定 |\n| 4 分钟 | 几乎未凝固 | 全散 | 不能吃 |\n| 5 分钟 | 软嫩 | 稀 | 温泉蛋感 |\n| 6 分钟 | 全熟偏嫩 | 外圈微凝中心流动 | 溏心蛋 |\n| 7 分钟 | 全熟 | 中心流心外圈软糯 | 经典溏心 |\n| 8 分钟 | 全熟 | 流沙状 | 7 分熟 |\n| 9 分钟 | 全熟 | 微带流心 | 口感刚好 |\n| 10 分钟 | 全熟 | 完全凝固 | 标准全熟蛋","fail":"煮超 12 分钟蛋黄发绿发灰（硫铁反应）→控制计时；蛋壳开裂→冷水下锅+加盐；剥壳掉蛋白→过冰水再剥","s":"鸡蛋大小差异→大蛋每档+30 秒；室温蛋/冷藏蛋起点不同，第一次煮 2 个对比","c":"人民网健康煮蛋时间表、央广网煮蛋实验、宝鸡市科协煮蛋实验、抖音多组水煮蛋测评","cost":"一次约 10 分钟","benefit":"熟度可控可复现","contra":"两种主流口径（冷水下锅/开水下锅）都成立，选一种练熟即可"},
+{"id":"exp_411","t":"体检报告三步读：先总检，再看箭头，最后看临界值","cat":"shjk","act":"成家","g":"B","u":0,"a":["第 1 步先看「总检结论/医生建议」（报告首页或末尾），这是整份报告最精炼的综述","第 2 步看箭头：↑偏高、↓偏低、无箭头在正常范围；尿蛋白正常应为阴性（-）","第 3 步关注「没标箭头但接近临界值」的指标（血糖/尿酸/血脂等）","分级处理：轻度异常调整饮食作息运动，1–3 个月复查；明显升高及时专科就诊；严重超标立即就医"],"fail":"单独指标异常就恐慌——尿素氮升高可能只是前一天吃多了肉；血糖 6.1–7.0 是糖尿病前期不是糖尿病","s":"检验前空腹 8–12 小时、24 小时不喝酒不剧烈运动、留中段尿，结果才准","c":"人民日报读懂体检报告、人民网我们应该怎样体检、央视网三步读懂体检单、北京市卫健委生化报告解读","cost":"拿到报告 10 分钟通读","benefit":"异常不焦虑、不遗漏，分级管理有依据","contra":"报告再清楚也不能替代医生诊断，别对着箭头自行百度用药"},
+{"id":"exp_412","t":"鸡蛋 100 种吃法的第一性原理：先会煮蛋再谈花样","cat":"shjk","act":"成家","g":"B","u":0,"a":["先掌握「煮蛋」这个基础变量（时间/火候/水量，见水煮蛋刻度表），同时支撑溏心蛋/卤蛋/茶叶蛋/沙拉蛋","掌握「煎蛋」第 2 个变量：热锅冷油、中火、单面 2 分钟+盖盖焖 1 分钟＝溏心煎蛋","每个花式吃法只改 1 个变量（如煮好的蛋丢进酱油汁泡 2 天＝卤溏心蛋），不同时改 3 个"],"fail":"一次追求 100 种必然翻车；每换 1 个变量记录一次结果，形成你自己的刻度表","s":"适合新手建立信心；老手可直接跳变体玩法","c":"美食天下、下厨房、抖音百科溏心蛋（卤溏心蛋泡 2 天吃法）","cost":"每次约 10 分钟","benefit":"一个基础变量打通多种吃法","contra":"卤蛋/茶叶蛋的卤汁比例差异大，先跑通煮蛋再调卤汁"},
+{"id":"exp_501","t":"Claude 提示词官方最佳实践：清晰直接+给示例","cat":"aipe","act":"立业","g":"A","u":0,"a":["把模型当才华横溢的新同事：它不知道你的项目规范，越准确解释你想要什么，输出越好","Be clear and direct：指令清晰直接，不要含蓄","Use examples（multishot）：给 1–3 个输入输出示例，指明期望格式","Let Claude think：复杂任务让模型「一步步思考」或先列推理再给结论","Long context tips：长文档放开头结尾、指明要关注的部分"],"fail":"只给任务不给上下文＝模型瞎猜；不给示例＝格式不可控；含蓄表达（「你懂的」）＝输出偏离","s":"通用提示词方法论，适用 Claude/豆包/Coze 等主流大模型","c":"Anthropic 官方提示词优化建议（掘金转载）、51CTO 提示词工程最佳实践","cost":"写提示词多花 2–3 分钟","benefit":"输出质量与格式可控性显著提升","contra":"示例给太多会约束创造性，按任务类型取舍"},
+{"id":"exp_502","t":"Claude 提示词：角色扮演+XML 标签结构化","cat":"aipe","act":"立业","g":"A","u":0,"a":["角色扮演：给它一个具体角色和背景（「你是一位有 10 年经验的 Python 性能优化专家，审查以下代码，重点关注：性能瓶颈、内存使用效率、算法复杂度」）","XML 标签分隔输入：用 <task>、<context>、<input> 等标签把不同部分包起来，模型理解结构更准","引导版推理：规定推理步骤（「写邮件前先思考 1.…2.…3.…再动笔」）","结构化版：用 <thinking> 标签写思考过程，再输出最终结果"],"fail":"角色给得太泛（「你是专家」无细节）＝没用；标签乱嵌套＝模型混淆；推理步骤写太细＝限制发挥","s":"适合审查、写作、分析类任务；简单问答不需要","c":"Anthropic 官方博客（掘金转载）、51CTO 提示词工程最佳实践","cost":"多花 1 分钟写角色和结构","benefit":"专业任务输出质量接近领域专家水平","contra":"过度结构化会让创意类任务变僵，别滥用"},
+{"id":"exp_503","t":"提示词工程迭代循环：测试-评估-改进-复测","cat":"aipe","act":"立业","g":"B","u":0,"a":["设定目标：明确你希望提示词实现什么目的（可测量）","编写初始提示词，做一次测试","评估：按你的标准判断输出是否符合","应用提示词工程技术改进（加示例/加角色/拆步骤）","重新评估验证修改是否改善，循环直到满意"],"fail":"改一次就停＝可能没到最优；只凭感觉不改标准＝无法判断改善","s":"适合反复使用的提示词（工作流模板）；一次性问答不必迭代","c":"Anthropic 学院提示词工程技巧（掘金）、51CTO 提示词工程最佳实践","cost":"每轮迭代 5–10 分钟","benefit":"提示词质量可持续提升，形成可复用资产","contra":"过度打磨边际收益递减，定 3 轮上限"},
+{"id":"exp_504","t":"去 AI 味：删除所有拿腔拿调、刻意卖弄的表达","cat":"aipe","act":"立业","g":"B","u":0,"a":["输出前自查「会不会像 AI 写的」：删掉多余修辞、空话套话","官方处理法：在提示词末尾加「Please remove all mannered prose」（请删除所有拿腔拿调、刻意卖弄的表达）","用口语替换书面腔（「这个观点仍然重要」比「这个观点还能发挥作用」更自然）","对照自己写作习惯改写，而不是用模板"],"fail":"只删形容词不删结构＝还是 AI 味；把「会写」当成「绕」——读者要多绕一下的比喻就是破绽","s":"新媒体/正式对外文案最需要；内部工具性输出无所谓","c":"Anthropic 官方去 AI 味指南（网易转载）、doubao-human-signal 方法","cost":"输出后多花 2 分钟自检","benefit":"内容读起来像人写的，发布转化更高","contra":"过度口语化可能损失专业度，按渠道取舍"},
+{"id":"exp_505","t":"Muse 等个人助理上手：最小权限 + 只连需要的服务","cat":"aipe","act":"立业","g":"A","u":0,"a":["第 1 步：从官方入口确认地区和账号符合开放条件，再下载/打开（以官网为准）","第 2 步：先检查数据和权限设置——是否允许对话用于训练由你决定；连接服务前看清它能读什么、能改什么","第 3 步：只连接当前任务需要的一个服务（文件/日历/邮件按需），先 read-only 测试","第 4 步：低风险任务试跑（「总结我下载文件夹里最近 14 天的 PDF」），确认它找得对、解析对，再逐步放开"],"fail":"一上来全连＝隐私风险与误操作风险双高；不看权限设置＝数据被拿去训练还不知道","s":"个人助理类产品（Muse/Meta 等）通用；企业级 AI 助理按公司安全规范","c":"抖音 Muse 保姆级教程、Engadget Muse 上手、DEV Community Muse for Mac 指南","cost":"首次配置 30 分钟","benefit":"隐私可控、功能逐步验证，避免一步到位踩雷","contra":"地区未开放的产品先用官方渠道确认，别走非官方安装"},
+{"id":"exp_506","t":"Muse 使用心得：给目标不给问题，条件一次说清","cat":"aipe","act":"立业","g":"B","u":0,"a":["给目标不给问题：「帮我盯着这趟航班，降价告诉我」而不是「你能查航班吗」","连上邮箱和日历，它才能真正替你动手","长任务丢后台：你忙你的，它办完回来汇报","条件一次说清：时间、预算、限制（「给我三家搬家公司报价，按价格排序」），返工最少","直接语音说：想到什么说什么，它整理成任务"],"fail":"只说「帮我找个搬家公司」不说「从哪搬到哪、几居室、有没有电梯、希望什么时候搬」＝来回确认耗 token","s":"给目标型助理用（Muse 类）；纯问答型 AI 不需要这么命令式","c":"抖音 Muse 使用心得、Ein Verne Meta Muse 使用教程、Zapier Muse AI 指南","cost":"提示词多花 30 秒把条件说清","benefit":"来回确认次数减少，token 消耗下降，任务完成率高","contra":"条件过多会让助理束手束脚，关键条件（时间/预算）给全即可"},
+{"id":"exp_601","t":"旅游避坑 6 要点：不踩坑照抄版","cat":"tzxf","act":"远行","g":"B","u":0,"a":["旅游路线攻略：参考价格最高的旅游团行程安排（行程设计最合理）","住宿：搜索 KFC/蜜雪冰城周边（商圈成熟、交通便利、不踩坑）","地方美食：筛选「蜜雪冰城」位置附近（本地人聚集区）","订机票：周二周三凌晨、周日早 8 点前晚 10 点后等低价时段","景区筛选：抖音/视频号搜景区名直接刷视频，看别人拍的实景再决定","行李：提前快递到酒店（10kg 以上走中通/圆通，几十块，比托运便宜省劲）"],"fail":"攻略做得越细越被绑架；别信「好不容易来了」——景区排队 2 小时体验差就该果断放弃","s":"自由行最适用；跟团游选团时对照第 1 条","c":"抖音旅游避坑 6 要点、抖音邪修 6 招旅行攻略","cost":"行前 30 分钟查","benefit":"住宿美食不踩坑，机票省 10–30%","contra":"低价时段机票余票少，热门航线提前 3–4 周才有效"},
+{"id":"exp_602","t":"旅行行李极简：20 寸登机箱+双肩包，边走边扔","cat":"tzxf","act":"远行","g":"B","u":0,"a":["行李极简：20 寸登机箱+双肩包搞定，拒绝托运排队","带旧的内衣裤袜/旧短袖当睡衣，穿完就扔，一路走一路减重","衣物全部卷起来放（卷筒法），省空间又防皱","必备：折叠拖鞋+充气颈枕+迷你充电宝+分装瓶；应急：创可贴+消毒湿巾+止泻药","液体单独收纳，多用途百搭衣物优先（围巾塞箱子空隙）"],"fail":"旅行前恨不得把家装进行李箱→每天拖重箱换酒店累死；真正用到的东西没几件","s":"城市自由行最适用；登山/露营等特殊行程按需增配","c":"抖音 17 条旅行经验、抖音出门旅游不累又省钱攻略","cost":"打包 20 分钟","benefit":"行李越带越少体验越来越好","contra":"带娃家庭行李不可能极简，按家庭需求调整"},
+{"id":"exp_603","t":"跟团避坑：签合同前算清自费项目与购物点","cat":"tzxf","act":"远行","g":"B","u":0,"a":["签合同前仔细看行程单：确认自费项目数量和价格、购物点停留时间","购物点停留时间超过半天，或自费项目占比超过行程 30%→谨慎选择","不轻信导游「当地特色体验」推荐——部分项目价格远高于市场价","导游以「不参加就无法继续行程」为由强制消费→保留证据，行程结束后投诉"],"fail":"低价团（几百块双飞）＝购物团概率极高；「纯玩团」也要在合同里写明无购物","s":"跟团游必查；自由行跳过","c":"搜狐旅行筹备全链路实测经验","cost":"签合同前 10 分钟核对","benefit":"避开强制消费和购物坑","contra":"线上平台描述的「纯玩」与线下行程单可能不一致，以纸质合同为准"},
+{"id":"exp_604","t":"50/30/20 预算法则：钱分三桶","cat":"tzxf","act":"远行","g":"A","u":0,"a":["把税后收入分三桶：50% 必要支出（房租/水电/食物/交通/保险/最低还款）、30% 想要支出（外食/娱乐/购物/旅行）、20% 储蓄+还债","先记账 1–2 个月摸清实际开支分布，再按比例校准预算","预算超额月先砍「想要」桶，不动「必要」桶","每年年度费用（车检/礼金/订阅/维修）加总除以 12，每月预留进「sinking fund」"],"fail":"不记账直接套 50/30/20＝预算失真；「想要」桶长期超标说明必要桶估算偏低","s":"新手理财第一课；高负债阶段优先压缩 30% 桶还债","c":"FinanceRoutine 50/30/20 预算指南、Up From Zero 预算深潜、新浪财经理财妙招","cost":"每月 30 分钟记账","benefit":"开销结构清晰，储蓄率可量化","contra":"收入不稳定人群（自由职业）按月均收入计算会失真，按年滚动"},
+{"id":"exp_605","t":"记账四步：账户分类 + 砍 3 个非必要支出","cat":"tzxf","act":"远行","g":"B","u":0,"a":["第 1 步：下载一个记账 App，开始记录每一笔收支（记账是家庭财务报表的基础）","第 2 步：账户分类按使用频率：日耗金（每日多次的吃用行）、固定支出（每月一次金额固定：还款/强制支出）、备用金（不固定：人情/娱乐/服饰/健康）","第 3 步：计算必要支出总额，确定每月应急金留存比例","第 4 步：列出 3 个可立即削减的非必要支出（如每周少喝 2 杯奶茶、取消一个视频会员）"],"fail":"记账 3 天就停＝无效；只记不管＝白记，每周复盘一次分类趋势","s":"月光族/存钱新手最适用；家庭财务则升级为家庭财务报表（流动资产/固定资产/短期负债/长期负债定期更新）","c":"抖音记账存钱入门 4 步、今日头条提高个人财务管理能力、新浪财经 3 个小技巧帮你攒钱","cost":"每天 2 分钟+每周复盘 10 分钟","benefit":"了解真实消费习惯，砍支出有依据","contra":"极端抠门记账（记到分）不可持续，记到元即可"},
+{"id":"exp_606","t":"攒钱第一个 10 万：先做家庭财务报表","cat":"tzxf","act":"远行","g":"B","u":0,"a":["记账记录收入支出，是第一步（见记账四步）","建立家庭财务报表：记录流动资产、固定资产、短期负债、长期负债，定期检查更新","区分主动收入与被动收入，明确必要支出与非必要支出","定储蓄目标（如每月发薪日先转 20% 到储蓄账户，再花剩下的）"],"fail":"「先花后存」＝存不下；只看余额不看负债＝财务状态失真","s":"适用「工作 N 年零存款」人群起步；已有负债先还高息债再储蓄","c":"新浪财经简七读财存下第一个 10 万、今日头条松鼠人财务管理","cost":"每月 1 次更新财务报表 20 分钟","benefit":"家庭财务心中有数，储蓄可坚持","contra":"突发大额支出会打乱节奏，应急金（3–6 个月生活费）先建起来"},
+{"id":"exp_607","t":"出国旅行前：查一次外交部安全提醒，分级对应","cat":"tzxf","act":"远行","g":"B","u":0,"a":["出发前查中国领事服务网/外交部安全提醒（10 分钟）","标注「暂勿前往」→直接改行程；「谨慎前往」→调整路线避开；「留意当地局势」→关注当地新闻","出发前 1 周再看一次（提醒随局势更新）","目的地无网络覆盖提前下载离线地图与资料"],"fail":"提醒存在滞后，结合当地实时新闻；只看攻略不看安全提醒＝风险","s":"出国/长途旅行必查；国内常规旅游不需要","c":"HTLB 高性价比人生指南第 21 章、中国领事服务网","cost":"出发前后各 10 分钟","benefit":"按官方分级做行程决策","contra":"非官方渠道的安全信息混杂，以中国领事服务网为准"},
+{"id":"exp_701","t":"半夜急诊实录：香港公立医院 1 小时走完全流程","cat":"shjk","act":"远行","g":"A","u":0,"a":["到达先登记：出示证件→填资料→缴费拿排队号与手环（公立医院先收费后就诊）","护士站分流：量体温血压、问不适，按病情分级（危急/紧急/次紧急/非紧急），等级决定等待时长","按地上颜色线走到对应候诊区，广播叫号进诊室；急诊医生先稳定症状、开药带回家，不做确诊","拿药单去药剂部取药，基础药物含在挂号费里；取完药直接离开"],"tb":["| 分级 | 处置时限 |","| 一级 危急 | 立即抢救、绿色通道 |","| 二级 急症 | 10 分钟内 |","| 三级 非急症 | 30 分钟内候诊 |","| 四级 轻症 | 1–2 小时内 |"],"fail":"独自就医且病情可能加重时别硬扛，随时找护士；夜间人少才快，节假日急诊爆满；非本地居民费用远高于本地（旅客约为本地 5 倍）","s":"适用于公立医院急诊；本地人费用受政府资助，旅客自费更高","c":"抖音真实就医记录视频（2026-04）；珠海市医师协会急诊分诊规则","cost":"夜间急诊全程约 1 小时（含候诊）","benefit":"不慌不乱走完流程，先分流后就诊避免白等","contra":"各医院分诊细则不同，以现场护士指引为准"},
+{"id":"exp_702","t":"幼儿急疹 3 天护理实录：烧满 3 天骤退出疹=要好了","cat":"shjk","act":"成家","g":"A","u":0,"a":["手脚冰凉时是体温上升期，注意保暖别急着散热；手脚变热说明温度开始下行，才做物理降温","每 20–30 分钟量一次体温，夜里也要盯；38.5℃ 以上按说明书用婴幼儿退烧药","多喂水（少量多次：奶、米汤、苹果水、椰子水都行），脱水比发烧更危险","发烧满 3 天骤退＋全身出疹＝幼儿急疹特征，疹子不痒不用涂药，1–2 天自行消退"],"fail":"烧 3 天查不出原因先别焦虑：6 月龄–2 岁、无咳嗽流涕等症状优先怀疑幼儿急疹；精神状态差、呼吸急促、嗜睡抽搐要立刻就医","s":"适用于 6 月龄–2 岁无其他症状的发热；有基础病或精神状态差先就医","c":"抖音宝妈真实护理视频（2026-09）","cost":"3 天高烧期需专人看护，夜里 2–3 次量体温","benefit":"判断出急疹节奏，减少焦虑与无效跑医院","contra":"急疹是马后诊断，发烧期间仍需排除其他感染"},
+{"id":"exp_703","t":"新手爸爸发烧护理 4 要点：低烧擦拭、高烧用药","cat":"shjk","act":"成家","g":"A","u":0,"a":["低烧阶段用温毛巾擦脖子、腋窝、腹股沟，只缓解不适，不退烧不治病","生病期奶量下降正常，别强迫喂奶，少量多次喂水或米汤补充水分","超过 38.5℃ 用婴幼儿退烧药，严格按说明书控制间隔，反复发烧及时咨询医生","夜里平躺易咳，竖抱或垫高上半身斜睡，减少咳嗽频次、提升睡眠"],"fail":"孩子奶量下降就焦虑→别强喂，少量多次；高烧烦躁哭闹≠病情恶化，先量体温再判断","s":"适用于普通感冒/病毒感染发烧的家庭护理；持续高烧超过 3 天就医","c":"抖音新手爸爸真实护理记录（2026-06）","cost":"高烧期夜里每 6–12 小时可能反复，需轮流值守","benefit":"有可对照的护理动作，减少手足无措","contra":"个体差异大，退烧药使用以说明书与医嘱为准"},
+{"id":"exp_704","t":"宝宝第一烧 40℃ 别捂汗：踩坑后的科学护理版","cat":"shjk","act":"成家","g":"A","u":0,"a":["千万别捂汗退烧（有人因此飙到 40.2℃ 差点出大事）：穿薄连体衣、空调开 24–26℃","温水 32–34℃ 擦脖子、腋窝、腹股沟，不擦肚子和脚心；酒精擦身绝对禁止","≥38.5℃ 用药：2 个月以上用对乙酰氨基酚、6 个月以上用布洛芬，严格按体重算剂量","不交替用药、不加量、不缩短间隔；烧退后 1–2 天出疹＝要好了的信号，温水洗澡穿纯棉"],"fail":"看到高烧就交替喂药或加大剂量→伤肝肾；退烧后出疹别乱涂药，剪短指甲防挠破","s":"适用于 6 月龄以上婴幼儿；2 月龄以下发烧直接就医","c":"抖音宝妈踩坑＋修正分享（2025-12）","cost":"3–5 天高热期需持续监测与物理降温","benefit":"避免捂汗、乱用药两大坑，护理路径清晰","contra":"用药剂量必须按体重，以药品说明书为准"},
+{"id":"exp_705","t":"考公 9 个月三阶段：笔面双第一的时间表","cat":"zljj","act":"跃升","g":"A","u":0,"a":["9 月基础筑基：按判断推理→资料分析→数量关系顺序学，边看课边手写笔记、每日复盘公式，同步刷行测 5000 题","10 月专项攻坚：套题暴露短板后集中 2 天专攻（例：资料分析用截位直除三步法，从 40 分钟压到 25 分钟、正确率 90%+）","10 月中旬–考前冲刺：上午限时 1 套真题、下午逐题精析，错题按命题陷阱/高频考点归类做错题本","申论 8 月就要启动（血泪教训：11 月下旬才起步，国考大作文没写完）；30% 刷课＋70% 刷题"],"fail":"只刷课不刷题＝纸上谈兵；真题至少刷 3 遍，错题一题三问（错在哪/为何错/如何避免）；笔试超过 1 分钟做不出的题果断跳过","s":"适用全职备考或时间较充裕的在读生；在职备考按此节奏减半","c":"南昌大学党委研究生工作部·吴毅笔面双第一专访（2025-05）","cost":"每天 6–9 小时，持续 3 个多月","benefit":"三阶段节奏可复现，短板模块针对性攻克","contra":"个人基础不同，先做一套真题评估再定每阶段时长"},
+{"id":"exp_706","t":"国考 4 小时黄金时间：逆袭日记的时间切分法","cat":"zljj","act":"跃升","g":"A","u":0,"a":["7:00–8:00 晨读申论：分析人民日报/新华网时评，提炼观点框架和金句（如乡村振兴＝问题-对策-意义三段式）","12:30–13:30 行测专项：错题按公式混淆/计算失误/审题不清分类，针对性强化","19:00–20:00 真题实战：严格按考试时间模拟、用答题卡涂写，逐题复盘关键词","21:30–22:30 错题复盘：电子笔记按题型归类，配解题思路，睡前巩固"],"fail":"盲目堆时间（曾每天 10 小时收效甚微）→ 时间不在多而在精；常识题别死背，碎片时间刷时政","s":"适用于在职/兼顾学业、每天只有 4 小时的备考者","c":"川观新闻·国考逆袭日记（2025-05）","cost":"每天固定 4 小时，需长期坚持","benefit":"把碎片时间结构化，每时段单一任务可执行","contra":"时段可按个人作息平移，核心是单任务专注"},
+{"id":"exp_707","t":"应届生考公：选岗吃透身份红利，8 个月时间线","cat":"zljj","act":"跃升","g":"A","u":0,"a":["选岗先吃透应届生身份：优先报「仅限当年应届」岗位，竞争压力小一档；用官网岗位表＋历年进面线筛岗","3 月底–5 月系统学行测基础，6–8 月查漏补缺复盘薄弱点，9–10 月主攻申论（别信玄学，重点动手写），11 月冲刺卡时做套题","面试不推荐纯自学：学会基本框架后大量练习，答题与考官有交流感，微笑直视、声音洪亮"],"fail":"盲目报「三不限」热门岗→竞争爆炸；申论只看不写＝白学；面试背模板机械答题最扣分","s":"适用于应届毕业生；往届生把「仅限应届」换成「限专业/基层经验」筛选","c":"安徽大学就业中心·徐芷依上岸专访（2026-03）","cost":"备考 8 个月，每日 4–8 小时","benefit":"应届身份红利最大化，时间线可照搬","contra":"各岗位进面线差异大，以本省数据为准"},
+{"id":"exp_708","t":"备考节奏与心态：先轻后重，合适比热门重要","cat":"zljj","act":"跃升","g":"B","u":0,"a":["分三阶段：基础期 1–2 个月系统学知识→强化期每天 4–6 小时刷题总结→冲刺期考前 1 个月每周至少 3 次全真模拟","时间安排示例：3–6 月每天 2 小时熟悉题型→7–9 月加到 7 小时提升逻辑→10 月准备面试→11 月冲刺每天 9 小时套题提速","选岗多筛几遍，「合适」比「热门」重要；报录比高不代表没希望","心态稳住：正确率波动时找朋友/师兄师姐聊，别一个人内耗"],"fail":"前期用力过猛后期疲软→先轻后重；攀比学习时长无意义，找到自己的节奏；计划连续中断别自责，第二天补上","s":"多所高校上岸者访谈归纳（湖南大学/烟台大学/安徽大学/澎湃），适用普通备考者","c":"湖南大学、烟台大学、安徽大学上岸者专访＋澎湃新闻报道（2025）","cost":"全程 8–12 个月，中后期每天 7–9 小时","benefit":"多源印证的时间节奏，容错率高","contra":"节奏因人而异，先测自己可承受时长再定计划"}
+
+];
+;;
+var current='all', shown=8;
+Object.keys(DOMAINS).forEach(function(k){ /* 统计 cnt 由渲染时计算 */ });
+function cnt(k){ return EXPS.filter(function(e){return e.cat===k;}).length; }
+function renderTabs(){
+  var box=document.getElementById('tabs'); box.innerHTML='';
+  var items=[['all','精选 · 已验证优先']].concat(Object.keys(DOMAINS).map(function(k){return [k,DOMAINS[k]+'（'+cnt(k)+'）'];}));
+  items.forEach(function(it){
+    var b=document.createElement('button'); b.className='lib-tab'+(current===it[0]?' on':''); b.textContent=it[1];
+    b.onclick=function(){ switchDomain(it[0]); };
+    box.appendChild(b);
+  });
+}
+function actCount(k){ return ACTS[k].acts.reduce(function(n,a){ return n+EXPS.filter(function(e){return e.act===a;}).length; },0); }
+function renderActChips(){
+  var box=document.getElementById('actChips'); if(!box)return; box.innerHTML='';
+  [['all','全部人生']].concat(Object.keys(ACTS).map(function(k){return [k,ACTS[k].name+' · '+actCount(k)+' 条'];}))
+    .forEach(function(it){
+      var b=document.createElement('button'); b.className='act-chip'+(current===it[0]?' on':''); b.textContent=it[1];
+      b.onclick=function(){ switchAct(it[0]); };
+      box.appendChild(b);
+    });
+}
+function switchAct(k){ current='act-'+k; renderActChips(); renderTabs(); renderGrid(true); }
+var SYN={
+  'zljj':['高考','志愿','位次','冲稳保','专升本','考研','复读','转专业','研究生','求职','跳槽','转行','面试','offer','简历','背调','晋升','试用期','考公','公务员','行测','申论','选岗','上岸','国考','省考','编制','体制内','事业编','遴选','政审','面试班','汇报','绩效','老板','同事','加班','裸辞'],
+  'shjk':['怀孕','产检','月子','月嫂','新生儿','育儿','母乳','辅食','早教','疫苗','幼儿园','带娃','哄睡','体检','看病','挂号','医保','康复','失眠','三高','养老','赡养','备婚','婚礼','婚庆','鸡蛋','水煮蛋','睡眠','夜醒','健康','宝宝'],
+  'aipe':['AI','Claude','提示词','Prompt','Muse','智能体','Agent','办公','助理','创业','大模型','GPT','豆包','扣子','Coze','编程','自动化'],
+  'tzxf':['旅游','旅行','攻略','避坑','酒店','机票','签证','自由行','跟团','民宿','露营','自驾','行李','理财','存钱','基金','房贷','公积金','投资','保险','省钱','记账','预算','信用卡','工资','消费']
+};
+function expandKw(q){
+  var kws=[q.trim()]; var dom=null;
+  for(var k in SYN){
+    SYN[k].forEach(function(w){
+      if(q.indexOf(w)>=0){ kws.push(w); if(!dom) dom=k; }
+    });
+  }
+  return {kws:kws,dom:dom};
+}
+function smartSearch(q){
+  var ex=expandKw(q);
+  var hits=EXPS.filter(function(e){
+    var txt=(e.t+e.s+e.c+e.a.join(''));
+    var hit=ex.kws.some(function(w){ return txt.indexOf(w)>=0; });
+    if(hit && ex.dom && e.cat!==ex.dom){ hit=false; }
+    return hit;
+  });
+  return {hits:hits.slice(0,3),dom:ex.dom,total:hits.length,ex:ex};
+}
+function listFor(){
+  var inp=document.getElementById('libSearch');
+  var kw=inp ? inp.value.trim() : '';
+  if(current==='search' && kw){
+    var ex=expandKw(kw);
+    return EXPS.filter(function(e){
+      var txt=(e.t+e.s+e.c+e.a.join(''));
+      var hit=ex.kws.some(function(w){ return txt.indexOf(w)>=0; });
+      if(hit && ex.dom && e.cat!==ex.dom){ hit=false; }
+      return hit;
+    });
+  }
+  if(current.indexOf('act-')===0){
+    var acts=ACTS[current.slice(4)].acts;
+    return EXPS.filter(function(e){ return acts.indexOf(e.act)>=0; });
+  }
+  return EXPS.filter(function(e){ return current==='all' || e.cat===current; });
+}
+function gradeRank(e){ return e.g==='A'?0:(e.g==='B'?1:2); }
+function renderGrid(reset){
+  if(reset){ shown=8; }
+  var full=listFor();
+  full.sort(function(a,b){ return gradeRank(a)-gradeRank(b) || (a.id<b.id?-1:1); });
+  var list=full.slice(0,shown);
+  var box=document.getElementById('grid'); box.innerHTML='';
+  list.forEach(function(e){ box.appendChild(card(e)); });
+  document.getElementById('expMore').style.display = (full.length>shown) ? 'inline-flex':'none';
+}
+function renderTable(tbText){
+  if(!tbText) return '';
+  var rows=String(tbText).split('\n').filter(function(r){ return r.trim(); });
+  var html='<table class="tb-table"><colgroup>';
+  var head=rows[0].split('|').filter(function(c){ return c.trim()!==''; });
+  head.forEach(function(){ html+='<col>'; });
+  html+='</colgroup>';
+  rows.forEach(function(r,ri){
+    var cs=r.split('|').filter(function(c){ return c.trim()!==''; });
+    html+='<tr>';
+    cs.forEach(function(c){
+      if(ri===0){ html+='<th>'+c.trim()+'</th>'; }
+      else{ html+='<td>'+c.trim()+'</td>'; }
+    });
+    html+='</tr>';
+  });
+  return html+'</table>';
+}
+function linkify(src){
+  return String(src).split(/(https?:\/\/[^\s，）)]+)/g).map(function(p){
+    return /^https?:/.test(p) ? '<a href="'+p+'" target="_blank" rel="noopener">↗ 原文</a>' : p;
+  }).join('');
+}
+function getFB(id){
+  try{ var m=JSON.parse(localStorage.getItem('exp_fb_v1')||'{}'); return m[id]||{ok:0,no:0,notes:[]}; }catch(e){ return {ok:0,no:0,notes:[]}; }
+}
+function addFB(id,ok){
+  try{
+    var m=JSON.parse(localStorage.getItem('exp_fb_v1')||'{}');
+    m.deviceId=m.deviceId||getDeviceId();
+    m[id]=m[id]||{ok:0,no:0,deviceId:getDeviceId()};
+    if(ok){ m[id].ok++; }else{ m[id].no++; }
+    localStorage.setItem('exp_fb_v1',JSON.stringify(m));
+    trackEvent('fb', id+(ok?'·有帮助':'·不准确'));
+  }catch(e){}
+}
+var STAR_KEY='exp_star_v1';
+function getStar(){
+  try{ var s=JSON.parse(localStorage.getItem(STAR_KEY)); return (s&&s.items)||[]; }catch(e){ return []; }
+}
+function toggleStar(id){
+  try{
+    var s=JSON.parse(localStorage.getItem(STAR_KEY))||{deviceId:getDeviceId(),items:[]};
+    s.deviceId=s.deviceId||getDeviceId(); s.items=s.items||[];
+    var i=s.items.indexOf(id);
+    if(i>=0){ s.items.splice(i,1); } else { s.items.push(id); }
+    localStorage.setItem(STAR_KEY,JSON.stringify(s));
+    trackEvent('star', id);
+    return i<0;
+  }catch(e){ return false; }
+}
+function card(e){
+  var d=document.createElement('div'); d.className='exp-card';
+  var badgeCls=e.g==='A'?'a':(e.g==='B'?'b':'c');
+  var steps=e.a.map(function(s){return '<li>'+s+'</li>';}).join('');
+  var shortSrc=e.c.length>26 ? e.c.slice(0,26)+'…' : e.c;
+  var fb=getFB(e.id);
+  var verTxt=fb.ok>=3 && fb.no===0 ? '多人验证 · 升级中' : ((fb.ok+fb.no)>0 ? (fb.ok+fb.no)+' 人反馈' : '待验证');
+  var note='';
+  if(e.tb){ note+='<div class="six tb"><b>刻度表</b><span>'+renderTable(e.tb)+'</span></div>'; }
+  if(e.fail){ note+='<div class="six fail"><b>失败排查</b><span>'+e.fail+'</span></div>'; }
+  if(e.s){ note+='<div class="six"><b>适用边界</b><span>'+e.s+'</span></div>'; }
+  if(e.cost){ note+='<div class="six"><b>成本</b><span>'+e.cost+'</span></div>'; }
+  if(e.benefit){ note+='<div class="six"><b>收益</b><span>'+e.benefit+'</span></div>'; }
+  if(e.contra){ note+='<div class="six"><b>反面声音</b><span>'+e.contra+'</span></div>'; }
+  note+='<div class="six"><b>参考来源</b><span>'+linkify(e.c)+'</span></div>';
+  var gTxt=e.g==='A'?'多人验证＋数据支撑':(e.g==='B'?'多人共识或高相关案例':'单点经验，仅供参考，不当作普遍结论');
+  var starred=getStar().indexOf(e.id)>=0;
+  d.innerHTML='<div class="head"><h4>'+e.t+'</h4><button class="star-btn'+(starred?' on':'')+'" data-star="1" title="收藏进我的知识库">'+(starred?'★':'☆')+'</button></div>'+
+    '<div class="badges"><span class="badge '+badgeCls+'">'+e.g+' 级</span><span class="badge src">'+shortSrc+'</span><span class="badge ver">'+verTxt+'</span></div>'+
+    '<div class="exp-actions"><h5>怎么落地</h5><ol>'+steps+'</ol>'+note+
+    '<div class="srcnote">可信度 '+e.g+' 级：'+gTxt+'</div><div class="iter-path">迭代路线：待验证 → 3 人反馈「有帮助」→ 升级可信度 · 你的反馈决定它能否成为精品经验</div></div>'+
+    '<div class="fb-row"><button class="fb-btn" data-act="ok">有帮助 <b>'+fb.ok+'</b></button><button class="fb-btn" data-act="no">不准确 <b>'+fb.no+'</b></button><button class="fb-btn fb-note" data-note="1">纠错 / 补充 <b>'+((fb.notes||[]).length||'')+'</b></button></div>'+
+    '<div class="fb-note-box"><div class="comment-list"></div><textarea rows="2" placeholder="写下你的踩坑、验证结果或补充细节，成为这条经验的反面声音"></textarea><button class="btn btn-navy fb-note-send">提交补充</button></div>';
+  d.onclick=function(){ d.classList.toggle('open'); };
+  var starBtn=d.querySelector('.star-btn');
+  if(starBtn){
+    starBtn.onclick=function(ev){
+      ev.stopPropagation();
+      var on=toggleStar(e.id);
+      this.classList.toggle('on',on); this.textContent=on?'★':'☆';
+      if(window.showToast){ showToast(on?'已收藏进我的知识库（我的中心 → 我的收藏）':'已取消收藏'); }
+    };
+  }
+  d.querySelectorAll('.fb-btn[data-act]').forEach(function(b){
+    b.onclick=function(ev){
+      ev.stopPropagation();
+      addFB(e.id, b.getAttribute('data-act')==='ok');
+      var m=getFB(e.id);
+      b.innerHTML=(b.getAttribute('data-act')==='ok'?'有帮助 <b>'+m.ok+'</b>':'不准确 <b>'+m.no+'</b>');
+      if(window.showToast){ showToast(b.getAttribute('data-act')==='ok'?'已记录：这条经验对你有帮助':'已记录：这条经验不准确，将进入复核'); }
+    };
+  });
+  var nb=d.querySelector('.fb-note-box');
+  var noteBtn=d.querySelector('.fb-note');
+  function fbNotesHtml(id){
+    var m={};
+    try{ m=JSON.parse(localStorage.getItem('exp_fb_v1')||'{}'); }catch(e){}
+    var r=m[id]||{};
+    var notes=r.notes||[];
+    if(!notes.length){ return '<div class="comment-empty">还没有补充。你踩过的坑、验证的结果，写下来就会沉淀在这条经验下，成为它的「反面声音」。</div>'; }
+    return notes.slice().reverse().map(function(n){
+      var d=new Date(n.ts);
+      var dd=(d.getMonth()+1)+'月'+d.getDate()+'日';
+      return '<div class="comment"><b>经验补充 <span>'+dd+'</span></b><p>'+n.t+'</p></div>';
+    }).join('');
+  }
+  function fbNoteRender(){
+    var cl=nb.querySelector('.comment-list');
+    if(cl){ cl.innerHTML=fbNotesHtml(e.id); }
+    var n=(JSON.parse(localStorage.getItem('exp_fb_v1')||'{}')[e.id]||{}).notes||[];
+    noteBtn.innerHTML='纠错 / 补充 <b>'+(n.length||'')+'</b>';
+  }
+  noteBtn.onclick=function(ev){
+    ev.stopPropagation();
+    nb.style.display=nb.style.display==='block'?'none':'block';
+    if(nb.style.display==='block'){ fbNoteRender(); }
+  };
+  d.querySelector('.fb-note-send').onclick=function(ev){
+    ev.stopPropagation();
+    var txt=this.parentElement.querySelector('textarea').value.trim();
+    if(!txt){ showToast('先写两句你的补充'); return; }
+    try{
+      var m=JSON.parse(localStorage.getItem('exp_fb_v1')||'{}');
+      m.deviceId=m.deviceId||getDeviceId();
+      m[e.id]=m[e.id]||{ok:0,no:0,deviceId:getDeviceId()};
+      m[e.id].notes=m[e.id].notes||[];
+      m[e.id].notes.push({t:txt,ts:Date.now(),deviceId:getDeviceId()});
+      localStorage.setItem('exp_fb_v1',JSON.stringify(m));
+    }catch(err){}
+    this.parentElement.querySelector('textarea').value='';
+    fbNoteRender();
+    trackEvent('fb', e.id+'·纠错补充');
+    showToast('已沉淀到这条经验下，进入迭代池');
+  };
+  return d;
+}
+function switchDomain(k){ current=k; var inp=document.getElementById('libSearch'); if(inp){ inp.value=''; } renderActChips(); renderTabs(); renderGrid(true); }
+document.getElementById('expMore').onclick=function(){ shown+=8; renderGrid(false); };
+renderActChips(); renderTabs(); renderGrid(true);
+
+/* ===== 故事线 ===== */
+var STORY=[
+ {key:'kaoxue',no:'01',name:'择路',tag:'从校园到职场',desc:'升学、求职、第一份工作怎么选怎么站稳',exp:'专升本大忌：光看网课和刷题是考不上的'},
+ {key:'zhichang',no:'02',name:'立业',tag:'职场进阶',desc:'汇报、向上管理、转行试水、效率与心态',exp:'入职第一周主动约 1v1 破冰'},
+ {key:'kaogong',no:'03',name:'跃升',tag:'考公考编',desc:'选岗、笔试、面试、在职备考的方法论',exp:'在职低精力考公：保住 90 分钟整块时间'},
+ {key:'beihun',no:'04',name:'成家',tag:'备婚与育儿',desc:'备婚筹备、母婴育儿，把小家安顿好',exp:'备婚清单不踩坑版：五类分列'},
+ {key:'lvyou',no:'05',name:'远行',tag:'看世界与安家',desc:'旅行避坑、健康保障、财富与家庭规划',exp:'出发前查一次外交部安全提醒'}
+];
+var ACT_ORDER=['kaoxue','zhichang','kaogong','beihun','lvyou'];
+var ACT_NO={'kaoxue':'01','zhichang':'02','kaogong':'03','beihun':'04','lvyou':'05'};
+(function(){
+  var track=document.getElementById('storyTrack');
+  if(!track)return;
+  STORY.forEach(function(s){
+    var n=document.createElement('div'); n.className='story-node';
+    n.innerHTML='<div class="story-dot" style="background:'+ACTS[s.key].color+'">'+s.no+'</div>'+
+      '<div class="story-name">'+s.name+'</div><div class="story-tag">'+s.tag+' · '+actCount(s.key)+' 条</div>'+
+      '<div class="story-desc">'+s.desc+'</div><div class="story-exp">'+s.exp+'</div>';
+    n.onclick=function(){ switchAct(s.key); document.getElementById('lib').scrollIntoView({behavior:'smooth'}); };
+    track.appendChild(n);
+  });
+})();
+
+/* ===== 搜索 ===== */
+(function(){
+  var inp=document.getElementById('libSearch');
+  if(!inp)return;
+  inp.addEventListener('input',function(){
+    var kw=this.value.trim();
+    current = kw ? 'search' : 'all';
+    renderActChips(); renderTabs(); renderGrid(true);
+  });
+})();
+
+/* ===== 小E ===== */
+var BOT_URL='https://www.coze.cn/store/agent/7693363994866270248?bot_id=true';
+document.getElementById('ai-open').onclick=function(){ trackEvent('ask_smallE','打开小E咨询'); window.open(BOT_URL,'_blank'); };
+
+/* ===== 小E 示例问答 ===== */
+var AI_QA=[
+ {q:'入职第一周怎么破冰？',a:'3 步：入职第一周主动约 leader 和 2 位同事各 20 分钟 → 提前准备 3 个问题：团队目标、协作方式、期望反馈 → 会后把共识同步到文档并 @ 对方确认。',src:'A 级 · 3 位职场人验证 · exp_304'},
+ {q:'考公选岗怎么降低竞争？',a:'3 步：把硬条件列全（学历/专业/党员/户籍/证书）做过滤器 → 优先选叠加限制最多的岗，避开「三不限」→ 报名截止前 2–3 天看实时报名人数，避开 100 人以上的万人坑。',src:'A 级 · 南昌大学上岸学长等 3 源印证 · exp_317'},
+ {q:'生娃前要和伴侣对齐什么？',a:'3 步：分工、月子方案、育儿观、财务、婆媳边界逐条对齐 → 书面记录避免「我以为你懂」 → 分歧项先约定处理规则，参照备婚倒计时清单逐项推进。',src:'A 级 · 备婚/育儿精品经验 · exp_408'}
+];
+(function(){
+  var btns=document.querySelectorAll('.ai-q');
+  if(!btns.length)return;
+  btns.forEach(function(b){
+    b.onclick=function(){
+      btns.forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      var it=AI_QA[parseInt(b.getAttribute('data-qa'),10)]||AI_QA[0];
+      document.getElementById('ai-user').textContent=it.q;
+      document.getElementById('ai-bot-2').innerHTML=it.a+'<span class="qa-src">（'+it.src+'）</span>';
+    };
+  });
+})();
+document.querySelectorAll('[data-go="ai"]').forEach(function(b){ b.onclick=function(){ document.getElementById('ai').scrollIntoView({behavior:'smooth'}); }; });
+document.querySelectorAll('[data-go="quiz"]').forEach(function(b){ b.onclick=function(){ document.getElementById('quiz').scrollIntoView({behavior:'smooth'}); }; });
+document.getElementById('gitHubCta').onclick=function(){ toast('GitHub 仓库整理中，正式开源后会更新此入口'); };
+
+/* ===== 网页版智能检索（说人话提问 + 同义扩展） ===== */
+(function(){
+  var inp=document.getElementById('smartIn');
+  var out=document.getElementById('smartOut');
+  var go=document.getElementById('smartGo');
+  if(!inp||!out||!go)return;
+  function run(){
+    var q=inp.value.trim();
+    if(!q){ showToast('输入你的问题试试'); return; }
+    var r=smartSearch(q);
+    out.style.display='block';
+    if(!r.total){
+      out.innerHTML='<div class="so-head">没有直接命中。换个说法试试，或点开「经验库」翻相关领域。</div><div class="so-none">你的问题已记录，小E后续会用更多真实经验回答你。</div>';
+      return;
+    }
+    var domName=r.dom?DOMAINS[r.dom]:'多领域';
+    var html='<div class="so-head">匹配到 '+r.total+' 条相关经验（'+domName+'）· 可点开经验库核对全文</div>';
+    r.hits.forEach(function(e){
+      html+='<div class="so-item"><b>'+e.t+'</b><div class="so-steps">'+e.a.slice(0,2).map(function(s){return '· '+s;}).join('<br>')+'</div><div class="so-src">'+e.g+' 级 · 来源：'+linkify(e.c)+'</div></div>';
+    });
+    out.innerHTML=html;
+  }
+  go.onclick=run;
+  inp.addEventListener('keydown',function(ev){ if(ev.key==='Enter'){ run(); } });
+})();
+
+/* ===== FAQ ===== */
+document.querySelectorAll('.faq-q').forEach(function(b){
+  b.onclick=function(){ b.parentElement.classList.toggle('open'); };
+});
+
+/* ===== 语音录入分享 + AI 整理 + 我的贡献（功能迁移） ===== */
+function showToast(txt){
+  var t=document.getElementById('scToast');
+  if(!t){
+    t=document.createElement('div'); t.id='scToast';
+    t.style.cssText='position:fixed;left:50%;bottom:56px;transform:translateX(-50%);background:#1F2733;color:#fff;font-size:13px;padding:10px 18px;border-radius:999px;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.2)';
+    document.body.appendChild(t);
+  }
+  t.textContent=txt; t.style.opacity='1';
+  clearTimeout(t._h); t._h=setTimeout(function(){ t.style.opacity='0'; },2200);
+}
+var SC_Q=[
+  {q:'这段经验发生的场景是什么？',opts:['职场新人入职','考公考编备考','备婚筹备','母婴育儿','旅游出行','升学考试','其他场景']},
+  {q:'你做了什么操作？结果如何？',opts:['按步骤执行，结果符合预期','做了但结果一般，踩了坑','反复调整后成功','还没做完，先记录下来']},
+  {q:'适合哪些人群参考？',opts:['职场新人','备考人群','备婚/新手父母','旅行者','所有人']}
+];
+var MINE_KEY='exp_mine_v1';
+var DEV_KEY='exp_device_id', META_KEY='exp_meta_v1', QUIZ_KEY='exp_quiz_v1';
+/* ===== 试运营埋点上报（飞书多维表格接收）===== */
+var TRACK_KEY='exp_track_v1';
+var TRACK_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcnPL0ha1FBCqGuHSKsMz0lUg';
+function getTrackSource(){
+  try{
+    var m=(location.search.match(/[?&]utm_source=([^&]+)/)||[])[1];
+    if(m) return decodeURIComponent(m).slice(0,20);
+    var r=document.referrer||'';
+    if(r.indexOf('github')>-1) return 'GitHub';
+    if(r.indexOf('goofish')>-1||r.indexOf('2.taobao.com')>-1||decodeURIComponent(r).indexOf('闲鱼')>-1) return '闲鱼';
+    if(r.indexOf('xiaohongshu')>-1) return '未知';
+    if(r) return '未知';
+  }catch(e){}
+  return '直接访问';
+}
+function trackEvent(action,detail){
+  try{
+    var ev={ts:Date.now(),deviceId:getDeviceId(),action:action,detail:detail||'',source:getTrackSource(),ua:navigator.userAgent.slice(0,120)};
+    var buf=[]; try{ buf=JSON.parse(localStorage.getItem(TRACK_KEY)||'[]'); }catch(e){}
+    buf.push(ev); if(buf.length>100) buf=buf.slice(-100);
+    try{ localStorage.setItem(TRACK_KEY,JSON.stringify(buf)); }catch(e){}
+    postTrack(ev);
+  }catch(e){}
+}
+function postTrack(ev){
+  try{
+    if(!TRACK_FORM_URL) return;
+    var fr=document.createElement('iframe'); fr.name='trackFrame'; fr.style.display='none';
+    var f=document.createElement('form'); f.method='POST'; f.action=TRACK_FORM_URL; f.target='trackFrame'; f.style.display='none';
+    document.body.appendChild(fr); document.body.appendChild(f);
+    var add=function(n,v){ var i=document.createElement('input'); i.type='hidden'; i.name=n; i.value=v; f.appendChild(i); };
+    add('设备号',ev.deviceId); add('动作',ev.action);
+    add('详情',(ev.detail||'').slice(0,200)); add('来源',ev.source); add('浏览器',ev.ua);
+    f.submit();
+    setTimeout(function(){ try{ document.body.removeChild(f); document.body.removeChild(fr); }catch(e){} },3000);
+  }catch(e){}
+}
+function getDeviceId(){
+  try{
+    var d=localStorage.getItem(DEV_KEY);
+    if(!d){ d='dev_'+Date.now().toString(36)+Math.random().toString(36).slice(2,10); localStorage.setItem(DEV_KEY,d); }
+    return d;
+  }catch(e){ return 'dev_unknown'; }
+}
+function getMeta(){
+  try{ var m=JSON.parse(localStorage.getItem(META_KEY)); if(m)return m; }catch(e){}
+  var m={deviceId:getDeviceId(),firstSeen:Date.now(),bound:false};
+  try{ localStorage.setItem(META_KEY,JSON.stringify(m)); }catch(e){}
+  return m;
+}
+function getMine(){
+  try{ var m=JSON.parse(localStorage.getItem(MINE_KEY)); if(m)return m; }catch(e){}
+  return {experiences:[],citeCount:0,earn:0,askUsed:0,askEarn:0,deviceId:getDeviceId()};
+}
+function saveMine(m){ try{ m.deviceId=m.deviceId||getDeviceId(); localStorage.setItem(MINE_KEY,JSON.stringify(m)); }catch(e){} }
+function renderMine(){
+  var m=getMine(), box=document.getElementById('mineBox');
+  if(!box)return;
+  document.getElementById('mCount').textContent=m.experiences.length;
+  document.getElementById('mCite').textContent=m.citeCount;
+  document.getElementById('mEarn').textContent='¥'+Number(m.earn||0).toFixed(2);
+  document.getElementById('mFree').textContent=Math.max(0,3-(m.askUsed||0));
+  var dev=document.getElementById('muDev');
+  if(dev){ var meta=getMeta(); dev.textContent='设备号 '+(meta.deviceId||getDeviceId())+' · '+new Date(meta.firstSeen).getMonth()+'月'+new Date(meta.firstSeen).getDate()+'日 开始使用'; }
+  var list=document.getElementById('mineList'); list.innerHTML='';
+  if(!m.experiences.length){
+    list.innerHTML='<div class="mine-empty">你还没贡献过经验，去「说一条」面板开始第一段分享吧</div>';
+    return;
+  }
+  m.experiences.slice(0,5).forEach(function(e){
+    var it=document.createElement('div'); it.className='mine-item';
+    var title=e.t||e.title||'未命名经验';
+    var grade=e.g||e.grade||'B';
+    var stepN=(e.a||e.actions||[]).length;
+    var catTxt=e.cat?({zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'}[e.cat]||'择路进阶'):'';
+    it.innerHTML='<b>'+title+'</b><span>'+grade+' 级 · '+(e.status||'验证中')+' · '+stepN+' 步'+(catTxt?' · '+catTxt:'')+'</span>';
+    list.appendChild(it);
+  });
+}
+function renderFb(){
+  var list=document.getElementById('fbList');
+  if(!list)return;
+  var fb={};
+  try{ fb=JSON.parse(localStorage.getItem('exp_fb_v1')||'{}'); }catch(e){}
+  var rows=Object.keys(fb);
+  list.innerHTML='';
+  if(!rows.length){
+    list.innerHTML='<div class="mine-empty">你还没给经验点过反馈。在经验库里点「有帮助 / 不准确 / 纠错补充」，反馈会沉淀在这里，帮经验升级。</div>';
+    return;
+  }
+  rows.forEach(function(id){
+    var r=fb[id]||{ok:0,no:0,notes:[]};
+    var ex=EXPS.find(function(e){return e.id===id;});
+    var title=ex?ex.t:id;
+    var it=document.createElement('div'); it.className='mine-item';
+    it.innerHTML='<b>'+title+'</b><span>有帮助×'+r.ok+' · 不准确×'+r.no+'</span>';
+    list.appendChild(it);
+    (r.notes||[]).forEach(function(n){
+      var nn=document.createElement('div'); nn.className='mine-note';
+      nn.innerHTML='<span>你的补充：</span>'+n.t;
+      list.appendChild(nn);
+    });
+  });
+}
+(function(){
+  var mtabs=document.querySelectorAll('.mt');
+  mtabs.forEach(function(b){
+    b.onclick=function(){
+      mtabs.forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      var tab=b.getAttribute('data-tab');
+      document.getElementById('mineList').style.display=tab==='exp'?'block':'none';
+      document.getElementById('fbList').style.display=tab==='fb'?'block':'none';
+      document.getElementById('starList').style.display=tab==='star'?'block':'none';
+      if(tab==='fb'){ renderFb(); } else if(tab==='star'){ renderStar(); } else { renderMine(); }
+    };
+  });
+})();
+function renderStar(){
+  var box=document.getElementById('starList'); if(!box)return;
+  var ids=getStar(), list=EXPS.filter(function(e){ return ids.indexOf(e.id)>=0; });
+  list.sort(function(a,b){ return gradeRank(a)-gradeRank(b) || (a.id<b.id?-1:1); });
+  box.innerHTML='';
+  if(!list.length){ box.innerHTML='<div class="mine-empty">还没收藏过经验。看到有用的卡片，点右上角 ☆ 收藏，沉淀成你的个人知识库。</div>'; return; }
+  list.forEach(function(e){ box.appendChild(card(e)); });
+}
+function scShow(step){
+  ['scStep1','scStepQ','scStepDraft','scStepDone'].forEach(function(id){
+    document.getElementById(id).style.display=(id===step?'block':'none');
+  });
+}
+(function(){
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  var rec=null, recording=false, touchHeld=false, maxT=null, secT=null, secN=0, gotResp=false, quietT=null;
+  var voice=document.getElementById('scVoice');
+  var stopBtn=document.getElementById('scStop');
+  var timerEl=document.getElementById('scTimer');
+  function voiceIdle(){
+    voice.classList.remove('rec');
+    voice.querySelector('span').textContent='点击说话 · 边说边转成文字 · 最长 60 秒';
+    if(stopBtn){ stopBtn.style.display='none'; }
+    if(timerEl){ timerEl.style.display='none'; }
+    clearInterval(secT); secT=null; clearTimeout(quietT); quietT=null;
+  }
+  function tick(){
+    secN++;
+    if(timerEl){ timerEl.textContent=Math.min(secN,60)+' / 60 秒'; }
+  }
+  function startRec(){
+    if(!rec){ showToast('当前浏览器不支持语音识别（建议 Chrome/Edge），请用文字输入'); return; }
+    if(recording)return;
+    recording=true; finalTxt=''; secN=0; gotResp=false;
+    voice.classList.add('rec');
+    voice.querySelector('span').textContent='正在聆听，说话内容会实时转成文字…';
+    if(stopBtn){ stopBtn.style.display='inline-block'; }
+    if(timerEl){ timerEl.style.display='inline-block'; timerEl.textContent='0 / 60 秒'; }
+    secT=setInterval(tick,1000);
+    try{ rec.start(); }catch(e){ recording=false; voiceIdle(); showToast('语音启动失败，请检查浏览器麦克风权限'); }
+    clearTimeout(maxT); maxT=setTimeout(function(){ stopRec(); showToast('已达 60 秒上限，已自动结束'); }, 60000);
+    clearTimeout(quietT);
+    quietT=setTimeout(function(){
+      if(recording && !gotResp){ stopRec(); showToast('识别服务无响应：当前浏览器/网络不支持实时语音识别（国内网络常见），请直接打字，正式版会接入国内识别服务'); }
+    }, 4000);
+  }
+  function stopRec(){
+    if(!recording)return;
+    recording=false; clearTimeout(maxT);
+    try{ rec.stop(); }catch(e){ voiceIdle(); }
+  }
+  if(SR){
+    rec=new SR(); rec.lang='zh-CN'; rec.interimResults=true; rec.continuous=true;
+    var finalTxt='';
+    rec.onstart=function(){ gotResp=true; voice.classList.add('rec'); voice.querySelector('span').textContent='正在聆听，说话内容会实时转成文字…'; };
+    rec.onresult=function(ev){
+      gotResp=true;
+      var interim='';
+      for(var i=ev.resultIndex;i<ev.results.length;i++){
+        var r=ev.results[i];
+        if(r.isFinal){ finalTxt+=r[0].transcript; } else { interim+=r[0].transcript; }
+      }
+      document.getElementById('scText').value=(finalTxt+interim).trim();
+    };
+    rec.onend=function(){
+      voiceIdle();
+      var v=(document.getElementById('scText').value||'').trim();
+      if(v){ showToast('语音转写完成，可编辑后点击「让 AI 帮我整理」'); }
+    };
+    rec.onerror=function(ev){
+      recording=false; clearTimeout(maxT); voiceIdle();
+      var code=ev&&ev.error;
+      if(code==='not-allowed'||code==='service-not-allowed'){ showToast('麦克风未授权：点浏览器地址栏麦克风图标开启，或去 系统设置-隐私与安全性-麦克风 允许'); }
+      else if(code==='no-speech'){ showToast('没听到声音，请靠近麦克风再试'); }
+      else if(code==='audio-capture'){ showToast('麦克风设备不可用，请检查系统麦克风'); }
+      else if(code==='network'||code==='network-timeout'||code==='service-not-allowed'){ showToast('语音识别服务连不上（浏览器依赖国外服务，国内网络常见）。请直接打字，正式版会接入国内识别'); }
+      else { showToast('语音识别出错（'+code+'），请改用文字输入'); }
+    };
+    if(stopBtn){ stopBtn.onclick=function(){ stopRec(); }; }
+    voice.addEventListener('click',function(){
+      if(touchHeld){ touchHeld=false; return; }
+      if(recording){ stopRec(); } else { startRec(); }
+    });
+    voice.addEventListener('pointerdown',function(ev){
+      if(ev.pointerType!=='touch')return;
+      touchHeld=true; startRec();
+    });
+    voice.addEventListener('pointerup',function(ev){
+      if(ev.pointerType!=='touch')return;
+      touchHeld=false; stopRec();
+    });
+    voice.addEventListener('pointerleave',function(ev){
+      if(ev.pointerType!=='touch')return;
+      touchHeld=false; stopRec();
+    });
+  } else {
+    voice.classList.add('rec');
+    voice.querySelector('span').textContent='当前浏览器不支持语音（建议 Chrome/Edge）';
+    voice.onclick=function(){ showToast('当前浏览器不支持语音识别（建议 Chrome/Edge），请用文字输入'); };
+  }
+})();
+(function(){
+  var raw='', picked=[], qIdx=0, draft=null;
+  var organize=document.getElementById('scOrganize');
+  organize.onclick=function(){
+    raw=(document.getElementById('scText').value||'').trim();
+    if(!raw){ showToast('先输入或录一段经验'); return; }
+    picked=[]; qIdx=0;
+    scShow('scStepQ'); renderQ();
+  };
+  function renderQ(){
+    var it=SC_Q[qIdx];
+    document.getElementById('scQIdx').textContent=qIdx+1;
+    document.getElementById('scQTitle').textContent=it.q;
+    var box=document.getElementById('scQOpts'); box.innerHTML='';
+    it.opts.forEach(function(o){
+      var b=document.createElement('button'); b.textContent=o;
+      b.onclick=function(){ picked.push(o); nextQ(); };
+      box.appendChild(b);
+    });
+  }
+  function nextQ(){
+    qIdx++;
+    if(qIdx>=SC_Q.length){ finish(); } else { renderQ(); }
+  }
+  document.getElementById('scSkip').onclick=function(){ nextQ(); };
+  function makeTitle(raw){
+    var first=(raw.split(/[。！？!?；;\n]/)[0]||'').replace(/^(我|我们|当时|其实|就是|本人)/,'').trim();
+    if(first.length>20) first=first.slice(0,20)+'…';
+    return first||'我的经验分享';
+  }
+  function splitSteps(raw){
+    var parts=raw.replace(/[。！？!?；;]+/g,'\n').split('\n')
+      .map(function(s){ return s.replace(/^\s*[\d一二三四五六七八九十]+[\.、\)）]\s*/,'').trim(); })
+      .filter(function(s){ return s.length>=6 && s.length<=60; });
+    if(parts.length>4) parts=parts.slice(0,4);
+    if(!parts.length){ parts=raw.length>60 ? [raw.slice(0,60)+'…'] : [raw]; }
+    return parts;
+  }
+  function extractFail(raw){
+    var seg=raw.split(/[。！？!?；;]/);
+    for(var i=0;i<seg.length;i++){
+      var s=seg[i].trim();
+      if(/别|不要|切勿|切记|注意|坑|踩|避免|教训|千万别/.test(s) && s.length<=50) return s;
+    }
+    return '';
+  }
+  function mapCat(scenario){
+    if(/考公|考编|升学|考研|专升本|择业|跳槽|面试|职场/.test(scenario)) return 'zljj';
+    if(/母婴|育儿|备婚|生病|就医|健康|养老|婚礼/.test(scenario)) return 'shjk';
+    if(/AI|智能|办公|助理|创业/.test(scenario)) return 'aipe';
+    if(/旅游|旅行|出行|消费|理财/.test(scenario)) return 'tzxf';
+    return 'zljj';
+  }
+  function resultProfile(choice, failTxt){
+    if(choice==='按步骤执行，结果符合预期') return {cost:'一次试错的时间/金钱成本', benefit:'结果已验证、可复制性强', contra:'个体差异可能影响结果，先小步试一次', fail:failTxt||'结果因人而异，别期待每次都完全一致'};
+    if(choice==='做了但结果一般，踩了坑') return {cost:'一次试错的时间/金钱成本', benefit:'反面教材：帮别人避开同一个坑', contra:'本条经验目前是失败记录，仅作避坑参考', fail:failTxt||'失败原因还没总结，建议补一句「为什么没成」'};
+    if(choice==='反复调整后成功') return {cost:'反复调整耗时较长', benefit:'经多次调整验证，含避坑细节', contra:'过程较长，需要耐心，别指望一次到位', fail:failTxt||'调整过程中踩过的坑建议补充进来，帮助更多人一次做对'};
+    return {cost:'进行中，尚未有最终结果', benefit:'真实过程记录，供参考起点', contra:'未完成经验仅作记录，慎用于重大决策', fail:failTxt||'还没跑完，先别当结论用'};
+  }
+  function finish(){
+    var steps=splitSteps(raw);
+    var failTxt=extractFail(raw);
+    var prof=resultProfile(picked[1]||'', failTxt);
+    draft={ id:'mine_'+Date.now().toString(36),
+            t:makeTitle(raw),
+            cat:mapCat(picked[0]||'其他场景'),
+            g:'B',
+            a:steps,
+            fail:prof.fail,
+            s:(picked[0]||'未标注场景')+(picked[2]&&picked[2]!=='所有人'?' · 适合'+picked[2]:''),
+            c:'本人亲历 · 待验证',
+            cost:prof.cost, benefit:prof.benefit, contra:prof.contra,
+            status:'验证中' };
+    var d=document.getElementById('scDraft');
+    var stepsHtml=draft.a.map(function(s){ return '<li>'+s+'</li>'; }).join('');
+    var extra='';
+    extra+='<div class="six fail"><b>失败排查</b><span>'+draft.fail+'</span></div>';
+    extra+='<div class="six"><b>适用场景</b><span>'+draft.s+' · '+draft.a.length+' 步落地</span></div>';
+    extra+='<div class="six"><b>成本</b><span>'+draft.cost+'</span></div>';
+    extra+='<div class="six"><b>收益</b><span>'+draft.benefit+'</span></div>';
+    extra+='<div class="six"><b>反面声音</b><span>'+draft.contra+'</span></div>';
+    extra+='<div class="six"><b>参考来源</b><span>'+draft.c+'</span></div>';
+    d.innerHTML='<div class="exp-card draft-preview"><div class="head"><h4>'+draft.t+'</h4></div>'+
+      '<div class="badges"><span class="badge b">'+draft.g+' 级 · 验证中</span><span class="badge src">本人亲历 · 待验证</span><span class="badge ai">AI 整理 · 待你确认</span></div>'+
+      '<div class="exp-actions" style="display:block"><h5>怎么落地</h5><ol>'+stepsHtml+'</ol>'+extra+'</div></div>'+
+      '<p class="draft-tip">这是 AI 按经验卡格式整理的草稿（对应四大类之一），由你确认后提交进入验证队列。AI 生成内容已按《人工智能生成合成内容标识办法》标注。</p>';
+    scShow('scStepDraft');
+  }
+  document.getElementById('scSubmit').onclick=function(){
+    if(!draft)return;
+    var m=getMine();
+    m.experiences.unshift(JSON.parse(JSON.stringify(draft)));
+    saveMine(m);
+    document.getElementById('scDoneTitle').textContent=draft.t;
+    scShow('scStepDone');
+    renderMine();
+    trackEvent('contribute', draft.t);
+    showToast('提交成功，进入验证队列');
+  };
+  document.getElementById('scRedo').onclick=function(){ scShow('scStepQ'); qIdx=0; picked=[]; renderQ(); };
+  document.getElementById('scAgain').onclick=function(){
+    document.getElementById('scText').value='';
+    scShow('scStep1');
+  };
+})();
+renderMine();
+trackEvent('pageview', document.title);
+</script>
+</body>
+</html>
