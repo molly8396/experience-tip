@@ -515,7 +515,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
   <div class="wrap">
     <div class="sec-head">
       <h2>你也有一条真实走过的路</h2>
-      <div class="sub">说一段你的经历，AI 帮你整理成结构化经验，提交后进入验证队列。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
+      <div class="sub">说一段你的经历，AI 帮你整理成结构化经验，提交后进入审核队列，通过后每周发布。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
     </div>
     <div class="share-grid">
       <div class="share-left">
@@ -524,7 +524,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
           <ol>
             <li><b>说或写</b>——点击录音说一段经历，或直接打字</li>
             <li><b>AI 帮你整理</b>——回答 3 个问题，生成结构化经验卡</li>
-            <li><b>提交进验证队列</b>——多人反馈后升级可信度等级</li>
+            <li><b>提交进审核队列</b>——通过后发布，多人反馈后升级可信度等级</li>
           </ol>
           <p class="share-note">试运营期贡献免费。你的经验被引用、被提问，后续按付费方案获得分成。</p>
         </div>
@@ -577,7 +577,8 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
             <button class="btn btn-line" id="scRedo">重新整理</button>
           </div>
           <div class="sc-step-done" id="scStepDone" style="display:none">
-            <div class="sc-done">已提交，进入验证队列 · 标题：<b id="scDoneTitle"></b></div>
+            <div class="sc-done">已提交，进入审核队列 · 标题：<b id="scDoneTitle"></b> · 通过后每周发布到经验库</div>
+            <p class="voice-tip" style="margin-top:6px">你的经验全文已复制到剪贴板，并在新标签打开了飞书投稿表单——粘贴（Ctrl+V / Cmd+V）后点「匿名提交」即可完成投稿，进入审核队列。</p>
             <button class="btn btn-line" id="scAgain">再贡献一条</button>
           </div>
         </div>
@@ -605,7 +606,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
     </div>
     <div class="faq-item">
       <button class="faq-q">我能贡献经验吗？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="faq-a">可以。网页版已开放「说一条你的经验」：点击录音或打字，AI 自动整理成结构化经验卡并进入验证队列；正式版开放发布与作者分成。</div>
+      <div class="faq-a">可以。网页版已开放「说一条你的经验」：点击录音或打字，AI 自动整理成结构化经验卡并进入审核队列，通过后每周发布到经验库；正式版开放发布与作者分成。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">这个试运营要验证什么？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1182,6 +1183,8 @@ var DEV_KEY='exp_device_id', META_KEY='exp_meta_v1', LR_KEY='exp_lr_v1';
 /* ===== 试运营埋点上报（飞书多维表格接收）===== */
 var TRACK_KEY='exp_track_v1';
 var TRACK_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcnPL0ha1FBCqGuHSKsMz0lUg';
+/* 用户投稿审核表（飞书多维表格表单，免登录提交，字段=题目title） */
+var SUBMIT_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcn3NJF2cachryq9i6qtLgCGb';
 function getTrackSource(){
   try{
     var m=(location.search.match(/[?&]utm_source=([^&]+)/)||[])[1];
@@ -1214,6 +1217,31 @@ function postTrack(ev){
     add('详情',(ev.detail||'').slice(0,200)); add('来源',ev.source); add('浏览器',ev.ua);
     f.submit();
     setTimeout(function(){ try{ document.body.removeChild(f); document.body.removeChild(fr); }catch(e){} },3000);
+  }catch(e){}
+}
+function postSubmission(d){
+  try{
+    if(!SUBMIT_FORM_URL||!d) return;
+    var CATS={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'};
+    var full=(d.full&&d.full.trim())?d.full.trim():('适用：'+(d.s||'未标注场景')+'；来源：'+(d.c||'本人亲历'));
+    var steps=Array.isArray(d.a)?d.a.join('\n'):'';
+    var lines=[
+      '经验标题：'+(d.t||''),
+      '经验全文：'+full,
+      '所属分类：'+(CATS[d.cat]||'择路进阶'),
+      '适用场景：'+(d.s||''),
+      '步骤：'+steps,
+      '失败排查：'+(d.fail||''),
+      '参考来源：'+(d.c||'')
+    ];
+    var txt=lines.join('\n\n');
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt); }
+    }catch(e){}
+    try{
+      var w=window.open(SUBMIT_FORM_URL,'_blank');
+      if(!w) location.href=SUBMIT_FORM_URL;
+    }catch(e){ location.href=SUBMIT_FORM_URL; }
   }catch(e){}
 }
 function getDeviceId(){
@@ -1470,6 +1498,7 @@ function scShow(step){
             s:(picked[0]||'未标注场景')+(picked[2]&&picked[2]!=='所有人'?' · 适合'+picked[2]:''),
             c:'本人亲历 · 待验证',
             cost:prof.cost, benefit:prof.benefit, contra:prof.contra,
+            full:raw||'',
             status:'验证中' };
     var d=document.getElementById('scDraft');
     var stepsHtml=draft.a.map(function(s){ return '<li>'+s+'</li>'; }).join('');
@@ -1483,7 +1512,7 @@ function scShow(step){
     d.innerHTML='<div class="exp-card draft-preview"><div class="head"><h4>'+draft.t+'</h4></div>'+
       '<div class="badges"><span class="badge b">'+draft.g+' 级 · 验证中</span><span class="badge src">本人亲历 · 待验证</span><span class="badge ai">AI 整理 · 待你确认</span></div>'+
       '<div class="exp-actions" style="display:block"><h5>怎么落地</h5><ol>'+stepsHtml+'</ol>'+extra+'</div></div>'+
-      '<p class="draft-tip">这是 AI 按经验卡格式整理的草稿（对应四大类之一），由你确认后提交进入验证队列。AI 生成内容已按《人工智能生成合成内容标识办法》标注。</p>';
+      '<p class="draft-tip">这是 AI 按经验卡格式整理的草稿（对应四大类之一），由你确认后提交进入审核队列，通过后每周发布到经验库。AI 生成内容已按《人工智能生成合成内容标识办法》标注。</p>';
     scShow('scStepDraft');
   }
   document.getElementById('scSubmit').onclick=function(){
@@ -1495,7 +1524,8 @@ function scShow(step){
     scShow('scStepDone');
     renderMine();
     trackEvent('contribute', draft.t);
-    showToast('提交成功，进入验证队列');
+    postSubmission(draft);
+    showToast('经验全文已复制，请在打开的飞书表单页粘贴提交（Ctrl+V）');
   };
   document.getElementById('scRedo').onclick=function(){ scShow('scStepQ'); qIdx=0; picked=[]; renderQ(); };
   document.getElementById('scAgain').onclick=function(){
