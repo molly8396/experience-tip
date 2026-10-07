@@ -1193,6 +1193,7 @@ var TRACK_KEY='exp_track_v1';
 var TRACK_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcnPL0ha1FBCqGuHSKsMz0lUg';
 /* 用户投稿审核表（飞书多维表格表单，免登录提交，字段=题目title） */
 var SUBMIT_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcn3NJF2cachryq9i6qtLgCGb';
+var GH_ISSUE_BASE='https://github.com/molly8396/experience-tip/issues/new';
 function getTrackSource(){
   try{
     var m=(location.search.match(/[?&]utm_source=([^&]+)/)||[])[1];
@@ -1229,27 +1230,28 @@ function postTrack(ev){
 }
 function postSubmission(d){
   try{
-    if(!SUBMIT_FORM_URL||!d) return;
+    if(!d) return;
     var CATS={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'};
     var full=(d.full&&d.full.trim())?d.full.trim():('适用：'+(d.s||'未标注场景')+'；来源：'+(d.c||'本人亲历'));
     var steps=Array.isArray(d.a)?d.a.join('\n'):'';
-    var lines=[
-      '经验标题：'+(d.t||''),
-      '经验全文：'+full,
-      '所属分类：'+(CATS[d.cat]||'择路进阶'),
-      '适用场景：'+(d.s||''),
-      '步骤：'+steps,
-      '失败排查：'+(d.fail||''),
-      '参考来源：'+(d.c||'')
-    ];
-    var txt=lines.join('\n\n');
+    var body=[
+      '### 经验标题',(d.t||''),
+      '### 经验全文',full,
+      '### 所属分类',(CATS[d.cat]||'择路进阶'),
+      '### 步骤（别人怎么照着做）',steps,
+      '### 失败排查',(d.fail||''),
+      '### 适用场景',(d.s||''),
+      '### 参考来源',(d.c||'')
+    ].join('\n\n');
+    var txt=body;
     try{
       if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt); }
     }catch(e){}
+    var url=GH_ISSUE_BASE+'?labels='+encodeURIComponent('待审核')+'&title='+encodeURIComponent('[经验] '+(d.t||''))+'&body='+encodeURIComponent(body);
     try{
-      var w=window.open(SUBMIT_FORM_URL,'_blank');
-      if(!w) location.href=SUBMIT_FORM_URL;
-    }catch(e){ location.href=SUBMIT_FORM_URL; }
+      var w=window.open(url,'_blank');
+      if(!w) location.href=url;
+    }catch(e){ location.href=url; }
   }catch(e){}
 }
 function getDeviceId(){
