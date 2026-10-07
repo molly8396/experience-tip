@@ -310,6 +310,69 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
   .story-desc{min-height:0;flex:1 1 100%}
   .story-exp{margin-top:4px}
 }
+/* ===== 人生路搭配器面板（替代问卷） ===== */
+.lr-mask{position:fixed;inset:0;z-index:90;background:rgba(20,28,45,.55);display:none}
+.lr-mask.open{display:block}
+.lr-panel{position:fixed;inset:0;z-index:100;background:var(--bg);display:none;overflow:auto}
+.lr-panel.open{display:block}
+.lr-panel-top{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.lr-panel-top .lr-pt{font-weight:900;color:var(--navy);font-size:15px;display:flex;align-items:center;gap:8px}
+.lr-close{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:16px;cursor:pointer;color:var(--steel)}
+.lr-close:hover{color:var(--ink);border-color:var(--steel)}
+.lr-in{max-width:980px;margin:0 auto;padding:24px 20px 60px}
+.lr-hero h1{font-size:22px;font-weight:900;color:var(--navy)}
+.lr-hero p{font-size:13px;color:var(--steel);margin-top:4px}
+.lr-steps{display:flex;gap:8px;margin:16px 0 6px;flex-wrap:wrap}
+.lr-step{font-size:12px;color:var(--steel);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.lr-step.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.lr-sec{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:14px}
+.lr-sec h2{font-size:14.5px;font-weight:800;color:var(--navy);display:flex;align-items:center;gap:8px}
+.lr-sec .lr-hint{font-size:11.5px;color:var(--steel);margin:2px 0 12px}
+.lr-opts{display:flex;flex-wrap:wrap;gap:10px}
+.lr-opt{min-width:110px;flex:1;border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;background:#fff;cursor:pointer;text-align:left;font-family:inherit;transition:all .12s}
+.lr-opt:hover{border-color:var(--navy)}
+.lr-opt.on{border-color:var(--navy);background:#F0F4FA;box-shadow:0 0 0 1px var(--navy) inset}
+.lr-opt .ic{font-size:17px}
+.lr-opt b{display:block;font-size:13.5px;color:var(--ink);margin-top:2px}
+.lr-opt span{display:block;font-size:11px;color:var(--steel);margin-top:2px}
+.lr-result{margin-top:18px}
+.lr-head{background:var(--navy);color:#fff;border-radius:16px 16px 0 0;padding:18px 22px}
+.lr-head .tag{font-size:10.5px;opacity:.8;letter-spacing:1px}
+.lr-head .path{font-size:19px;font-weight:900;margin-top:3px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.lr-head .path .arrow{opacity:.5;font-weight:400}
+.lr-head .slogan{font-size:12.5px;opacity:.9;margin-top:5px}
+.lr-block{background:#fff;border:1px solid var(--line);border-top:none;padding:16px 22px}
+.lr-block h3{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.lr-block h3 .n{background:var(--navy);color:#fff;width:19px;height:19px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:10.5px;flex:none}
+.lr-conclusion{background:#F0F4FA;border:1px solid var(--navy);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.lr-conclusion .ct{font-size:12.5px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.lr-conclusion table{width:100%;border-collapse:collapse;font-size:12px}
+.lr-conclusion td{padding:4px 8px;vertical-align:top;border-bottom:1px dashed var(--line)}
+.lr-conclusion td.k{width:82px;color:var(--steel);font-weight:600;white-space:nowrap}
+.lr-conclusion .worth{color:var(--green);font-weight:700}
+.lr-stations{display:flex;flex-direction:column;gap:10px}
+.lr-station{display:flex;gap:10px}
+.lr-station .dot{flex:none;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;margin-top:2px}
+.lr-station .card{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 14px;cursor:pointer}
+.lr-station .card .t{font-size:13px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lr-station .card .d{font-size:12px;color:var(--steel);margin-top:4px}
+.lr-station .card .more{display:none;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink)}
+.lr-station .card .more b{color:var(--navy)}
+.lr-station .card.open .more{display:block}
+.lr-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:999px;flex:none;background:#E7ECF4;color:var(--navy)}
+.lr-supp{background:#fff;border:1px solid var(--line);border-radius:16px;margin-top:16px;padding:18px 20px}
+.lr-supp h3{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.lr-supp .lr-hint{font-size:11.5px;color:var(--steel);margin-bottom:12px}
+.lr-supp label{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin:10px 0 5px}
+.lr-supp textarea{width:100%;min-height:62px;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-family:inherit;font-size:12.5px;resize:vertical}
+.lr-supp textarea:focus{outline:none;border-color:var(--navy)}
+.lr-radios{display:flex;gap:10px;flex-wrap:wrap}
+.lr-radios label{font-weight:400;font-size:12px;border:1.5px solid var(--line);border-radius:999px;padding:6px 15px;cursor:pointer}
+.lr-radios label.on{border-color:var(--navy);background:#F0F4FA;font-weight:600}
+.lr-submit-row{margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.lr-note{font-size:11px;color:var(--steel)}
+.lr-float{position:fixed;right:18px;bottom:24px;z-index:55;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:12px 20px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 8px 24px rgba(26,43,74,.35);display:flex;align-items:center;gap:8px}
+.lr-float:hover{background:var(--navy2)}
 </style>
 </head>
 <body>
@@ -322,13 +385,13 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
       经验之书
     </div>
     <nav class="nav">
-      <a href="#quiz">开始问卷</a>
+      <a href="javascript:void(0)" onclick="lrOpen()">选我的人生路</a>
       <a href="#lib">经验库</a>
       <a href="#ai">小E顾问</a>
       <a href="#mine">我的</a>
       <a href="#faq">说明</a>
       <button class="btn ghost" data-go="ai">问 小E</button>
-      <button class="btn" data-go="quiz">测测主线</button>
+      <button class="btn" onclick="lrOpen()">🎯 选人生路</button>
     </nav>
   </div>
 </div>
@@ -346,7 +409,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
       <div class="m"><b>小E</b><span>AI 经验顾问</span></div>
     </div>
     <div class="hero-cta">
-      <button class="btn btn-navy" data-go="quiz">测测你的人生主线</button>
+      <button class="btn btn-navy" onclick="lrOpen()">🎯 选我的人生路</button>
       <button class="btn btn-line-w" data-go="ai">问 小E</button>
     </div>
   </div>
@@ -383,22 +446,6 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
     </div>
   </div>
 </section>
-
-<!-- ===== 问卷 ===== -->
-<section class="quiz" id="quiz">
-  <div class="wrap">
-    <div class="quiz-card">
-      <div class="quiz-brand">经验之书</div>
-      <div class="quiz-sub">先认识你，再给你适配的经验</div>
-      <div class="quiz-progress"><div class="quiz-bar" id="qbar" style="width:33.3%"></div></div>
-      <div class="quiz-step" id="qstep">第 1 / 3 题 · 你的人生主线</div>
-      <div class="quiz-options" id="qopts"></div>
-      <button class="quiz-skip" id="qskip">跳过问卷，直接看精选</button>
-      <div class="quiz-note">问卷只用于经验适配，不评估你的能力，也不改变经验的可信度。</div>
-    </div>
-  </div>
-</section>
-
 
 <!-- ===== 经验库 ===== -->
 <section class="lib" id="lib">
@@ -438,7 +485,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
       <div class="trust-card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5M8 13h8M8 17h5"/></svg></div>
         <h3>反馈验证中</h3>
-        <p>试运营期通过问卷与使用数据验证「哪条经验真的管用」，正式版将以真实采纳数据回填可信度。</p>
+        <p>试运营期通过「人生路画像」与使用数据验证「哪条经验真的管用」，正式版将以真实采纳数据回填可信度。</p>
       </div>
     </div>
     <div class="trust-note">经验之书不替代专业建议。涉及医疗、法律、财务等重大决策，请以专业人士意见为准。</div>
@@ -565,7 +612,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
     </div>
     <div class="faq-item">
       <button class="faq-q">怎么收费？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="faq-a">试运营期：问卷、经验浏览、小E问答全部免费。正式版计划：经验摘要免费；深度解锁 / 追问原作者 / 主题经验包按条付费（约 1–9.9 元档）；AI 方案为会员权益。最终以正式版公告为准。</div>
+      <div class="faq-a">试运营期：人生路搭配、经验浏览、小E问答全部免费。正式版计划：经验摘要免费；深度解锁 / 追问原作者 / 主题经验包按条付费（约 1–9.9 元档）；AI 方案为会员权益。最终以正式版公告为准。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">一条经验怎么迭代成精品？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -577,7 +624,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
     </div>
     <div class="faq-item">
       <button class="faq-q">这个试运营要验证什么？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="faq-a">验证三件事：① 问卷画像能否帮用户更快找到合适的经验；② 结构化经验卡是否真的比刷帖子省时间；③ 用户愿不愿意为「带来源的高可信经验」付费。你的每次使用都在帮我们打磨。</div>
+      <div class="faq-a">验证三件事：① 人生路画像能否帮用户更快找到合适的经验；② 结构化经验卡是否真的比刷帖子省时间；③ 用户愿不愿意为「带来源的高可信经验」付费。你的每次使用都在帮我们打磨。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">「经验投资说明书」是什么意思？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -595,7 +642,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
   <div class="wrap">
     <div class="footer-logo">经验之书 · Experience Book</div>
     <div class="footer-cta">
-      <button class="btn btn-navy" data-go="quiz">测测你的人生主线</button>
+      <button class="btn btn-navy" onclick="lrOpen()">🎯 选我的人生路</button>
       <button class="btn btn-line-w" id="gitHubCta" style="border-color:var(--navy);color:var(--navy)">GitHub 开源验证</button>
     </div>
     <div class="footer-note">经验之书 · 试运营 · 数据仅用于经验适配，不评估个人能力 · 交流群与闲鱼验证渠道陆续开放</div>
@@ -605,57 +652,163 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
 <div id="toast"></div>
 
 <script>
-/* ===== 问卷数据（对齐小程序 onboard V5.4） ===== */
-var MISSION_OPTIONS = ['职场进阶', '考学考公', '备婚筹备', '母婴育儿', '旅游出行'];
-var DOMAIN_QUESTIONS = {
-  '职场进阶': { steps: ['工作年限', '组织类型'], options: [['0–1 年','1–3 年','3–8 年','8 年+'],['大厂','外企','国企 / 事业单位','中小企业','个体']] },
-  '考学考公': { steps: ['你的备考状态', '目标层级'], options: [['刚了解','首战备考中','二战或多次','在职备考'],['国考为主','省考为主','事业单位 / 国企','专升本 / 考研','还没定']] },
-  '备婚筹备': { steps: ['你的婚期', '预算档位'], options: [['还没定','6 个月内','6–12 个月','1 年以上'],['10 万内','10–20 万','20–30 万','30 万+']] },
-  '母婴育儿': { steps: ['你的阶段', '主要场景'], options: [['备孕','孕期','新生儿 0–6 月','6 月–3 岁'],['喂养护理','新生儿护理','早教','产后恢复']] },
-  '旅游出行': { steps: ['出行习惯', '关注重点'], options: [['自由行','跟团游','自驾','节假日出游'],['避坑省钱','行程规划','亲子游','小众体验']] }
-};
-var DOMAIN_KEY = { '职场进阶':'zljj','考学考公':'zljj','备婚筹备':'shjk','母婴育儿':'shjk','旅游出行':'tzxf' };
-var q = { step:0, mission:'', profile:{} };
-
+/* ===== 人生路搭配器（替代问卷 onboard） ===== */
 function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},2600); }
-
-function renderQuiz(){
-  var opts, label;
-  if(q.step===0){ opts=MISSION_OPTIONS; label='你的人生主线'; }
-  else { var dq=DOMAIN_QUESTIONS[q.mission]; opts=dq.options[q.step-1]; label=dq.steps[q.step-1]; }
-  document.getElementById('qstep').textContent='第 '+(q.step+1)+' / 3 题 · '+label;
-  document.getElementById('qbar').style.width=((q.step+1)/3*100)+'%';
-  var box=document.getElementById('qopts'); box.innerHTML='';
-  opts.forEach(function(v){
-    var b=document.createElement('button'); b.className='quiz-option'; b.textContent=v;
-    b.onclick=function(){ choose(v); };
-    box.appendChild(b);
+var LR_GENS=[
+ {k:'80后',ic:'🧓',d:'中年攻坚期：二胎/父母养老/职业瓶颈'},
+ {k:'90后',ic:'🧑',d:'婚育买房期：跳槽/考公/备婚/副业'},
+ {k:'00后',ic:'🧒',d:'起步期：高考/大学/考研/第一份工作'}
+];
+var LR_IDENTS=[
+ {k:'学生',ic:'🎒',d:'在校或备考中'},
+ {k:'职场白领',ic:'💼',d:'已工作，朝九晚五'}
+];
+var LR_MARS=[
+ {k:'单身',ic:'🌱',d:'未婚，未育'},
+ {k:'已婚未育',ic:'💍',d:'已婚，还没孩子'},
+ {k:'已婚已育',ic:'👶',d:'已婚，有孩子'}
+];
+var LR_DIRS=[
+ {k:'求职就业',ic:'💼',d:'找工作/第一份工作'},
+ {k:'考公考编',ic:'🏛',d:'进体制，稳定编制'},
+ {k:'考研升学',ic:'📖',d:'学历深造'},
+ {k:'跳槽转型',ic:'🔄',d:'换工作/换赛道'},
+ {k:'婚育家庭',ic:'👶',d:'恋爱结婚/备孕育儿'},
+ {k:'副业变现',ic:'💰',d:'搞钱第二曲线'},
+ {k:'买房安家',ic:'🏠',d:'买房/定居选择'},
+ {k:'旅游出行',ic:'✈️',d:'出行避坑省钱'}
+];
+var LR_EXPS={
+ '05':{t:'专升本/考研备考：网课只看 1 遍，时间给刷题和复盘',g:'B',a:['第 1 周只建知识框架，不囤课','网课每种只看 1 遍，1.25 倍速，边看边记问题','刷题必须限时，模拟考场节奏','错题本每周重做 1 遍，做对 3 次才移出'],fail:'最后 3 天不要重看课，只总结错题；错题本不重做 = 白刷',s:'零基础第一周先建框架；冲刺期优先套卷',c:'小红书《专升本大忌：光看网课和刷题是考不上的》'},
+ '02':{t:'考公作息表（全职版）：一天切成段，每段只干一件事',g:'B',a:['7:00 起床+晨读（时政+申论金句）','8:00-10:00 行测理科模块（资料/数量）','10:00-12:00 行测网课+跟练','14:00-17:30 文科模块+错题复盘','19:30-21:30 套卷模拟，严格计时','22:00 总结+规划次日，不熬夜'],fail:'晚上刷手机到 12 点 → 第二天晨读崩，恶性循环；睡前手机放客厅',s:'冲刺期（剩 1 个月）把套卷提前到上午 9:00 对齐真实考试时间',c:'慧公政考作息表 / 中公教育全职备考攻略'},
+ '03':{t:'考公作息表（在职版）：早 35 分钟 + 晚 90 分钟',g:'B',a:['6:50-7:25 常识积累+公式复盘','通勤路上听时政音频','8:10-8:50 上班前做 1 组行测小题','晚上 19:30-21:00 刷题+复盘','周末复刻全职高强度日程'],fail:'加班打乱晚间时段 → 保住任意 60 分钟 + 次日早起补 30 分钟，别全天放弃',s:'睡眠不足 7 小时的先调作息；备考 3-6 个月为佳',c:'山东中公教育《在职党每天挤 2 小时》'},
+ '04':{t:'考公选岗：报名截止前 2-3 天「蹲数据」选岗',g:'B',a:['报名第 1 天先填心仪岗但不提交','截止前 2-3 天看官方实时报名人数','查该岗近 3 年进面分数线','模考分与进面分差超 15 分不硬冲'],fail:'别被 100:1 吓退——进面比通常 3:1，关键看对手质量而非纯人数',s:'报名期 3 天以内的考试无法蹲数据，改看近 3 年进面分',c:'南昌大学吴毅笔面双第一经验 / 华图选岗指南'},
+ '06':{t:'入职第一周：3 个 1v1 破冰，拿隐性信息',g:'B',a:['第 1-3 天约 leader + 2 位同事，各 20 分钟','每人提前准备 3 个问题：团队目标/协作方式/期望反馈','会后当天把共识写成 1 页文档同步确认'],fail:'对方高压期约不上 → 改到第 2 周；小团队天天见面不必刻意约',s:'对方明确反感「新人约聊」的团队，改为参与团队共创',c:'3 位职场人验证（某互联网大厂运营）'},
+ '07':{t:'每周同步进展：周五 15 分钟，3 段式',g:'B',a:['每周五固定 15-20 分钟写 3 段式：完成/进行中/风险','风险只列 1 个最重要的，附 1 个建议方案','有进展变化随时补 1 句话，不攒到周五'],fail:'leader 说「别每周发」→ 改里程碑同步；形式主义团队压缩成 5 行',s:'适合 1:1 频率低的场景；高频 1:1 团队可合入周会',c:'4 位职场人验证（某大厂资深产品）'},
+ '08':{t:'备婚倒计时：提前 6 个月，五类分列',g:'B',a:['提前 6 个月：订酒店+四大金刚，列五类清单（服饰/仪式/宴席/回礼/证件）','提前 3 个月：婚纱照+回礼，每类比价 3 家','提前 1 个月：确认宾客名单+试菜','提前 2 周：证件+礼服改尺寸+请柬发出','提前 3 天：流程彩排+分工表发群'],fail:'旺季/吉日档期抢不到 → 提前 8 个月或错峰',s:'极简/旅行结婚清单大幅缩减；只剩 1 个月优先证件+宴席',c:'小红书《备婚清单|女生要准备的东西，超全不踩坑版》'},
+ '09':{t:'省钱备婚：非旺季 + 租赁 + 量贩，省 20–40%',g:'B',a:['选非旺季周末（避开 5/10 月黄金档），省档期费','婚纱礼服租赁/二手代替买新，提前 1 个月试穿','喜糖喜帖量贩渠道按件比价，单件成本降 30%+'],fail:'非旺季日期选择少 → 提前 3 个月抢档；租赁改尺寸留 2 次试穿',s:'婚期必须旺季吉日 / 对全新婚纱有执念的不适合',c:'小红书《省钱的风还是刮到了备婚上》'},
+ '10':{t:'带娃夜醒：3 月龄作息 + 睡前饱腹奶',g:'B',a:['白天每顿奶约 140ml，间隔 3 小时左右','夜觉前最后一餐（约 22:00）加到 150–160ml','全天总奶量约 850ml，监测生长曲线','白天吃→玩→睡循环，清醒间隔 1.5–2 小时'],fail:'夜醒频繁先排查奶量不足 vs 睡眠环境；避免抱睡摇睡依赖',s:'每个宝宝不同，先观察信号再套作息；健康问题以医生为准',c:'抖音 3 月龄作息 / 国家卫健委养育照护指南 / AAP 睡眠建议'},
+ '11':{t:'跳槽准备：骑驴找马 3 个月，简历按 JD 逐条对齐',g:'B',a:['在职期间每周固定 2 小时改简历+投递，不裸辞','简历按目标 JD 逐条对齐关键词，删掉无关经历','每面一轮后记录面试题，下一轮前补齐短板','同时面 3-5 家再比较 offer，谈薪按 20–30% 涨幅起步'],fail:'裸辞空窗超 2 个月会掉价 → 骑驴找马优先；背调期别提前交辞职信',s:'急需离开的处境优先，可接受薪资持平；体制内跳槽路径不同',c:'多位 HR 与职场博主共识 / 脉脉职场讨论验证'},
+ '12':{t:'副业起步：先验证需求再投入，最小交付试水',g:'B',a:['从已有技能里挑 1 个能立刻交付的，不做全新领域','先在朋友圈/社群发 1 次服务信息，看 3 天内有没有询单','按「3 人免费 → 收费 9.9 → 提价」三步验证价格','单月收入稳定后，再考虑买课/报班放大'],fail:'一上来买课囤装备 = 交学费；连续 1 个月零询单就换方向',s:'适合有一技之长的人；纯信息差生意生命周期短',c:'副业圈 / 独立开发者公开复盘共识'},
+ '13':{t:'买房决策：先算账再上车，月供不超收入 40%',g:'B',a:['先列需求清单（通勤/学区/面积/预算），排优先级','锁定 3 个板块，各看 5 套房，做对比表记录','月供 + 物业 + 装修分摊后不超过月收入 40%','谈判阶段要中介费明细，过户前请第三方验房'],fail:'被「最后一套」话术逼单 → 回来看对比表再决定；期房优先看开发商现金流',s:'首套刚需 vs 投资逻辑完全不同；一线城市预算要加税费',c:'买房攻略公开共识 / 安居客与知乎买房讨论验证'},
+ '14':{t:'旅游避坑：错峰出行 + 提前 1 个月订票，省 20–40%',g:'B',a:['避开节假日首尾，选节后第 2 周出行','机票酒店提前 1 个月订，比临期省 20–40%','当地特色餐饮查 2-3 个平台交叉比价，避开网红店','行程留 1 天空白日，不排满景点'],fail:'说走就走的价格最高；网红店排长队且溢价',s:'节假日刚需出行（如探亲）不适用错峰；小众目的地攻略少需多查',c:'旅游攻略公开共识 / 多个出行社区验证'}
+};
+var lrSel={gen:null,ident:null,mar:null,dir:null};
+function lrConcl(){
+  var g=lrSel.gen, i=lrSel.ident, d=lrSel.dir;
+  var fit,time,cost,end,worth,path;
+  if(d==='考公考编'){
+    if(i==='学生'){ fit='应届生/在校生，有应届身份优势，能全职备考'; time='全职 6–12 个月'; cost='脱产约 2–4 万（报班+生活）'; end='上岸后稳定编制，起薪 5–8k，晋升看年限'; worth=(g==='00后')?'✅ 值得——应届身份是最大红利，错过窗口期难度翻倍':'✅ 值得——但若已是 90 后末班车，先评估岗位池再定'; path='全职作息表 → 选岗蹲数据 → 笔试冲刺 → 面试'; }
+    else { fit='在职白领，能保证每天 2 小时、备考期 6–12 个月的人'; time='在职 12–24 个月'; cost='约 1 万（资料+可能报班）+ 两年高密度生活'; end='上岸后稳定编制；在职上岸保留工龄，起薪看单位'; worth=(g==='80后')?'⚠️ 谨慎——年龄与岗位池限制，先查近 3 年可报岗位再决定':'✅ 值得但有前提——选岗数据比努力更重要'; path='在职作息表 → 选岗蹲数据 → 笔试冲刺 → 面试'; }
+  }
+  else if(d==='求职就业'){ fit='应届或毕业 1–2 年内的新人'; time='0–1 个月入职，3 个月适应'; cost='求职期生活成本约 0.5–1 万'; end='第一份工作决定起点：优先能学到体系的平台'; worth=(g==='00后')?'✅ 值得——第一份工作选成长性，薪资第二':'✅ 值得——新人期建立职场方法论比薪资更重要'; path='求职准备 → 入职第一周破冰 → 每周同步 → 转正'; }
+  else if(d==='考研升学'){ fit='有明确读研动机的人（专业深造/换平台/应届红利）'; time='备考 8–14 个月'; cost='脱产约 2–4 万；在职约 1 万'; end='研究生学历 = 更多岗位门槛 + 应届身份重置'; worth=(g==='00后')?'✅ 值得——本科直接考研是应届身份最大化利用':'⚠️ 看动机——为逃避就业而考研最容易后悔'; path='择校定位 → 备考作息 → 刷题复盘 → 复试'; }
+  else if(d==='跳槽转型'){ fit='在职 2 年以上、当前发展遇到瓶颈的人'; time='准备 2–6 个月，跳槽 1–3 个月'; cost='机会成本：空窗期 + 新环境适应期'; end='跳槽平均涨薪 20–30%，但前 3 个月是危险期'; worth='⚠️ 先评估——骑驴找马 > 裸辞；转型先小规模试水（副业/项目）'; path='盘点技能 → 试水验证 → 简历重构 → 面试谈判'; }
+  else if(d==='婚育家庭'){
+    if(lrSel.mar==='已婚已育'){ fit='已婚已育家庭'; time='0–3 岁是最耗精力的阶段'; cost='育儿每年 2–5 万（视城市与选择）'; end='规律作息后，家长可回归正常工作节奏'; worth='✅ 值得投入——科学作息和喂养能显著降低带娃难度'; path='备孕/产检 → 新生儿护理 → 夜醒作息 → 辅食喂养'; }
+    else { fit='备婚或备孕阶段的准新人'; time='备婚 6–12 个月；备孕 3–6 个月'; cost='备婚 10–30 万（视预算）；备孕体检 0.5–1 万'; end='按清单推进，婚礼不抓瞎；科学备孕提升成功率'; worth='✅ 值得——备婚备孕都有成熟清单，照抄能省 20–40%'; path='备婚倒计时 → 省钱备婚 → 备孕体检 → 孕期清单'; }
+  }
+  else if(d==='副业变现'){ fit='有一技之长 + 每天能挤出 1–2 小时的人'; time='3–6 个月试水，1 年见分晓'; cost='初期投入 0–2 千（以时间为主）'; end='副业月入 1k–1w 不等，多数人止步于三分钟热度'; worth='⚠️ 低风险试水——先验证需求再投入，别一上来买课囤装备'; path='技能盘点 → 需求验证 → 最小交付 → 渠道分发'; }
+  else if(d==='买房安家'){ fit='有稳定收入 + 首付 + 打算定居的人'; time='看房 3–6 个月，决策 1–3 个月'; cost='首付 3 成起（一线更高）+ 月供 30 年'; end='买房锁定定居，但现金流被锁死'; worth=(g==='80后')?'⚠️ 慎重——置换/学区与养老现金流要一起算':'⚠️ 先算账——月供是否超过收入 40%，别被情绪绑架'; path='需求清单 → 板块研究 → 实地看房 → 谈判过户'; }
+  else { fit='想避坑省钱的出行者'; time='规划 1–2 周'; cost='视目的地 1k–1w'; end='好的规划省 20–40% 预算'; worth='✅ 值得——出行攻略照抄省心省力'; path='目的地 → 行程规划 → 避坑清单 → 出行'; }
+  return {fit:fit,time:time,cost:cost,end:end,worth:worth,path:path};
+}
+function lrIds(){
+  var d=lrSel.dir;
+  if(d==='考公考编'){ return (lrSel.ident==='学生')?['02','04']:['03','04']; }
+  if(d==='求职就业'){ return ['06','07']; }
+  if(d==='考研升学'){ return ['05','02']; }
+  if(d==='跳槽转型'){ return ['11','06']; }
+  if(d==='婚育家庭'){ return (lrSel.mar==='已婚已育')?['10','08']:['08','09']; }
+  if(d==='副业变现'){ return ['12','07']; }
+  if(d==='买房安家'){ return ['13','07']; }
+  if(d==='旅游出行'){ return ['14','07']; }
+  return ['07'];
+}
+function lrSlogan(){
+  var d=lrSel.dir;
+  return {'考公考编':'一条卷但稳的路：用几个月到两年，换一份不再焦虑的工作','求职就业':'一条先上路再调整的路：新人期决定职业起点','考研升学':'一条高投入高回报的路：用一年换一个平台','跳槽转型':'一条重新选择的路：涨薪但危险期在前 3 个月','婚育家庭':'一条被低估的路：清单化管理，照抄能省心省钱','副业变现':'一条低风险试水的路：先验证需求再投入','买房安家':'一条锁住现金流的路：先算账再上车','旅游出行':'一条放松的路：规划做得好，钱花得少'}[d];
+}
+function lrRender(opts,box,fn,key){
+  box.innerHTML='';
+  opts.forEach(function(o){
+    var d=document.createElement('button');
+    d.className='lr-opt'+(lrSel[key]===o.k?' on':'');
+    d.innerHTML='<div class="ic">'+o.ic+'</div><b>'+o.k+'</b><span>'+o.d+'</span>';
+    d.onclick=function(){ lrSel[key]=o.k; fn(); };
+    box.appendChild(d);
   });
 }
-function choose(v){
-  if(q.step===0){
-    q.mission=v; q.profile={mission:v,life_stage:v};
-    q.step=1;
-  } else {
-    q.profile['q'+(q.step+1)]=v;
-    q.step++;
-  }
-  if(q.step<3){ renderQuiz(); }
-  else {
-    try{ localStorage.setItem(QUIZ_KEY,JSON.stringify({deviceId:getDeviceId(),mission:q.mission,profile:q.profile,ts:Date.now()})); }catch(e){}
-    trackEvent('quiz_done','问卷完成：'+q.mission);
-    toast('已生成画像：'+q.mission+' · 为你切换到对应经验');
-    var key=DOMAIN_KEY[q.mission];
-    if(key){ switchDomain(key); }
-    document.getElementById('lib').scrollIntoView({behavior:'smooth',block:'center'});
-  }
+function lrStepOn(n){[1,2,3,4,5].forEach(function(i){document.getElementById('lrSt'+i).className='lr-step'+(i<=n?' on':'');});}
+function lrInit(){
+lrRender(LR_GENS,document.getElementById('lrOptsGen'),function(){
+  lrSel.ident=null;lrSel.mar=null;lrSel.dir=null;
+  document.getElementById('lrSecIdent').style.display='block';
+  document.getElementById('lrSecMar').style.display='none';
+  document.getElementById('lrSecDir').style.display='none';
+  document.getElementById('lrResult').innerHTML='';
+  lrStepOn(1);
+  lrRender(LR_IDENTS,document.getElementById('lrOptsIdent'),function(){
+    lrSel.mar=null;lrSel.dir=null;
+    document.getElementById('lrSecMar').style.display = (lrSel.ident==='学生') ? 'none' : 'block';
+    document.getElementById('lrSecDir').style.display='block';
+    document.getElementById('lrResult').innerHTML='';
+    lrStepOn(2);
+    lrRender(LR_MARS,document.getElementById('lrOptsMar'),function(){
+      lrSel.dir=null;
+      document.getElementById('lrResult').innerHTML='';
+      lrStepOn(3);
+    });
+    lrRender(LR_DIRS,document.getElementById('lrOptsDir'),function(){
+      lrStepOn(5);
+      lrShow();
+    });
+  });
+},'gen');
 }
-document.getElementById('qskip').onclick=function(){
-  toast('已跳过问卷，为你展示精选经验');
-  document.getElementById('lib').scrollIntoView({behavior:'smooth'});
-};
-document.getElementById('qopts').addEventListener('click',function(e){ if(e.target.classList.contains('quiz-option')){ /* 已在按钮绑定 */ } });
-renderQuiz();
+if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',lrInit); } else { lrInit(); }
+function lrShow(){
+  var ids=lrIds();
+  var con=lrConcl();
+  var box=document.getElementById('lrResult');
+  var html='<div class="lr-result"><div class="lr-head"><div class="tag">你的人生路 · 结论</div><div class="path">'+lrSel.gen+'<span class="arrow">→</span>'+lrSel.ident+(lrSel.ident==='职场白领'?'<span class="arrow">→</span>'+lrSel.mar:'')+'<span class="arrow">→</span>'+lrSel.dir+'</div><div class="slogan">'+lrSlogan()+'</div></div>';
+  html+='<div class="lr-block"><div class="lr-conclusion"><div class="ct">📌 结论 · '+lrSel.dir+'（'+lrSel.gen+' / '+lrSel.ident+'）</div><table>';
+  html+='<tr><td class="k">适合谁</td><td>'+con.fit+'</td></tr>';
+  html+='<tr><td class="k">要多久</td><td>'+con.time+'</td></tr>';
+  html+='<tr><td class="k">代价</td><td>'+con.cost+'</td></tr>';
+  html+='<tr><td class="k">终点</td><td>'+con.end+'</td></tr>';
+  html+='<tr><td class="k">值不值得</td><td class="worth">'+con.worth+'</td></tr>';
+  html+='<tr><td class="k">建议路径</td><td>'+con.path+'</td></tr>';
+  html+='</table></div>';
+  html+='<h3><span class="n">1</span>沿途经验站 · 可以照抄的步骤</h3><div class="lr-stations">';
+  ids.forEach(function(id,i){
+    var e=LR_EXPS[id];
+    html+='<div class="lr-station"><div class="dot">'+(i+1)+'</div><div class="card"><div class="t">'+e.t+'<span class="lr-badge">'+e.g+' 级</span></div><div class="d">'+e.a[0]+'；'+e.a[1]+'…</div><div class="more"><b>步骤：</b><br>'+e.a.map(function(s){return '· '+s+'<br>';}).join('')+'<br><b>失败排查：</b>'+e.fail+'<br><b>适用边界：</b>'+e.s+'<br><b>来源：</b>'+e.c+'</div></div></div>';
+  });
+  html+='</div>';
+  html+='<h3 style="margin-top:16px"><span class="n">2</span>同路人的真实样本</h3><div class="lr-stations"><div class="lr-station"><div class="dot">S</div><div class="card"><div class="t">真人样本 · 骨架版<span class="lr-badge">据公开经验整理</span></div><div class="d">该组合完整真人样本征集中，投稿入口见下方补充题。</div></div></div></div>';
+  html+='</div>';
+  box.innerHTML=html;
+  box.querySelectorAll('.lr-station .card').forEach(function(c){c.onclick=function(){c.classList.toggle('open');};});
+  document.getElementById('lrSupp').style.display='block';
+  document.getElementById('lrSupp').scrollIntoView({behavior:'smooth',block:'center'});
+}
+var lrIv='';
+function lrPick(v,el){ lrIv=v; document.querySelectorAll('#lrSupp .lr-radios label').forEach(function(x){x.classList.remove('on');}); el.classList.add('on'); }
+function lrOpen(){ document.getElementById('lrPanel').classList.add('open'); document.getElementById('lrMask').classList.add('open'); document.body.style.overflow='hidden'; }
+function lrClose(){ document.getElementById('lrPanel').classList.remove('open'); document.getElementById('lrMask').classList.remove('open'); document.body.style.overflow=''; }
+function lrSubmit(){
+  var puzzle=(document.getElementById('lrPuzzle').value||'').trim().slice(0,60);
+  var detail='人生路完成：'+lrSel.dir+'（'+lrSel.gen+'/'+lrSel.ident+(lrSel.ident==='职场白领'?'/'+lrSel.mar:'')+'）困惑：'+(puzzle||'无')+' 访谈：'+(lrIv||'未选');
+  try{ localStorage.setItem(QUIZ_KEY,JSON.stringify({deviceId:getDeviceId(),lr:{gen:lrSel.gen,ident:lrSel.ident,mar:lrSel.mar,dir:lrSel.dir},puzzle:puzzle,iv:lrIv,ts:Date.now()})); }catch(e){}
+  trackEvent('quiz_done',detail);
+  var keyMap={'求职就业':'zljj','考公考编':'zljj','考研升学':'zljj','跳槽转型':'zljj','婚育家庭':'shjk','副业变现':'tzxf','买房安家':'tzxf','旅游出行':'tzxf'};
+  var key=keyMap[lrSel.dir];
+  toast('画像已记录：'+lrSel.dir+' · 为你切换到对应经验');
+  lrClose();
+  if(key){ switchDomain(key); }
+  setTimeout(function(){ document.getElementById('lib').scrollIntoView({behavior:'smooth',block:'center'}); },300);
+}
 
 /* ===== 领域（四大类） ===== */
 var DOMAINS = { zljj:'择路进阶', shjk:'生活健康', aipe:'智能培训', tzxf:'投资理财' };
@@ -990,7 +1143,6 @@ var AI_QA=[
   });
 })();
 document.querySelectorAll('[data-go="ai"]').forEach(function(b){ b.onclick=function(){ document.getElementById('ai').scrollIntoView({behavior:'smooth'}); }; });
-document.querySelectorAll('[data-go="quiz"]').forEach(function(b){ b.onclick=function(){ document.getElementById('quiz').scrollIntoView({behavior:'smooth'}); }; });
 document.getElementById('gitHubCta').onclick=function(){ toast('GitHub 仓库整理中，正式开源后会更新此入口'); };
 
 /* ===== 网页版智能检索（说人话提问 + 同义扩展） ===== */
@@ -1369,5 +1521,42 @@ function scShow(step){
 renderMine();
 trackEvent('pageview', document.title);
 </script>
+
+<!-- ===== 人生路搭配器面板（替代问卷） ===== -->
+<button class="lr-float" onclick="lrOpen()">🎯 选人生路</button>
+<div class="lr-mask" id="lrMask" onclick="lrClose()"></div>
+<div class="lr-panel" id="lrPanel">
+  <div class="lr-panel-top">
+    <div class="lr-pt">🎯 选我的人生路 <span style="font-weight:400;color:var(--steel);font-size:12px">替代问卷 · 单一入口</span></div>
+    <button class="lr-close" onclick="lrClose()">✕</button>
+  </div>
+  <div class="lr-in">
+    <div class="lr-hero"><h1>选一条路，看走过的人怎么走</h1><p>你的选择就是画像：提交后自动入库并跳转对应领域经验。</p></div>
+    <div class="lr-steps">
+      <span class="lr-step" id="lrSt1">① 选代际</span><span class="lr-step" id="lrSt2">② 选身份</span><span class="lr-step" id="lrSt3">③ 选状态</span><span class="lr-step" id="lrSt4">④ 选方向</span><span class="lr-step" id="lrSt5">⑤ 出结论</span>
+    </div>
+    <div class="lr-sec" id="lrSecGen"><h2>🧓 你是哪代人？</h2><div class="lr-hint">决定参考谁的时代经验（单选）</div><div class="lr-opts" id="lrOptsGen"></div></div>
+    <div class="lr-sec" id="lrSecIdent" style="display:none"><h2>🧑 你的身份</h2><div class="lr-hint">主力人群：学生 & 职场白领（单选）</div><div class="lr-opts" id="lrOptsIdent"></div></div>
+    <div class="lr-sec" id="lrSecMar" style="display:none"><h2>❤️ 你的人生状态</h2><div class="lr-hint">影响匹配婚育相关经验（单选）</div><div class="lr-opts" id="lrOptsMar"></div></div>
+    <div class="lr-sec" id="lrSecDir" style="display:none"><h2>🧭 你想了解什么方向？</h2><div class="lr-hint">选择后为你匹配同路人的真实路径（单选）</div><div class="lr-opts" id="lrOptsDir"></div></div>
+    <div id="lrResult"></div>
+    <div class="lr-supp" id="lrSupp" style="display:none">
+      <h3>最后 2 个问题（替代原问卷）</h3>
+      <div class="lr-hint">选完路径后留下你的画像，正式版将以此为你持续匹配经验</div>
+      <label>你现在最大的困惑是什么？（选填）</label>
+      <textarea id="lrPuzzle" placeholder="例如：在职备考总是加班怎么办 / 备婚预算怎么控制…"></textarea>
+      <label>愿意接受真人访谈 / 进交流群吗？</label>
+      <div class="lr-radios">
+        <label onclick="lrPick('愿意',this)">愿意</label>
+        <label onclick="lrPick('可以考虑',this)">可以考虑</label>
+        <label onclick="lrPick('不了',this)">不了</label>
+      </div>
+      <div class="lr-submit-row">
+        <button class="btn" onclick="lrSubmit()">提交，进入我的经验库</button>
+        <span class="lr-note">提交 = 画像入库 + 跳转对应领域经验库</span>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
