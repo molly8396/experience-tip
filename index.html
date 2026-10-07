@@ -55,20 +55,6 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
 .btn-navy:hover{background:#F0F4FA}
 .btn-line-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.65)}
 .btn-line-w:hover{background:rgba(255,255,255,.1)}
-/* ===== 问卷（onboard 移植） ===== */
-.quiz{padding:64px 0 72px}
-.quiz-card{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px 40px 32px;box-shadow:0 8px 28px rgba(15,27,48,.05)}
-.quiz-brand{font-size:22px;font-weight:900;color:var(--navy);letter-spacing:.04em}
-.quiz-sub{font-size:14px;color:var(--steel);margin:6px 0 22px}
-.quiz-progress{height:8px;background:#E7ECF4;border-radius:999px;overflow:hidden;margin-bottom:18px}
-.quiz-bar{height:100%;background:#8FBC8F;border-radius:999px;transition:width .3s ease}
-.quiz-step{font-size:13px;color:var(--steel);margin-bottom:16px;font-weight:500}
-.quiz-options{display:flex;flex-direction:column;gap:12px}
-.quiz-option{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:16px 20px;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left;font-family:inherit;transition:border-color .12s,background .12s}
-.quiz-option:hover{border-color:var(--navy)}
-.quiz-option:active{border-color:var(--navy);background:#F0F4FA}
-.quiz-skip{display:block;margin:22px auto 0;text-align:center;color:var(--navy);font-size:14px;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit}
-.quiz-note{text-align:center;color:#A9B2C0;font-size:12.5px;margin-top:12px}
 /* ===== 领域速览 ===== */
 .domains{padding:56px 0 60px;background:#fff;border-top:1px solid var(--line)}
 .sec-head{margin-bottom:28px;text-align:center}
@@ -159,7 +145,6 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
   .trust-cards{grid-template-columns:1fr}
   .ai-zone .wrap{grid-template-columns:1fr}
   .nav{display:none}
-  .quiz-card{padding:28px 22px}
 }
 @media(max-width:480px){
   .dom-grid{grid-template-columns:repeat(2,1fr)}
@@ -310,7 +295,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
   .story-desc{min-height:0;flex:1 1 100%}
   .story-exp{margin-top:4px}
 }
-/* ===== 人生路搭配器面板（替代问卷） ===== */
+/* ===== 人生路搭配器面板 ===== */
 .lr-mask{position:fixed;inset:0;z-index:90;background:rgba(20,28,45,.55);display:none}
 .lr-mask.open{display:block}
 .lr-panel{position:fixed;inset:0;z-index:100;background:var(--bg);display:none;overflow:auto}
@@ -652,7 +637,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
 <div id="toast"></div>
 
 <script>
-/* ===== 人生路搭配器（替代问卷 onboard） ===== */
+/* ===== 人生路搭配器（onboard 数据） ===== */
 function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},2600); }
 var LR_GENS=[
  {k:'80后',ic:'🧓',d:'中年攻坚期：二胎/父母养老/职业瓶颈'},
@@ -800,8 +785,8 @@ function lrClose(){ document.getElementById('lrPanel').classList.remove('open');
 function lrSubmit(){
   var puzzle=(document.getElementById('lrPuzzle').value||'').trim().slice(0,60);
   var detail='人生路完成：'+lrSel.dir+'（'+lrSel.gen+'/'+lrSel.ident+(lrSel.ident==='职场白领'?'/'+lrSel.mar:'')+'）困惑：'+(puzzle||'无')+' 访谈：'+(lrIv||'未选');
-  try{ localStorage.setItem(QUIZ_KEY,JSON.stringify({deviceId:getDeviceId(),lr:{gen:lrSel.gen,ident:lrSel.ident,mar:lrSel.mar,dir:lrSel.dir},puzzle:puzzle,iv:lrIv,ts:Date.now()})); }catch(e){}
-  trackEvent('quiz_done',detail);
+  try{ localStorage.setItem(LR_KEY,JSON.stringify({deviceId:getDeviceId(),lr:{gen:lrSel.gen,ident:lrSel.ident,mar:lrSel.mar,dir:lrSel.dir},puzzle:puzzle,iv:lrIv,ts:Date.now()})); }catch(e){}
+  trackEvent('lr_done',detail);
   var keyMap={'求职就业':'zljj','考公考编':'zljj','考研升学':'zljj','跳槽转型':'zljj','婚育家庭':'shjk','副业变现':'tzxf','买房安家':'tzxf','旅游出行':'tzxf'};
   var key=keyMap[lrSel.dir];
   toast('画像已记录：'+lrSel.dir+' · 为你切换到对应经验');
@@ -1193,7 +1178,7 @@ var SC_Q=[
   {q:'适合哪些人群参考？',opts:['职场新人','备考人群','备婚/新手父母','旅行者','所有人']}
 ];
 var MINE_KEY='exp_mine_v1';
-var DEV_KEY='exp_device_id', META_KEY='exp_meta_v1', QUIZ_KEY='exp_quiz_v1';
+var DEV_KEY='exp_device_id', META_KEY='exp_meta_v1', LR_KEY='exp_lr_v1';
 /* ===== 试运营埋点上报（飞书多维表格接收）===== */
 var TRACK_KEY='exp_track_v1';
 var TRACK_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcnPL0ha1FBCqGuHSKsMz0lUg';
@@ -1522,12 +1507,12 @@ renderMine();
 trackEvent('pageview', document.title);
 </script>
 
-<!-- ===== 人生路搭配器面板（替代问卷） ===== -->
+<!-- ===== 人生路搭配器面板 ===== -->
 <button class="lr-float" onclick="lrOpen()">🎯 选人生路</button>
 <div class="lr-mask" id="lrMask" onclick="lrClose()"></div>
 <div class="lr-panel" id="lrPanel">
   <div class="lr-panel-top">
-    <div class="lr-pt">🎯 选我的人生路 <span style="font-weight:400;color:var(--steel);font-size:12px">替代问卷 · 单一入口</span></div>
+    <div class="lr-pt">🎯 选我的人生路 <span style="font-weight:400;color:var(--steel);font-size:12px">提交即入库 · 单一入口</span></div>
     <button class="lr-close" onclick="lrClose()">✕</button>
   </div>
   <div class="lr-in">
@@ -1541,7 +1526,7 @@ trackEvent('pageview', document.title);
     <div class="lr-sec" id="lrSecDir" style="display:none"><h2>🧭 你想了解什么方向？</h2><div class="lr-hint">选择后为你匹配同路人的真实路径（单选）</div><div class="lr-opts" id="lrOptsDir"></div></div>
     <div id="lrResult"></div>
     <div class="lr-supp" id="lrSupp" style="display:none">
-      <h3>最后 2 个问题（替代原问卷）</h3>
+      <h3>最后 2 个问题</h3>
       <div class="lr-hint">选完路径后留下你的画像，正式版将以此为你持续匹配经验</div>
       <label>你现在最大的困惑是什么？（选填）</label>
       <textarea id="lrPuzzle" placeholder="例如：在职备考总是加班怎么办 / 备婚预算怎么控制…"></textarea>
