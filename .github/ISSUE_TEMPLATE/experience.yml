@@ -1,0 +1,69 @@
+name: 经验投稿
+description: 分享一条你的真实经验（真人真事、带数字和时间线、可直接照抄）。审核通过后会自动发布到经验之书网页。
+title: "[经验] 一句话标题"
+labels: ["待审核"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: 经验标题
+      description: 一句话说清这条经验。参考格式：水煮蛋刻度表：想要哪种熟度，照着分钟抄
+    validations:
+      required: true
+  - type: textarea
+    id: full
+    attributes:
+      label: 经验全文
+      description: 完整讲述：背景、你做了什么、结果如何。尽量带数字、时间线、可验证的结果。这是你亲身经历或你验证过的经验，不是网上能随便查到的信息。
+      placeholder: |
+        背景：...
+        我做了什么：...
+        结果：...
+    validations:
+      required: true
+  - type: dropdown
+    id: cat
+    attributes:
+      label: 所属分类
+      options:
+        - 择路进阶
+        - 生活健康
+        - 智能培训
+        - 投资理财
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 步骤（别人怎么照着做）
+      description: 一行一个步骤，让别人可以直接照抄。例：第一步... / 第二步...
+    validations:
+      required: false
+  - type: textarea
+    id: fail
+    attributes:
+      label: 失败排查
+      description: 什么情况下会翻车？常见坑是什么？怎么排查？
+    validations:
+      required: false
+  - type: input
+    id: scene
+    attributes:
+      label: 适用场景
+      description: 这条经验适用于什么情况、不适用于什么情况
+    validations:
+      required: false
+  - type: input
+    id: source
+    attributes:
+      label: 参考来源
+      description: 本人亲历 / 书籍 / 博主 / 官方资料（写清楚来源，方便读者延伸阅读）
+    validations:
+      required: false
+  - type: input
+    id: contact
+    attributes:
+      label: 联系方式（选填）
+      description: 便于后续核实与反馈
+    validations:
+      required: false
