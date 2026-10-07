@@ -82,7 +82,7 @@ def main():
             continue
         cat_name = (f.get('所属分类') or '择路进阶').strip()
         cat = CAT_MAP.get(cat_name, 'zljj')
-        steps = split_steps(f.get('步骤'))
+        steps = split_steps(f.get('步骤（别人怎么照着做）') or f.get('步骤'))
         new = {
             'id': f'exp_{max_id + 1}',
             't': title[:80],
@@ -106,11 +106,9 @@ def main():
         return
 
     # 在最后一个 } 后统一插入 ,\n{new}
-    insert_json = ''.join('\n' + json.dumps(e, ensure_ascii=False) for _, e in published)
+    insert_json = ''.join(json.dumps(e, ensure_ascii=False) for _, e in published)
     last_brace = arr.rfind('}')
-    after = arr[last_brace + 1:]
-    sep = ',' if ',' in after else ''
-    new_arr = arr[:last_brace + 1] + sep + insert_json + '\n'
+    new_arr = arr[:last_brace + 1] + ',\n' + insert_json + '\n'
     html = html[:m.start(2)] + new_arr + html[m.end(2):]
 
     with open('index.html', 'w', encoding='utf-8') as f:
