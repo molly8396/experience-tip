@@ -1321,7 +1321,7 @@ function renderMine(){
   if(dev){ var meta=getMeta(); dev.textContent='设备号 '+(meta.deviceId||getDeviceId())+' · '+new Date(meta.firstSeen).getMonth()+'月'+new Date(meta.firstSeen).getDate()+'日 开始使用'; }
   var list=document.getElementById('mineList'); list.innerHTML='';
   if(!m.experiences.length){
-    list.innerHTML='<div class="mine-empty">你还没贡献过经验，去「说一条」面板开始第一段分享吧</div>';
+    list.innerHTML='<div class="mine-empty">你还没贡献过经验，去「直接去投稿」面板开始第一段分享吧</div>';
     return;
   }
   m.experiences.slice(0,5).forEach(function(e){
