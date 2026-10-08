@@ -582,7 +582,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
           </div>
           <div class="sc-step-done" id="scStepDone" style="display:none">
             <div class="sc-done">已提交，进入审核队列 · 标题：<b id="scDoneTitle"></b> · 通过后每周发布到经验库</div>
-            <p class="voice-tip" style="margin-top:6px">你的经验全文已复制到剪贴板，并在新标签打开了飞书投稿表单——粘贴（Ctrl+V / Cmd+V）后点「匿名提交」即可完成投稿，进入审核队列。</p>
+            <p class="voice-tip" style="margin-top:6px">已在新标签打开免登录投稿表单——无需注册任何账号，按表单提示填写后提交即可，投稿进入审核队列。</p>
             <button class="btn btn-line" id="scAgain">再贡献一条</button>
           </div>
         </div>
@@ -1222,7 +1222,6 @@ var TRACK_KEY='exp_track_v1';
 var TRACK_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcnPL0ha1FBCqGuHSKsMz0lUg';
 /* 用户投稿审核表（飞书多维表格表单，免登录提交，字段=题目title） */
 var SUBMIT_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcn3NJF2cachryq9i6qtLgCGb';
-var GH_ISSUE_BASE='https://github.com/molly8396/experience-tip/issues/new';
 function getTrackSource(){
   try{
     var m=(location.search.match(/[?&]utm_source=([^&]+)/)||[])[1];
@@ -1259,24 +1258,7 @@ function postTrack(ev){
 }
 function postSubmission(d){
   try{
-    if(!d) return;
-    var CATS={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'};
-    var full=(d.full&&d.full.trim())?d.full.trim():('适用：'+(d.s||'未标注场景')+'；来源：'+(d.c||'本人亲历'));
-    var steps=Array.isArray(d.a)?d.a.join('\n'):'';
-    var body=[
-      '### 经验标题',(d.t||''),
-      '### 经验全文',full,
-      '### 所属分类',(CATS[d.cat]||'择路进阶'),
-      '### 步骤（别人怎么照着做）',steps,
-      '### 失败排查',(d.fail||''),
-      '### 适用场景',(d.s||''),
-      '### 参考来源',(d.c||'')
-    ].join('\n\n');
-    var txt=body;
-    try{
-      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt); }
-    }catch(e){}
-    var url=GH_ISSUE_BASE+'?labels='+encodeURIComponent('待审核')+'&title='+encodeURIComponent('[经验] '+(d.t||''))+'&body='+encodeURIComponent(body);
+    var url=SUBMIT_FORM_URL;
     try{
       var w=window.open(url,'_blank');
       if(!w) location.href=url;
@@ -1564,7 +1546,7 @@ function scShow(step){
     renderMine();
     trackEvent('contribute', draft.t);
     postSubmission(draft);
-    showToast('经验全文已复制，请在打开的飞书表单页粘贴提交（Ctrl+V）');
+    showToast('已打开免登录投稿表单，按提示填写提交即可');
   };
   document.getElementById('scRedo').onclick=function(){ scShow('scStepQ'); qIdx=0; picked=[]; renderQ(); };
   document.getElementById('scAgain').onclick=function(){
