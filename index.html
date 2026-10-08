@@ -194,6 +194,12 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
 .share-intro b{color:var(--navy)}
 .share-note{margin-top:12px;font-size:12.5px;color:var(--steel);background:#fff;border:1px dashed var(--line);border-radius:10px;padding:9px 12px}
 .share-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 28px rgba(15,27,48,.05)}
+.sc-direct{margin-bottom:4px;padding:16px;background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:14px;color:#fff}
+.sc-direct .btn{width:100%;background:#fff;color:var(--navy);font-weight:700;padding:13px 22px}
+.sc-direct p{margin:10px 0 0;color:rgba(255,255,255,.85);font-size:12.5px;line-height:1.65}
+.sc-or{display:flex;align-items:center;gap:10px;color:var(--steel);font-size:12px;margin:12px 0}
+.sc-or::before,.sc-or::after{content:'';flex:1;height:1px;background:var(--line)}
+.sc-step-1 .sc-voice{margin-top:0}
 .sc-voice{display:flex;align-items:center;gap:10px;background:#EAF0F9;border:1.5px dashed var(--navy2);border-radius:14px;padding:14px 16px;color:var(--navy);cursor:pointer;user-select:none;margin-bottom:12px;justify-content:center;font-weight:600;font-size:14.5px}
 .sc-voice.rec{background:var(--red);border-color:var(--red);color:#fff}
 .sc-voice svg{flex:none}
@@ -519,16 +525,16 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
   <div class="wrap">
     <div class="sec-head">
       <h2>你也有一条真实走过的路</h2>
-      <div class="sub">说一段你的经历，AI 帮你整理成结构化经验，提交后进入审核队列，通过后每周发布。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
+      <div class="sub">两条路：点「直接去投稿」打开免登录表单一次填完；或先录音/打字，让 AI 按表单 8 项整理成草稿，一键复制粘贴提交。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
     </div>
     <div class="share-grid">
       <div class="share-left">
         <div class="share-intro">
           <h3>怎么贡献一条经验</h3>
           <ol>
-            <li><b>说或写</b>——点击录音说一段经历，或直接打字</li>
-            <li><b>AI 帮你整理</b>——回答 3 个问题，生成结构化经验卡</li>
-            <li><b>提交进审核队列</b>——通过后发布，多人反馈后升级可信度等级</li>
+            <li><b>直接投稿</b>——点「直接去投稿」，免登录表单一次填完</li>
+            <li><b>AI 帮你整理</b>——录音或打字，AI 按表单 8 项整理成草稿，一键复制</li>
+            <li><b>粘贴提交</b>——打开的表单里粘贴草稿即可，进入审核队列，通过后发布</li>
           </ol>
           <p class="share-note">试运营期贡献免费。你的经验被引用、被提问，后续按付费方案获得分成。</p>
         </div>
@@ -557,6 +563,11 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
       <div class="share-card" id="shareCard">
         <div class="sc-phase" id="scPhase">
           <div class="sc-step-1" id="scStep1">
+            <div class="sc-direct">
+              <button class="btn" onclick="window.open(SUBMIT_FORM_URL,'_blank')">直接去投稿 · 免登录</button>
+              <p>投稿表单一次填完：标题 / 全文 / 分类 / 场景 / 步骤 / 失败排查 / 来源（选填）。网页只做入口，不重复收集内容。</p>
+            </div>
+            <div class="sc-or"><span>想让 AI 帮你整理成投稿格式？先录音或输入，再点整理</span></div>
             <div class="sc-voice" id="scVoice" title="点击开始录音，再点结束">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"/></svg>
               <span id="scVoiceHint">点击说话 · 边说边转成文字 · 最长 60 秒</span>
@@ -582,7 +593,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
           </div>
           <div class="sc-step-done" id="scStepDone" style="display:none">
             <div class="sc-done">已提交，进入审核队列 · 标题：<b id="scDoneTitle"></b> · 通过后每周发布到经验库</div>
-            <p class="voice-tip" style="margin-top:6px">已在新标签打开免登录投稿表单——无需注册任何账号，按表单提示填写后提交即可，投稿进入审核队列。</p>
+            <p class="voice-tip" style="margin-top:6px">草稿已复制到剪贴板，并在新标签打开了免登录投稿表单——粘贴到对应栏目提交即可，无需重复填写、无需注册。</p>
             <button class="btn btn-line" id="scAgain">再贡献一条</button>
           </div>
         </div>
@@ -610,7 +621,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
     </div>
     <div class="faq-item">
       <button class="faq-q">我能贡献经验吗？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="faq-a">可以。网页版已开放「说一条你的经验」：点击录音或打字，AI 自动整理成结构化经验卡并进入审核队列，通过后每周发布到经验库；正式版开放发布与作者分成。</div>
+      <div class="faq-a">可以，免登录即可投稿。点「直接去投稿」打开飞书投稿表单，一次填完进入审核队列；想偷懒可选「AI 帮我整理」——先录音或打字，AI 按表单 8 项整理成草稿并自动复制，粘贴提交即可。通过后每周发布到经验库。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">这个试运营要验证什么？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1258,6 +1269,22 @@ function postTrack(ev){
 }
 function postSubmission(d){
   try{
+    if(!d) return;
+    var CATS={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'};
+    var steps=Array.isArray(d.a)?d.a.map(function(x,i){ return (i+1)+'. '+x; }).join('\n'):'';
+    var txt=[
+      '经验标题：'+(d.t||''),
+      '经验全文：'+(d.full||''),
+      '所属分类：'+(CATS[d.cat]||'择路进阶'),
+      '适用场景：'+(d.s||''),
+      '步骤：'+steps,
+      '失败排查：'+(d.fail||''),
+      '参考来源：'+(d.c||''),
+      '联系方式：'
+    ].join('\n');
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt); }
+    }catch(e){}
     var url=SUBMIT_FORM_URL;
     try{
       var w=window.open(url,'_blank');
@@ -1522,18 +1549,20 @@ function scShow(step){
             full:raw||'',
             status:'验证中' };
     var d=document.getElementById('scDraft');
-    var stepsHtml=draft.a.map(function(s){ return '<li>'+s+'</li>'; }).join('');
-    var extra='';
-    extra+='<div class="six fail"><b>失败排查</b><span>'+draft.fail+'</span></div>';
-    extra+='<div class="six"><b>适用场景</b><span>'+draft.s+' · '+draft.a.length+' 步落地</span></div>';
-    extra+='<div class="six"><b>成本</b><span>'+draft.cost+'</span></div>';
-    extra+='<div class="six"><b>收益</b><span>'+draft.benefit+'</span></div>';
-    extra+='<div class="six"><b>反面声音</b><span>'+draft.contra+'</span></div>';
-    extra+='<div class="six"><b>参考来源</b><span>'+draft.c+'</span></div>';
-    d.innerHTML='<div class="exp-card draft-preview"><div class="head"><h4>'+draft.t+'</h4></div>'+
-      '<div class="badges"><span class="badge b">'+draft.g+' 级 · 验证中</span><span class="badge src">本人亲历 · 待验证</span><span class="badge ai">AI 整理 · 待你确认</span></div>'+
-      '<div class="exp-actions" style="display:block"><h5>怎么落地</h5><ol>'+stepsHtml+'</ol>'+extra+'</div></div>'+
-      '<p class="draft-tip">这是 AI 按经验卡格式整理的草稿（对应四大类之一），由你确认后提交进入审核队列，通过后每周发布到经验库。AI 生成内容已按《人工智能生成合成内容标识办法》标注。</p>';
+    var stepsHtml=draft.a.map(function(s,i){ return '<li>'+(i+1)+'. '+s+'</li>'; }).join('');
+    var CATN={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'};
+    var rows='';
+    rows+='<div class="six"><b>经验标题</b><span>'+draft.t+'</span></div>';
+    rows+='<div class="six"><b>经验全文</b><span>'+(draft.full||'')+'</span></div>';
+    rows+='<div class="six"><b>所属分类</b><span>'+(CATN[draft.cat]||'择路进阶')+'</span></div>';
+    rows+='<div class="six"><b>适用场景</b><span>'+(draft.s||'')+'</span></div>';
+    rows+='<div class="six"><b>步骤</b><span>'+stepsHtml+'</span></div>';
+    rows+='<div class="six"><b>失败排查</b><span>'+(draft.fail||'')+'</span></div>';
+    rows+='<div class="six"><b>参考来源</b><span>'+(draft.c||'')+'</span></div>';
+    rows+='<div class="six"><b>联系方式</b><span>选填 · 在投稿表单里补（用于正式版作者分成联系）</span></div>';
+    d.innerHTML='<div class="exp-card draft-preview"><div class="head"><h4>投稿草稿 · 与飞书表单 8 项一一对应</h4></div>'+
+      '<div class="exp-actions" style="display:block">'+rows+'</div></div>'+
+      '<p class="draft-tip">点「提交经验」会复制下面草稿并打开免登录投稿表单，粘贴到对应栏目即可，不用重复填写。AI 生成内容已按《人工智能生成合成内容标识办法》标注。</p>';
     scShow('scStepDraft');
   }
   document.getElementById('scSubmit').onclick=function(){
@@ -1546,7 +1575,7 @@ function scShow(step){
     renderMine();
     trackEvent('contribute', draft.t);
     postSubmission(draft);
-    showToast('已打开免登录投稿表单，按提示填写提交即可');
+    showToast('已复制投稿草稿并打开免登录表单，粘贴到对应栏目即可');
   };
   document.getElementById('scRedo').onclick=function(){ scShow('scStepQ'); qIdx=0; picked=[]; renderQ(); };
   document.getElementById('scAgain').onclick=function(){
