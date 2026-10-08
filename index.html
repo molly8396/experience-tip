@@ -368,8 +368,6 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
 .lr-radios label.on{border-color:var(--navy);background:#F0F4FA;font-weight:600}
 .lr-submit-row{margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .lr-note{font-size:11px;color:var(--steel)}
-.lr-float{position:fixed;right:18px;bottom:24px;z-index:55;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:12px 20px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 8px 24px rgba(26,43,74,.35);display:flex;align-items:center;gap:8px}
-.lr-float:hover{background:var(--navy2)}
 </style>
 </head>
 <body>
@@ -525,14 +523,14 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
   <div class="wrap">
     <div class="sec-head">
       <h2>你也有一条真实走过的路</h2>
-      <div class="sub">两条路：点「直接去投稿」打开免登录表单一次填完；或先录音/打字，让 AI 按表单 8 项整理成草稿，一键复制粘贴提交。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
+      <div class="sub">两条路：点「直接去投稿」打开投稿表单一次填完；或先录音/打字，让 AI 按表单 8 项整理成草稿，一键复制粘贴提交。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
     </div>
     <div class="share-grid">
       <div class="share-left">
         <div class="share-intro">
           <h3>怎么贡献一条经验</h3>
           <ol>
-            <li><b>直接投稿</b>——点「直接去投稿」，免登录表单一次填完</li>
+            <li><b>直接投稿</b>——点「直接去投稿」，一次填完</li>
             <li><b>AI 帮你整理</b>——录音或打字，AI 按表单 8 项整理成草稿，一键复制</li>
             <li><b>粘贴提交</b>——打开的表单里粘贴草稿即可，进入审核队列，通过后发布</li>
           </ol>
@@ -564,8 +562,8 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
         <div class="sc-phase" id="scPhase">
           <div class="sc-step-1" id="scStep1">
             <div class="sc-direct">
-              <button class="btn" onclick="window.open(SUBMIT_FORM_URL,'_blank')">直接去投稿 · 免登录</button>
-              <p>投稿表单一次填完：标题 / 全文 / 分类 / 场景 / 步骤 / 失败排查 / 来源（选填）。网页只做入口，不重复收集内容。</p>
+              <button class="btn" onclick="window.open(SUBMIT_FORM_URL,'_blank')">直接去投稿</button>
+              <p>把你真实走过的路写成经验，审核通过后发布到经验库，还能获得后续作者分成。</p>
             </div>
             <div class="sc-or"><span>想让 AI 帮你整理成投稿格式？先录音或输入，再点整理</span></div>
             <div class="sc-voice" id="scVoice" title="点击开始录音，再点结束">
@@ -588,12 +586,12 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
           </div>
           <div class="sc-step-draft" id="scStepDraft" style="display:none">
             <div class="sc-draft" id="scDraft"></div>
-            <button class="btn btn-navy" id="scSubmit">提交经验</button>
+            <button class="btn btn-navy" id="scSubmit">复制草稿，去投稿</button>
             <button class="btn btn-line" id="scRedo">重新整理</button>
           </div>
           <div class="sc-step-done" id="scStepDone" style="display:none">
-            <div class="sc-done">已提交，进入审核队列 · 标题：<b id="scDoneTitle"></b> · 通过后每周发布到经验库</div>
-            <p class="voice-tip" style="margin-top:6px">草稿已复制到剪贴板，并在新标签打开了免登录投稿表单——粘贴到对应栏目提交即可，无需重复填写、无需注册。</p>
+            <div class="sc-done">草稿已复制好 · 标题：<b id="scDoneTitle"></b> · 到打开的投稿表粘贴提交，通过后每周发布到经验库</div>
+            <p class="voice-tip" style="margin-top:6px">打开的表单里直接粘贴即可，内容一次到位，不用重新填写。</p>
             <button class="btn btn-line" id="scAgain">再贡献一条</button>
           </div>
         </div>
@@ -621,7 +619,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
     </div>
     <div class="faq-item">
       <button class="faq-q">我能贡献经验吗？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="faq-a">可以，免登录即可投稿。点「直接去投稿」打开飞书投稿表单，一次填完进入审核队列；想偷懒可选「AI 帮我整理」——先录音或打字，AI 按表单 8 项整理成草稿并自动复制，粘贴提交即可。通过后每周发布到经验库。</div>
+      <div class="faq-a">可以直接投稿：点「直接去投稿」打开投稿表单，一次填完进入审核队列；想省事可选「AI 帮我整理」——先录音或打字，AI 按表单 8 项整理成草稿并自动复制，粘贴提交即可。通过后每周发布到经验库。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">这个试运营要验证什么？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1267,24 +1265,44 @@ function postTrack(ev){
     setTimeout(function(){ try{ document.body.removeChild(f); document.body.removeChild(fr); }catch(e){} },3000);
   }catch(e){}
 }
+function buildDraftText(d){
+  var CATS={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'};
+  var steps=Array.isArray(d.a)?d.a.map(function(x,i){ return (i+1)+'. '+x; }).join('\n'):'';
+  return [
+    '经验标题：'+(d.t||''),
+    '经验全文：'+(d.full||''),
+    '所属分类：'+(CATS[d.cat]||'择路进阶'),
+    '适用场景：'+(d.s||''),
+    '步骤：'+steps,
+    '失败排查：'+(d.fail||''),
+    '参考来源：'+(d.c||''),
+    '联系方式：（选填）'
+  ].join('\n\n');
+}
+function legacyCopy(txt){
+  try{
+    var ta=document.createElement('textarea');
+    ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    var ok=document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  }catch(e){ return false; }
+}
+function copyText(txt){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    try{
+      var p=navigator.clipboard.writeText(txt);
+      if(p&&p.catch){ p.catch(function(){ legacyCopy(txt); }); }
+      return true;
+    }catch(e){ return legacyCopy(txt); }
+  }
+  return legacyCopy(txt);
+}
 function postSubmission(d){
   try{
     if(!d) return;
-    var CATS={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'};
-    var steps=Array.isArray(d.a)?d.a.map(function(x,i){ return (i+1)+'. '+x; }).join('\n'):'';
-    var txt=[
-      '经验标题：'+(d.t||''),
-      '经验全文：'+(d.full||''),
-      '所属分类：'+(CATS[d.cat]||'择路进阶'),
-      '适用场景：'+(d.s||''),
-      '步骤：'+steps,
-      '失败排查：'+(d.fail||''),
-      '参考来源：'+(d.c||''),
-      '联系方式：'
-    ].join('\n');
-    try{
-      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt); }
-    }catch(e){}
+    copyText(buildDraftText(d));
     var url=SUBMIT_FORM_URL;
     try{
       var w=window.open(url,'_blank');
@@ -1559,10 +1577,10 @@ function scShow(step){
     rows+='<div class="six"><b>步骤</b><span>'+stepsHtml+'</span></div>';
     rows+='<div class="six"><b>失败排查</b><span>'+(draft.fail||'')+'</span></div>';
     rows+='<div class="six"><b>参考来源</b><span>'+(draft.c||'')+'</span></div>';
-    rows+='<div class="six"><b>联系方式</b><span>选填 · 在投稿表单里补（用于正式版作者分成联系）</span></div>';
-    d.innerHTML='<div class="exp-card draft-preview"><div class="head"><h4>投稿草稿 · 与飞书表单 8 项一一对应</h4></div>'+
+    rows+='<div class="six"><b>联系方式</b><span>选填 · 用于正式版作者分成联系</span></div>';
+    d.innerHTML='<div class="exp-card draft-preview"><div class="head"><h4>AI 已按投稿格式整理好，8 项内容都在下面</h4></div>'+
       '<div class="exp-actions" style="display:block">'+rows+'</div></div>'+
-      '<p class="draft-tip">点「提交经验」会复制下面草稿并打开免登录投稿表单，粘贴到对应栏目即可，不用重复填写。AI 生成内容已按《人工智能生成合成内容标识办法》标注。</p>';
+      '<p class="draft-tip">点下方「复制草稿，去投稿」：草稿自动复制，打开投稿表后直接粘贴即可，不用重新写。<br><span style="opacity:.72">AI 整理内容已按要求标注「AI 生成」，提交前请确认与你的真实经历一致。</span></p>';
     scShow('scStepDraft');
   }
   document.getElementById('scSubmit').onclick=function(){
@@ -1575,7 +1593,7 @@ function scShow(step){
     renderMine();
     trackEvent('contribute', draft.t);
     postSubmission(draft);
-    showToast('已复制投稿草稿并打开免登录表单，粘贴到对应栏目即可');
+    showToast('草稿已复制，打开投稿表粘贴即可完成，不用重新写');
   };
   document.getElementById('scRedo').onclick=function(){ scShow('scStepQ'); qIdx=0; picked=[]; renderQ(); };
   document.getElementById('scAgain').onclick=function(){
@@ -1588,7 +1606,6 @@ trackEvent('pageview', document.title);
 </script>
 
 <!-- ===== 人生路搭配器面板 ===== -->
-<button class="lr-float" onclick="lrOpen()">🎯 选人生路</button>
 <div class="lr-mask" id="lrMask" onclick="lrClose()"></div>
 <div class="lr-panel" id="lrPanel">
   <div class="lr-panel-top">
