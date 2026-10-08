@@ -194,30 +194,16 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
 .share-intro b{color:var(--navy)}
 .share-note{margin-top:12px;font-size:12.5px;color:var(--steel);background:#fff;border:1px dashed var(--line);border-radius:10px;padding:9px 12px}
 .share-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 28px rgba(15,27,48,.05)}
-.sc-direct{margin-bottom:4px;padding:16px;background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:14px;color:#fff}
-.sc-direct .btn{width:100%;background:#fff;color:var(--navy);font-weight:700;padding:13px 22px}
-.sc-direct p{margin:10px 0 0;color:rgba(255,255,255,.85);font-size:12.5px;line-height:1.65}
+.sc-direct{margin-bottom:4px;padding:26px 16px;background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:14px;color:#fff;text-align:center}
+.sc-direct .btn{background:#fff;color:var(--navy);font-weight:700;padding:13px 34px;display:inline-block}
+.sc-direct p{margin:12px 0 0;color:rgba(255,255,255,.85);font-size:12.5px;line-height:1.65}
 .sc-or{display:flex;align-items:center;gap:10px;color:var(--steel);font-size:12px;margin:12px 0}
 .sc-or::before,.sc-or::after{content:'';flex:1;height:1px;background:var(--line)}
-.sc-step-1 .sc-voice{margin-top:0}
-.sc-voice{display:flex;align-items:center;gap:10px;background:#EAF0F9;border:1.5px dashed var(--navy2);border-radius:14px;padding:14px 16px;color:var(--navy);cursor:pointer;user-select:none;margin-bottom:12px;justify-content:center;font-weight:600;font-size:14.5px}
-.sc-voice.rec{background:var(--red);border-color:var(--red);color:#fff}
-.sc-voice svg{flex:none}
 #scText{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;font-family:inherit;color:var(--ink);resize:vertical;outline:none;box-sizing:border-box}
 #scText:focus{border-color:var(--navy)}
-#scOrganize{margin-top:12px;width:100%;justify-content:center}
+#scSubmitDirect{margin-top:12px;width:100%;justify-content:center}
 .btn-line{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;font-weight:600;font-size:14.5px;border:1.5px solid var(--line);cursor:pointer;background:#fff;color:var(--navy);font-family:inherit;transition:all .15s}
 .btn-line:hover{border-color:var(--navy)}
-.sc-q-prog{font-size:13px;color:var(--steel);margin-bottom:12px}
-.sc-q-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:14px}
-.sc-q-opts{display:flex;flex-direction:column;gap:9px}
-.sc-q-opts button{text-align:left;background:#F7F9FC;border:1px solid var(--line);border-radius:11px;padding:11px 14px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--ink);transition:all .15s}
-.sc-q-opts button:hover{border-color:var(--navy);background:#EAF0F9}
-#scSkip{margin-top:14px;width:100%;justify-content:center}
-.sc-draft{background:#F7F9FC;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:13.5px;line-height:1.8;color:#45506a}
-.sc-draft b{color:var(--navy)}
-#scSubmit{width:100%;justify-content:center;margin-bottom:9px}
-#scRedo{width:100%;justify-content:center}
 .sc-done{background:#EAF6F0;border:1px solid #BFE3D2;border-radius:12px;padding:16px;font-size:14px;color:var(--green);margin-bottom:14px}
 #scAgain{width:100%;justify-content:center}
 .mine{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
@@ -284,10 +270,6 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
 .comment span{float:right;color:var(--steel);font-weight:400}
 .comment p{margin:0;color:#45506a;line-height:1.6}
 .comment-empty{font-size:12px;color:var(--steel);padding:6px 0}
-.sc-ctrl{display:flex;align-items:center;justify-content:center;gap:10px;margin:-4px 0 10px}
-.sc-timer{font-size:12.5px;color:var(--red);font-weight:700;font-variant-numeric:tabular-nums}
-.sc-stop{background:var(--red);color:#fff;border:none;border-radius:999px;padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
-.sc-stop:hover{opacity:.9}
 .voice-tip{font-size:12px;color:var(--steel);text-align:center;margin:-4px 0 10px;line-height:1.6}
 .fb-note-box textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:13px;font-family:inherit;color:var(--ink);resize:vertical;outline:none;box-sizing:border-box;min-height:52px}
 .fb-note-box .btn{margin-top:8px;padding:7px 16px;font-size:13px}
@@ -523,7 +505,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
   <div class="wrap">
     <div class="sec-head">
       <h2>你也有一条真实走过的路</h2>
-      <div class="sub">两条路：点「直接去投稿」打开投稿表单一次填完；或先录音/打字，让 AI 按表单 8 项整理成草稿，一键复制粘贴提交。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
+      <div class="sub">两条路：点「直接去投稿」打开投稿表单一次填完；或在下面直接输入，点提交（内容自动整理并复制，粘贴一次即可）。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
     </div>
     <div class="share-grid">
       <div class="share-left">
@@ -531,7 +513,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
           <h3>怎么贡献一条经验</h3>
           <ol>
             <li><b>直接投稿</b>——点「直接去投稿」，一次填完</li>
-            <li><b>AI 帮你整理</b>——录音或打字，AI 按表单 8 项整理成草稿，一键复制</li>
+            <li><b>直接输入</b>——写一段你的经历，点提交，自动整理并复制</li>
             <li><b>粘贴提交</b>——打开的表单里粘贴草稿即可，进入审核队列，通过后发布</li>
           </ol>
           <p class="share-note">试运营期贡献免费。你的经验被引用、被提问，后续按付费方案获得分成。</p>
@@ -562,36 +544,17 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
         <div class="sc-phase" id="scPhase">
           <div class="sc-step-1" id="scStep1">
             <div class="sc-direct">
-              <button class="btn" onclick="window.open(SUBMIT_FORM_URL,'_blank')">直接去投稿</button>
+              <button class="btn btn-navy sc-direct-btn" onclick="window.open(SUBMIT_FORM_URL,'_blank')">直接去投稿</button>
               <p>把你真实走过的路写成经验，审核通过后发布到经验库，还能获得后续作者分成。</p>
             </div>
-            <div class="sc-or"><span>想让 AI 帮你整理成投稿格式？先录音或输入，再点整理</span></div>
-            <div class="sc-voice" id="scVoice" title="点击开始录音，再点结束">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"/></svg>
-              <span id="scVoiceHint">点击说话 · 边说边转成文字 · 最长 60 秒</span>
-            </div>
-            <div class="sc-ctrl">
-              <span class="sc-timer" id="scTimer" style="display:none">0 / 60 秒</span>
-              <button class="sc-stop" id="scStop" style="display:none">结束录音</button>
-            </div>
-            <p class="voice-tip">说话时文字会实时进输入框。若 4 秒内无文字，说明当前浏览器/网络不支持实时识别，请直接打字（正式版接入国内识别服务后语音将全面可用）。</p>
-            <textarea id="scText" rows="4" placeholder="或直接输入：场景 + 你做了什么 + 结果如何"></textarea>
-            <button class="btn btn-navy" id="scOrganize">让 AI 帮我整理</button>
-          </div>
-          <div class="sc-step-q" id="scStepQ" style="display:none">
-            <div class="sc-q-prog">第 <b id="scQIdx">1</b>/3 题 · 选一个最接近的，可跳过</div>
-            <div class="sc-q-title" id="scQTitle"></div>
-            <div class="sc-q-opts" id="scQOpts"></div>
-            <button class="btn btn-line" id="scSkip">跳过此题</button>
-          </div>
-          <div class="sc-step-draft" id="scStepDraft" style="display:none">
-            <div class="sc-draft" id="scDraft"></div>
-            <button class="btn btn-navy" id="scSubmit">复制草稿，去投稿</button>
-            <button class="btn btn-line" id="scRedo">重新整理</button>
+            <div class="sc-or"><span>或 在下面直接输入，点提交</span></div>
+            <textarea id="scText" rows="5" placeholder="直接输入你的经验：场景 + 你做了什么 + 结果如何（一句话也行）"></textarea>
+            <button class="btn btn-navy" id="scSubmitDirect">直接提交</button>
+            <p class="voice-tip" style="margin-top:10px">点「直接提交」：内容自动整理并复制，打开投稿表粘贴一次即可提交，不用注册。</p>
           </div>
           <div class="sc-step-done" id="scStepDone" style="display:none">
-            <div class="sc-done">草稿已复制好 · 标题：<b id="scDoneTitle"></b> · 到打开的投稿表粘贴提交，通过后每周发布到经验库</div>
-            <p class="voice-tip" style="margin-top:6px">打开的表单里直接粘贴即可，内容一次到位，不用重新填写。</p>
+            <div class="sc-done">内容已复制好 · 标题：<b id="scDoneTitle"></b> · 到打开的投稿表粘贴提交，通过后每周发布到经验库</div>
+            <p class="voice-tip" style="margin-top:6px">打开的表单里直接粘贴一次即可，内容一次到位，不用重复填写。</p>
             <button class="btn btn-line" id="scAgain">再贡献一条</button>
           </div>
         </div>
@@ -619,7 +582,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
     </div>
     <div class="faq-item">
       <button class="faq-q">我能贡献经验吗？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="faq-a">可以直接投稿：点「直接去投稿」打开投稿表单，一次填完进入审核队列；想省事可选「AI 帮我整理」——先录音或打字，AI 按表单 8 项整理成草稿并自动复制，粘贴提交即可。通过后每周发布到经验库。</div>
+      <div class="faq-a">可以直接投稿：点「直接去投稿」打开投稿表单，一次填完进入审核队列；想省事就在下方输入框写一段你的经历，点提交后自动整理并复制，粘贴一次即可。通过后每周发布到经验库。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">这个试运营要验证什么？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1228,7 +1191,7 @@ var MINE_KEY='exp_mine_v1';
 var DEV_KEY='exp_device_id', META_KEY='exp_meta_v1', LR_KEY='exp_lr_v1';
 /* ===== 试运营埋点上报（飞书多维表格接收）===== */
 var TRACK_KEY='exp_track_v1';
-var TRACK_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcnPL0ha1FBCqGuHSKsMz0lUg';
+var TRACK_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcn0yRYGsmP6iU9RMsKxJ4rub';
 /* 用户投稿审核表（飞书多维表格表单，免登录提交，字段=题目title） */
 var SUBMIT_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcn3NJF2cachryq9i6qtLgCGb';
 function getTrackSource(){
@@ -1400,123 +1363,12 @@ function renderStar(){
   list.forEach(function(e){ box.appendChild(card(e)); });
 }
 function scShow(step){
-  ['scStep1','scStepQ','scStepDraft','scStepDone'].forEach(function(id){
+  ['scStep1','scStepDone'].forEach(function(id){
     document.getElementById(id).style.display=(id===step?'block':'none');
   });
 }
 (function(){
-  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  var rec=null, recording=false, touchHeld=false, maxT=null, secT=null, secN=0, gotResp=false, quietT=null;
-  var voice=document.getElementById('scVoice');
-  var stopBtn=document.getElementById('scStop');
-  var timerEl=document.getElementById('scTimer');
-  function voiceIdle(){
-    voice.classList.remove('rec');
-    voice.querySelector('span').textContent='点击说话 · 边说边转成文字 · 最长 60 秒';
-    if(stopBtn){ stopBtn.style.display='none'; }
-    if(timerEl){ timerEl.style.display='none'; }
-    clearInterval(secT); secT=null; clearTimeout(quietT); quietT=null;
-  }
-  function tick(){
-    secN++;
-    if(timerEl){ timerEl.textContent=Math.min(secN,60)+' / 60 秒'; }
-  }
-  function startRec(){
-    if(!rec){ showToast('当前浏览器不支持语音识别（建议 Chrome/Edge），请用文字输入'); return; }
-    if(recording)return;
-    recording=true; finalTxt=''; secN=0; gotResp=false;
-    voice.classList.add('rec');
-    voice.querySelector('span').textContent='正在聆听，说话内容会实时转成文字…';
-    if(stopBtn){ stopBtn.style.display='inline-block'; }
-    if(timerEl){ timerEl.style.display='inline-block'; timerEl.textContent='0 / 60 秒'; }
-    secT=setInterval(tick,1000);
-    try{ rec.start(); }catch(e){ recording=false; voiceIdle(); showToast('语音启动失败，请检查浏览器麦克风权限'); }
-    clearTimeout(maxT); maxT=setTimeout(function(){ stopRec(); showToast('已达 60 秒上限，已自动结束'); }, 60000);
-    clearTimeout(quietT);
-    quietT=setTimeout(function(){
-      if(recording && !gotResp){ stopRec(); showToast('识别服务无响应：当前浏览器/网络不支持实时语音识别（国内网络常见），请直接打字，正式版会接入国内识别服务'); }
-    }, 4000);
-  }
-  function stopRec(){
-    if(!recording)return;
-    recording=false; clearTimeout(maxT);
-    try{ rec.stop(); }catch(e){ voiceIdle(); }
-  }
-  if(SR){
-    rec=new SR(); rec.lang='zh-CN'; rec.interimResults=true; rec.continuous=true;
-    var finalTxt='';
-    rec.onstart=function(){ gotResp=true; voice.classList.add('rec'); voice.querySelector('span').textContent='正在聆听，说话内容会实时转成文字…'; };
-    rec.onresult=function(ev){
-      gotResp=true;
-      var interim='';
-      for(var i=ev.resultIndex;i<ev.results.length;i++){
-        var r=ev.results[i];
-        if(r.isFinal){ finalTxt+=r[0].transcript; } else { interim+=r[0].transcript; }
-      }
-      document.getElementById('scText').value=(finalTxt+interim).trim();
-    };
-    rec.onend=function(){
-      voiceIdle();
-      var v=(document.getElementById('scText').value||'').trim();
-      if(v){ showToast('语音转写完成，可编辑后点击「让 AI 帮我整理」'); }
-    };
-    rec.onerror=function(ev){
-      recording=false; clearTimeout(maxT); voiceIdle();
-      var code=ev&&ev.error;
-      if(code==='not-allowed'||code==='service-not-allowed'){ showToast('麦克风未授权：点浏览器地址栏麦克风图标开启，或去 系统设置-隐私与安全性-麦克风 允许'); }
-      else if(code==='no-speech'){ showToast('没听到声音，请靠近麦克风再试'); }
-      else if(code==='audio-capture'){ showToast('麦克风设备不可用，请检查系统麦克风'); }
-      else if(code==='network'||code==='network-timeout'||code==='service-not-allowed'){ showToast('语音识别服务连不上（浏览器依赖国外服务，国内网络常见）。请直接打字，正式版会接入国内识别'); }
-      else { showToast('语音识别出错（'+code+'），请改用文字输入'); }
-    };
-    if(stopBtn){ stopBtn.onclick=function(){ stopRec(); }; }
-    voice.addEventListener('click',function(){
-      if(touchHeld){ touchHeld=false; return; }
-      if(recording){ stopRec(); } else { startRec(); }
-    });
-    voice.addEventListener('pointerdown',function(ev){
-      if(ev.pointerType!=='touch')return;
-      touchHeld=true; startRec();
-    });
-    voice.addEventListener('pointerup',function(ev){
-      if(ev.pointerType!=='touch')return;
-      touchHeld=false; stopRec();
-    });
-    voice.addEventListener('pointerleave',function(ev){
-      if(ev.pointerType!=='touch')return;
-      touchHeld=false; stopRec();
-    });
-  } else {
-    voice.classList.add('rec');
-    voice.querySelector('span').textContent='当前浏览器不支持语音（建议 Chrome/Edge）';
-    voice.onclick=function(){ showToast('当前浏览器不支持语音识别（建议 Chrome/Edge），请用文字输入'); };
-  }
-})();
-(function(){
-  var raw='', picked=[], qIdx=0, draft=null;
-  var organize=document.getElementById('scOrganize');
-  organize.onclick=function(){
-    raw=(document.getElementById('scText').value||'').trim();
-    if(!raw){ showToast('先输入或录一段经验'); return; }
-    picked=[]; qIdx=0;
-    scShow('scStepQ'); renderQ();
-  };
-  function renderQ(){
-    var it=SC_Q[qIdx];
-    document.getElementById('scQIdx').textContent=qIdx+1;
-    document.getElementById('scQTitle').textContent=it.q;
-    var box=document.getElementById('scQOpts'); box.innerHTML='';
-    it.opts.forEach(function(o){
-      var b=document.createElement('button'); b.textContent=o;
-      b.onclick=function(){ picked.push(o); nextQ(); };
-      box.appendChild(b);
-    });
-  }
-  function nextQ(){
-    qIdx++;
-    if(qIdx>=SC_Q.length){ finish(); } else { renderQ(); }
-  }
-  document.getElementById('scSkip').onclick=function(){ nextQ(); };
+  var draft=null;
   function makeTitle(raw){
     var first=(raw.split(/[。！？!?；;\n]/)[0]||'').replace(/^(我|我们|当时|其实|就是|本人)/,'').trim();
     if(first.length>20) first=first.slice(0,20)+'…';
@@ -1545,46 +1397,24 @@ function scShow(step){
     if(/旅游|旅行|出行|消费|理财/.test(scenario)) return 'tzxf';
     return 'zljj';
   }
-  function resultProfile(choice, failTxt){
-    if(choice==='按步骤执行，结果符合预期') return {cost:'一次试错的时间/金钱成本', benefit:'结果已验证、可复制性强', contra:'个体差异可能影响结果，先小步试一次', fail:failTxt||'结果因人而异，别期待每次都完全一致'};
-    if(choice==='做了但结果一般，踩了坑') return {cost:'一次试错的时间/金钱成本', benefit:'反面教材：帮别人避开同一个坑', contra:'本条经验目前是失败记录，仅作避坑参考', fail:failTxt||'失败原因还没总结，建议补一句「为什么没成」'};
-    if(choice==='反复调整后成功') return {cost:'反复调整耗时较长', benefit:'经多次调整验证，含避坑细节', contra:'过程较长，需要耐心，别指望一次到位', fail:failTxt||'调整过程中踩过的坑建议补充进来，帮助更多人一次做对'};
-    return {cost:'进行中，尚未有最终结果', benefit:'真实过程记录，供参考起点', contra:'未完成经验仅作记录，慎用于重大决策', fail:failTxt||'还没跑完，先别当结论用'};
-  }
   function finish(){
+    var raw=(document.getElementById('scText').value||'').trim();
+    if(!raw){ showToast('先写一段你的经验再提交'); return; }
     var steps=splitSteps(raw);
     var failTxt=extractFail(raw);
-    var prof=resultProfile(picked[1]||'', failTxt);
     draft={ id:'mine_'+Date.now().toString(36),
             t:makeTitle(raw),
-            cat:mapCat(picked[0]||'其他场景'),
+            cat:mapCat(raw),
             g:'B',
             a:steps,
-            fail:prof.fail,
-            s:(picked[0]||'未标注场景')+(picked[2]&&picked[2]!=='所有人'?' · 适合'+picked[2]:''),
+            fail:failTxt||'结果因人而异，别期待每次都完全一致',
+            s:'未标注场景',
             c:'本人亲历 · 待验证',
-            cost:prof.cost, benefit:prof.benefit, contra:prof.contra,
+            cost:'一次试错的时间/金钱成本',
+            benefit:'真实经历，可直接照抄或参考',
+            contra:'个体差异可能影响结果，先小步试一次',
             full:raw||'',
             status:'验证中' };
-    var d=document.getElementById('scDraft');
-    var stepsHtml=draft.a.map(function(s,i){ return '<li>'+(i+1)+'. '+s+'</li>'; }).join('');
-    var CATN={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'};
-    var rows='';
-    rows+='<div class="six"><b>经验标题</b><span>'+draft.t+'</span></div>';
-    rows+='<div class="six"><b>经验全文</b><span>'+(draft.full||'')+'</span></div>';
-    rows+='<div class="six"><b>所属分类</b><span>'+(CATN[draft.cat]||'择路进阶')+'</span></div>';
-    rows+='<div class="six"><b>适用场景</b><span>'+(draft.s||'')+'</span></div>';
-    rows+='<div class="six"><b>步骤</b><span>'+stepsHtml+'</span></div>';
-    rows+='<div class="six"><b>失败排查</b><span>'+(draft.fail||'')+'</span></div>';
-    rows+='<div class="six"><b>参考来源</b><span>'+(draft.c||'')+'</span></div>';
-    rows+='<div class="six"><b>联系方式</b><span>选填 · 用于正式版作者分成联系</span></div>';
-    d.innerHTML='<div class="exp-card draft-preview"><div class="head"><h4>AI 已按投稿格式整理好，8 项内容都在下面</h4></div>'+
-      '<div class="exp-actions" style="display:block">'+rows+'</div></div>'+
-      '<p class="draft-tip">点下方「复制草稿，去投稿」：草稿自动复制，打开投稿表后直接粘贴即可，不用重新写。<br><span style="opacity:.72">AI 整理内容已按要求标注「AI 生成」，提交前请确认与你的真实经历一致。</span></p>';
-    scShow('scStepDraft');
-  }
-  document.getElementById('scSubmit').onclick=function(){
-    if(!draft)return;
     var m=getMine();
     m.experiences.unshift(JSON.parse(JSON.stringify(draft)));
     saveMine(m);
@@ -1593,9 +1423,9 @@ function scShow(step){
     renderMine();
     trackEvent('contribute', draft.t);
     postSubmission(draft);
-    showToast('草稿已复制，打开投稿表粘贴即可完成，不用重新写');
-  };
-  document.getElementById('scRedo').onclick=function(){ scShow('scStepQ'); qIdx=0; picked=[]; renderQ(); };
+    showToast('内容已复制，打开投稿表粘贴一次即可完成');
+  }
+  document.getElementById('scSubmitDirect').onclick=function(){ finish(); };
   document.getElementById('scAgain').onclick=function(){
     document.getElementById('scText').value='';
     scShow('scStep1');
