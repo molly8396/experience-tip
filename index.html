@@ -194,11 +194,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
 .share-intro b{color:var(--navy)}
 .share-note{margin-top:12px;font-size:12.5px;color:var(--steel);background:#fff;border:1px dashed var(--line);border-radius:10px;padding:9px 12px}
 .share-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 28px rgba(15,27,48,.05)}
-.sc-direct{margin-bottom:4px;padding:26px 16px;background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:14px;color:#fff;text-align:center}
-.sc-direct .btn{background:#fff;color:var(--navy);font-weight:700;padding:13px 34px;display:inline-block}
-.sc-direct p{margin:12px 0 0;color:rgba(255,255,255,.85);font-size:12.5px;line-height:1.65}
-.sc-or{display:flex;align-items:center;gap:10px;color:var(--steel);font-size:12px;margin:12px 0}
-.sc-or::before,.sc-or::after{content:'';flex:1;height:1px;background:var(--line)}
+.sc-frame-wrap{margin-top:4px}
 #scText{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;font-family:inherit;color:var(--ink);resize:vertical;outline:none;box-sizing:border-box}
 #scText:focus{border-color:var(--navy)}
 #scSubmitDirect{margin-top:12px;width:100%;justify-content:center}
@@ -510,16 +506,16 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
   <div class="wrap">
     <div class="sec-head">
       <h2>你也有一条真实走过的路</h2>
-      <div class="sub">两条路：点「直接去投稿」打开投稿表单一次填完；或在下面直接输入，点提交（内容自动整理并复制，粘贴一次即可）。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
+      <div class="sub">写一段你的亲身经历，自动整理成经验卡进入审核。每个人都有经验丰富的领域——比如鸡蛋的 100 多种吃法、带娃夜醒的节奏、考公的三轮复习法；你最熟的那件事，可能就是别人的刚需，你的经历也会成为别人的答案。</div>
     </div>
     <div class="share-grid">
       <div class="share-left">
         <div class="share-intro">
           <h3>怎么贡献一条经验</h3>
           <ol>
-            <li><b>直接投稿</b>——点「直接去投稿」，一次填完</li>
-            <li><b>直接输入</b>——写一段你的经历，点提交，自动整理并复制</li>
-            <li><b>粘贴提交</b>——打开的表单里粘贴草稿即可，进入审核队列，通过后发布</li>
+            <li><b>直接提交</b>——写一段你的经历，自动拆成标题、分类、步骤、失败排查</li>
+            <li><b>核对提交</b>——表单已按你的内容填好，确认无误后点一次提交</li>
+            <li><b>审核发布</b>——进入审核队列，通过后发布到经验库，获得作者分成</li>
           </ol>
           <p class="share-note">试运营期贡献免费。你的经验被引用、被提问，后续按付费方案获得分成。</p>
         </div>
@@ -548,19 +544,13 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
       <div class="share-card" id="shareCard">
         <div class="sc-phase" id="scPhase">
           <div class="sc-step-1" id="scStep1">
-            <div class="sc-direct">
-              <button class="btn btn-navy sc-direct-btn" onclick="window.open(SUBMIT_FORM_URL,'_blank')">直接去投稿</button>
-              <p>把你真实走过的路写成经验，审核通过后发布到经验库，还能获得后续作者分成。</p>
-            </div>
-            <div class="sc-or"><span>或 在下面直接输入，点提交</span></div>
-            <textarea id="scText" rows="5" placeholder="直接输入你的经验：场景 + 你做了什么 + 结果如何（一句话也行）"></textarea>
-            <button class="btn btn-navy" id="scSubmitDirect">直接提交</button>
-            <p class="voice-tip" style="margin-top:10px">点「直接提交」：内容自动整理并复制，打开投稿表粘贴一次即可提交，不用注册。</p>
+            <textarea id="scText" rows="6" placeholder="直接输入你的经验：场景 + 你做了什么 + 结果如何（一句话也行，越具体越好）"></textarea>
+            <button class="btn btn-navy" id="scSubmitDirect" style="display:block;margin:12px auto 0;min-width:200px">直接提交</button>
           </div>
-          <div class="sc-step-done" id="scStepDone" style="display:none">
-            <div class="sc-done">内容已复制好 · 标题：<b id="scDoneTitle"></b> · 到打开的投稿表粘贴提交，通过后每周发布到经验库</div>
-            <p class="voice-tip" style="margin-top:6px">打开的表单里直接粘贴一次即可，内容一次到位，不用重复填写。</p>
-            <button class="btn btn-line" id="scAgain">再贡献一条</button>
+          <div class="sc-step-2" id="scStep2" style="display:none">
+            <div class="sc-done" style="margin-bottom:10px">已按你的内容填好表单，核对无误后点「匿名提交」即可入库</div>
+            <div class="sc-frame-wrap"><iframe id="scFormFrame" title="经验投稿表单" loading="lazy" style="width:100%;height:640px;border:1px solid var(--line);border-radius:12px;background:#fff"></iframe></div>
+            <button class="btn btn-line" id="scAgain" style="display:block;margin:12px auto 0">再贡献一条</button>
           </div>
         </div>
       </div>
@@ -587,7 +577,7 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
     </div>
     <div class="faq-item">
       <button class="faq-q">我能贡献经验吗？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="faq-a">可以直接投稿：点「直接去投稿」打开投稿表单，一次填完进入审核队列；想省事就在下方输入框写一段你的经历，点提交后自动整理并复制，粘贴一次即可。通过后每周发布到经验库。</div>
+      <div class="faq-a">可以：在「直接提交」里写一段你的亲身经历，系统自动整理成标题、分类、步骤和失败排查，表单填好后核对一次即可提交，进入审核队列，通过后发布到经验库。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">这个试运营要验证什么？<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1226,7 +1216,7 @@ var DEV_KEY='exp_device_id', META_KEY='exp_meta_v1', LR_KEY='exp_lr_v1';
 /* ===== 试运营埋点上报（飞书多维表格接收）===== */
 var TRACK_KEY='exp_track_v1';
 var TRACK_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcn0yRYGsmP6iU9RMsKxJ4rub';
-/* 用户投稿审核表（飞书多维表格表单，免登录提交，字段=题目title） */
+/* 用户投稿审核表（飞书多维表格表单，内嵌 iframe + prefill 预填，字段=题目title） */
 var SUBMIT_FORM_URL='https://mcnuykt61luk.feishu.cn/share/base/shrcn3NJF2cachryq9i6qtLgCGb';
 function getTrackSource(){
   try{
@@ -1336,7 +1326,7 @@ function renderMine(){
   if(dev){ var meta=getMeta(); dev.textContent='设备号 '+(meta.deviceId||getDeviceId())+' · '+new Date(meta.firstSeen).getMonth()+'月'+new Date(meta.firstSeen).getDate()+'日 开始使用'; }
   var list=document.getElementById('mineList'); list.innerHTML='';
   if(!m.experiences.length){
-    list.innerHTML='<div class="mine-empty">你还没贡献过经验，去「直接去投稿」面板开始第一段分享吧</div>';
+    list.innerHTML='<div class="mine-empty">你还没贡献过经验，去「直接提交」面板开始第一段分享吧</div>';
     return;
   }
   m.experiences.slice(0,5).forEach(function(e){
@@ -1397,7 +1387,7 @@ function renderStar(){
   list.forEach(function(e){ box.appendChild(card(e)); });
 }
 function scShow(step){
-  ['scStep1','scStepDone'].forEach(function(id){
+  ['scStep1','scStep2'].forEach(function(id){
     document.getElementById(id).style.display=(id===step?'block':'none');
   });
 }
@@ -1436,9 +1426,11 @@ function scShow(step){
     if(!raw){ showToast('先写一段你的经验再提交'); return; }
     var steps=splitSteps(raw);
     var failTxt=extractFail(raw);
+    var cat=mapCat(raw);
+    var catName={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'}[cat]||'择路进阶';
     draft={ id:'mine_'+Date.now().toString(36),
             t:makeTitle(raw),
-            cat:mapCat(raw),
+            cat:cat,
             g:'B',
             a:steps,
             fail:failTxt||'结果因人而异，别期待每次都完全一致',
@@ -1452,12 +1444,30 @@ function scShow(step){
     var m=getMine();
     m.experiences.unshift(JSON.parse(JSON.stringify(draft)));
     saveMine(m);
-    document.getElementById('scDoneTitle').textContent=draft.t;
-    scShow('scStepDone');
     renderMine();
     trackEvent('contribute', draft.t);
-    postSubmission(draft);
-    showToast('内容已复制，打开投稿表粘贴一次即可完成');
+    openPrefilledForm(draft);
+    scShow('scStep2');
+    showToast('表单已按你的内容填好，核对后提交');
+  }
+  function openPrefilledForm(d){
+    var CATS={zljj:'择路进阶',shjk:'生活健康',aipe:'智能培训',tzxf:'投资理财'};
+    var steps=Array.isArray(d.a)?d.a.map(function(x,i){ return (i+1)+'. '+x; }).join('\n'):'';
+    var params={
+      '经验标题': d.t||'',
+      '经验全文': d.full||'',
+      '所属分类': CATS[d.cat]||'择路进阶',
+      '适用场景': d.s||'',
+      '步骤': steps,
+      '失败排查': d.fail||'',
+      '参考来源': d.c||'',
+      '联系方式': ''
+    };
+    var qs=Object.keys(params).map(function(k){
+      return 'prefill_'+encodeURIComponent(k)+'='+encodeURIComponent(params[k]);
+    }).join('&');
+    var ifr=document.getElementById('scFormFrame');
+    if(ifr){ ifr.src=SUBMIT_FORM_URL+(SUBMIT_FORM_URL.indexOf('?')>-1?'&':'?')+qs; }
   }
   document.getElementById('scSubmitDirect').onclick=function(){ finish(); };
   document.getElementById('scAgain').onclick=function(){
