@@ -238,7 +238,12 @@ h2{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:.5px}
 .smart-out .so-item b{color:var(--navy);display:block;font-size:14px}
 .smart-out .so-item .so-src{font-size:12px;color:var(--steel)}
 .smart-out .so-item .so-steps{color:#45506a;margin-top:3px}
+.smart-out .so-link{cursor:pointer;transition:background .15s}
+.smart-out .so-link:hover{background:#F4F7FC;border-radius:8px;padding-left:8px;padding-right:8px}
+.smart-out .so-go{display:inline-block;margin-top:6px;font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .smart-out .so-none{font-size:13px;color:var(--steel)}
+@keyframes expFlash{0%{box-shadow:0 0 0 0 rgba(40,120,255,.55)}60%{box-shadow:0 0 0 6px rgba(40,120,255,.28)}100%{box-shadow:0 0 0 0 rgba(40,120,255,0)}}
+.exp-card.flash{animation:expFlash 1s ease-out 2;border-color:#2878FF}
 .exp-card h5{margin:4px 0 8px;font-size:13.5px;color:var(--navy)}
 .full-block{border-left:3px solid var(--navy);background:#F7F9FD;border-radius:8px;padding:10px 12px;margin:2px 0 12px}
 .full-block h5{margin:0 0 6px}
@@ -924,14 +929,28 @@ function listFor(){
   return EXPS.filter(function(e){ return current==='all' || e.cat===current; });
 }
 function gradeRank(e){ return e.g==='A'?0:(e.g==='B'?1:2); }
-function renderGrid(reset){
+function renderGrid(reset, target){
   if(reset){ shown=8; }
   var full=listFor();
   full.sort(function(a,b){ return gradeRank(a)-gradeRank(b) || (a.id<b.id?-1:1); });
+  if(target){
+    var ti=-1;
+    for(var i=0;i<full.length;i++){ if(full[i].id===target){ ti=i; break; } }
+    if(ti>=0 && ti>=shown){ shown=ti+1; }
+  }
   var list=full.slice(0,shown);
   var box=document.getElementById('grid'); box.innerHTML='';
   list.forEach(function(e){ box.appendChild(card(e)); });
   document.getElementById('expMore').style.display = (full.length>shown) ? 'inline-flex':'none';
+  if(target){
+    var el=document.getElementById('exp-'+target);
+    if(el){
+      el.classList.add('open');
+      el.classList.add('flash');
+      setTimeout(function(){ el.scrollIntoView({behavior:'smooth',block:'center'}); },80);
+      setTimeout(function(){ el.classList.remove('flash'); },2600);
+    }
+  }
 }
 function renderTable(tbText){
   if(!tbText) return '';
@@ -985,7 +1004,7 @@ function toggleStar(id){
   }catch(e){ return false; }
 }
 function card(e){
-  var d=document.createElement('div'); d.className='exp-card';
+  var d=document.createElement('div'); d.className='exp-card'; d.id='exp-'+e.id; d.setAttribute('data-id',e.id);
   var badgeCls=e.g==='A'?'a':(e.g==='B'?'b':'c');
   var steps=e.a.map(function(s){return '<li>'+s+'</li>';}).join('');
   var shortSrc=e.c.length>26 ? e.c.slice(0,26)+'…' : e.c;
@@ -1084,6 +1103,14 @@ function card(e){
   return d;
 }
 function switchDomain(k){ current=k; var inp=document.getElementById('libSearch'); if(inp){ inp.value=''; } renderActChips(); renderTabs(); renderGrid(true); }
+function goCard(id){
+  var e=null;
+  EXPS.forEach(function(x){ if(x.id===id){ e=x; } });
+  if(!e){ if(window.showToast){ showToast('未找到该经验'); } return; }
+  current=e.cat;
+  var inp=document.getElementById('libSearch'); if(inp){ inp.value=''; }
+  renderActChips(); renderTabs(); renderGrid(true, id);
+}
 document.getElementById('expMore').onclick=function(){ shown+=8; renderGrid(false); };
 renderActChips(); renderTabs(); renderGrid(true);
 
@@ -1165,7 +1192,7 @@ document.getElementById('gitHubCta').onclick=function(){ toast('GitHub 仓库整
     var domName=r.dom?DOMAINS[r.dom]:'多领域';
     var html='<div class="so-head">匹配到 '+r.total+' 条相关经验（'+domName+'）· 可点开经验库核对全文</div>';
     r.hits.forEach(function(e){
-      html+='<div class="so-item"><b>'+e.t+'</b><div class="so-steps">'+e.a.slice(0,2).map(function(s){return '· '+s;}).join('<br>')+'</div><div class="so-src">'+e.g+' 级 · 来源：'+linkify(e.c)+'</div></div>';
+      html+='<div class="so-item so-link" onclick="goCard(\''+e.id+'\')" title="点开这张经验卡片"><b>'+e.t+'</b><div class="so-steps">'+e.a.slice(0,2).map(function(s){return '· '+s;}).join('<br>')+'</div><div class="so-src">'+e.g+' 级 · 来源：'+linkify(e.c)+'</div><div class="so-go">点开这张经验卡片 →</div></div>';
     });
     out.innerHTML=html;
   }
